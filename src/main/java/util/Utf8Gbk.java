@@ -10,47 +10,37 @@ import java.io.UnsupportedEncodingException;
 public class Utf8Gbk {
 
 
-
-
-    public static Utf8Gbk  utf8Gbk;
-
+    public static Utf8Gbk utf8Gbk;
 
 
     //单列模式
-    public static synchronized  Utf8Gbk getInstance(){
+    public static synchronized Utf8Gbk getInstance() {
 
-        if(utf8Gbk==null) {
+        if (utf8Gbk == null) {
 
             utf8Gbk = new Utf8Gbk();
         }
 
-            return  utf8Gbk;
-
+        return utf8Gbk;
 
 
     }
 
 
-
     /**
-
-     *@描述 将字符串从utf8转换为gbk
-
-     *@参数 txt 待转换的字符串
-
-     *@返回值 String 转换完毕的字符串
-
-     *@创建人  szd
-
+     * @描述 将字符串从utf8转换为gbk
+     * @参数 txt 待转换的字符串
+     * @返回值 String 转换完毕的字符串
+     * @创建人 szd
      */
 
-    public String Utf8TogGbk(String txt){
+    public String Utf8TogGbk(String txt) {
 
-        String name="";
+        String name = "";
 
         String unicode = null;
         try {
-            unicode = new String(txt.getBytes(),"UTF-8");
+            unicode = new String(txt.getBytes(), "UTF-8");
             name = new String(unicode.getBytes("GBK"));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

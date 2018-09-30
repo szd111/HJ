@@ -95,7 +95,7 @@ public class DataMainTainController {
 
                     w.jTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);  //ตฅัก
                     JScrollPane scrollPane = new JScrollPane(w.jTable);
-
+                    scrollPane.setViewportView(w.jTable);
 
                     w.jp3.removeAll();
                     w.jp3.repaint();
