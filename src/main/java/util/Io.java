@@ -15,7 +15,7 @@ public class Io {
     static Properties pps;
 
     /**
-<<<<<<< HEAD
+
      * @描述 根据配置文件的路径 和配置参数 读取相应的配置值
      * @参数 path 文件路径，name 参数值
      * @返回值 null
@@ -27,33 +27,14 @@ public class Io {
 
         String names = "";
         pps = new Properties();
-=======
 
-     *@描述 根据配置文件的路径 和配置参数 读取相应的配置值
-
-     *@参数  path 文件路径，name 参数值
-
-     *@返回值  null
-
-     *@创建人  szd
-
-     *@创建时间  2018/9/27
-
-     *@修改人和其它信息
-
-     */
-    public static String readPropertites(String path,String name){
-
-        String names="";
-         pps = new Properties();
->>>>>>> branch1
         try {
             pps.load(new FileInputStream(path));
         } catch (IOException e) {
             e.printStackTrace();
         }
         Enumeration enum1 = pps.propertyNames();//得到配置文件的名字
-<<<<<<< HEAD
+
         while (enum1.hasMoreElements()) {
             String strKey = (String) enum1.nextElement();
             String strValue = pps.getProperty(strKey);
@@ -62,26 +43,15 @@ public class Io {
                 System.out.println(strKey + "=" + strValue);
 
                 names = strValue;
-=======
-        while(enum1.hasMoreElements()) {
-            String strKey = (String) enum1.nextElement();
-            String strValue = pps.getProperty(strKey);
 
-            if(strKey.equals(name)){
-                System.out.println(strKey + "=" + strValue);
-
-                names=strValue;
->>>>>>> branch1
             }
 
 
         }
 
-<<<<<<< HEAD
+
         return names;
-=======
-        return  names;
->>>>>>> branch1
+
 
     }
 

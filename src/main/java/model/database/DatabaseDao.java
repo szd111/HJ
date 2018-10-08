@@ -41,18 +41,17 @@ public interface DatabaseDao {
      * @创建时间 2018/9/27
      * @修改人和其它信息
      */
-    public ResultSet executeQuery(String sql,Connection connection);
+    public ResultSet executeQuery(String sql, Connection connection);
 
     /**
-     * @描述 根据相应的sql语句执行查询操作,带参数
+     * @描述 根据相应的sql语句执行查询操作, 带参数
      * @参数 sql 语句
      * @返回值 ResultSet 结果集
      * @创建人 szd
      * @创建时间 2018/9/27
      * @修改人和其它信息
      */
-    public ResultSet executeQuerys(String sql,String []params,Connection connection);
-
+    public ResultSet executeQuerys(String sql, String[] params, Connection connection);
 
 
     /**
@@ -64,10 +63,10 @@ public interface DatabaseDao {
      * @修改人和其它信息
      */
 
-    public int executeUpdate(String sql,Connection connection);
+    public int executeUpdate(String sql, Connection connection);
 
     /**
-     * @描述 根据sql语句进行跟新操作,带参数的
+     * @描述 根据sql语句进行跟新操作, 带参数的
      * @参数 sql 语句
      * @返回值 int 成功与否
      * @创建人 szd
@@ -75,8 +74,7 @@ public interface DatabaseDao {
      * @修改人和其它信息
      */
 
-    public int executeUpdates(String sql,String []params,Connection connection);
-
+    public int executeUpdates(String sql, String[] params, Connection connection);
 
 
 }

@@ -24,11 +24,11 @@ public class LoginController {
     public int loginController(User user) {
 
         int flag = 0;
-        LoginImp loginImp=new LoginImp();
+        LoginImp loginImp = new LoginImp();
 
-        String username=user.getName();
-        String password=user.getPassword();
-        flag=loginImp.loginAccessDb(username,password);
+        String username = user.getName();
+        String password = user.getPassword();
+        flag = loginImp.loginAccessDb(username, password);
 
         return flag;
 

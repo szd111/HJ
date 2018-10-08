@@ -9,11 +9,5 @@
         <module name="HJ" />
       </profile>
     </annotationProcessing>
-<<<<<<< HEAD
-=======
-    <bytecodeTargetLevel>
-      <module name="HJ" target="7" />
-    </bytecodeTargetLevel>
->>>>>>> branch1
   </component>
 </project>
