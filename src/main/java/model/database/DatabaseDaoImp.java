@@ -127,12 +127,13 @@ public class DatabaseDaoImp implements DatabaseDao {
 
         Connection c = d.getConnection();
 
-        ResultSet r = d.executeQuery("select * from SZD.test;", c);
+        ResultSet r = d.executeQuery("select * from DR.TABLE_1;", c);
 
         while (r.next()) {
 
-            System.out.println(r.getInt("id"));
-            System.out.println(r.getInt("age"));
+            System.out.println(r.getString("DATABASE_USER"));
+            System.out.println(r.getString("DATABASE_PASSWORD"));
+
         }
 
     }

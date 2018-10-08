@@ -14,7 +14,9 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+
 import java.util.HashMap;
+
 
 /**
  * @创建人 shizhendong
@@ -55,6 +57,7 @@ public class DataMainTainController {
 
         final CreateTable cb = new CreateTable();
 
+
         CreateTree ct = new CreateTree();
 
         final JTree jt = ct.getJTree();
@@ -80,6 +83,7 @@ public class DataMainTainController {
 
                     w.p2_jl1 = new JLabel("You have chosen:" + object.toString());
 
+
                     String column[]={"id","name","age","sex"};
 
                     HashMap<Integer,String[]> rows=new HashMap<Integer,String[]>();
@@ -97,6 +101,7 @@ public class DataMainTainController {
                     JScrollPane scrollPane = new JScrollPane(w.jTable);
                     scrollPane.setViewportView(w.jTable);
 
+
                     w.jp3.removeAll();
                     w.jp3.repaint();
                     try {
@@ -110,19 +115,23 @@ public class DataMainTainController {
                     w.jb11 = new JButton("添加");
                     w.jb11.addActionListener(w);
                     w.jb22 = new JButton("删除");
+
                     w.jb22.addActionListener(w);
                     w.jb33 = new JButton("提交");
                     w.jb33.addActionListener(w);
                     w.jb44 = new JButton("撤销");
                     w.jb44.addActionListener(w);
 
+
                     w.jp6 = new JPanel();
                     w.jp6.add(w.jb11);
                     w.jp6.add(w.jb22);
+
                     w.jp6.add(w.jb33);
                     w.jp6.add(w.jb44);
                     w.jp3Image.add(w.jp6, BorderLayout.NORTH);
                     w.jp3Image.add(scrollPane, BorderLayout.CENTER);
+
                     w.jp3.add(w.jp3Image);
                     w.jp3.revalidate();
 

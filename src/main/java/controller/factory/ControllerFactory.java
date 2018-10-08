@@ -2,11 +2,19 @@ package controller.factory;
 
 import controller.DataMainTainController;
 import controller.DictionaryMainTainController;
+<<<<<<< HEAD
+=======
+import controller.LoginController;
+>>>>>>> branch1
 
 /**
  * @创建人 shizhendong
  * @创建时间 2018/9/27
+<<<<<<< HEAD
  * @描述
+=======
+ * @描述 工厂模式选择创建实体类
+>>>>>>> branch1
  */
 public class ControllerFactory {
 
@@ -35,7 +43,11 @@ public class ControllerFactory {
         } else if (name.equals("DictionaryMainTain")) {
             return new DictionaryMainTainController();
         } else if (name.equals("Login")) {
+<<<<<<< HEAD
             return new DictionaryMainTainController();
+=======
+            return new LoginController();
+>>>>>>> branch1
         }
 
         return null;

@@ -10,6 +10,7 @@ import java.io.UnsupportedEncodingException;
 public class Utf8Gbk {
 
 
+
     public static Utf8Gbk utf8Gbk;
 
 
@@ -18,10 +19,13 @@ public class Utf8Gbk {
 
         if (utf8Gbk == null) {
 
+
             utf8Gbk = new Utf8Gbk();
         }
 
+
         return utf8Gbk;
+
 
 
     }
@@ -41,6 +45,7 @@ public class Utf8Gbk {
         String unicode = null;
         try {
             unicode = new String(txt.getBytes(), "UTF-8");
+
             name = new String(unicode.getBytes("GBK"));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

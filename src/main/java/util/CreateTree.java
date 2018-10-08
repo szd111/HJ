@@ -88,7 +88,9 @@ public class CreateTree {
         JTree jTree=null;
 
         if (jTree == null) {
+
             DefaultMutableTreeNode  top = new DefaultMutableTreeNode("HJ");
+
             createNodes(top);
             jTree = new JTree(top);
             jTree.getSelectionModel().setSelectionMode(

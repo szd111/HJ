@@ -10,7 +10,9 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
+
 import javax.swing.table.DefaultTableModel;
+
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -24,7 +26,11 @@ import java.util.Calendar;
 /**
  * @创建人 shizhendong
  * @创建时间 2018.9.25
+<<<<<<< HEAD
  * @描述 主窗体界面包括数据维护和字典维护
+=======
+ * @描述 主窗体包括数据维护和字典维护
+>>>>>>> branch1
  */
 
 
@@ -37,7 +43,9 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
     public JSplitPane jsp;                           //回滚
     public JMenu jm1, jm2, jm3, jm4, jm5, jm6, jmi6, jm7, jmi7;           //菜单一级
     public JMenuItem jmi1, jmi2, jmi3, jmi4, jmi5, jmi8, jmi9, jmi10, jmi11, jmi12;//对应的菜单栏二级
+
     public JMenuItem jmii1, jmii2, jmii3, jmii4, jmii5, jmii6, jmii7,jmii8;//对应的菜单栏三级
+
     public ImageIcon jmi1_icon1, jmi2_icon2, jmi3_icon3, jmi4_icon4, jmi5_icon5, jmi6_icon6, jmi7_icon7, jmi8_icon8, jmi9_icon9, jmi10_icon10, jmi11_icon11, jmi12_icon12;//图标对象
     public JToolBar jtb; //工具栏
     public static JButton jb1, jb2, jb3, jb4, jb5, jb6, jb7, jb8, jb9, jb10;//工具栏对应的按钮;
@@ -46,8 +54,10 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
     public JLabel showTime;//显示时间
     public JLabel p2_jl1, p2_jl2;
     public JLabel p1_jl1, p1_jl2, p1_jl3, p1_jl4, p1_jl5, p1_jl6, p1_jl7, p1_jl8;
+
     public JTable jTable;//表单
     public DefaultTableModel tableModel;//
+
     CardLayout myCard; //卡片模式
     static String flag = "";
     Timer t;//可定时触发Action事件
@@ -143,10 +153,12 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         jmi7.setFont(FontTools.f2);
         jmii7 = new JMenuItem("外军装备", jmi6_icon6);
         jmii7.setFont(FontTools.f2);
+
         jmii8 = new JMenuItem("我军装备", jmi6_icon6);
         jmii8.setFont(FontTools.f2);
         jmi7.add(jmii7);
         jmi7.add(jmii8);
+
         jm2.add(jmi6);
         jm2.add(jmi7);
 
@@ -379,6 +391,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
            c.armySituation(this);
         }
         if(e.getActionCommand()=="添加"){
+
 
             DataMainTainController c= (DataMainTainController) cft.getConTrollers("DataMainTain");
             c.addDeleteTable(0,this);
