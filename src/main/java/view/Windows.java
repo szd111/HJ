@@ -54,6 +54,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
     public static String flagObject = "";//指定数据库的操作对象
     Timer t;//可定时触发Action事件
     ControllerFactory cft;//工厂控制器
+public static boolean ok=false;//单元格是否可编辑
 
     public static void main(String[] args) {
         // TODO 自动生成的方法存根

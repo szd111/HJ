@@ -5,6 +5,7 @@ import model.OperateLineImp;
 import util.CreateTable;
 import util.CreateTree;
 import util.ImagePanel;
+import util.RegExpValidatorUtils;
 import view.UserLogin;
 import view.Windows;
 
@@ -14,12 +15,13 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 
 import java.util.HashMap;
+
+import static jdk.nashorn.internal.runtime.regexp.joni.Syntax.Java;
 
 
 /**
@@ -106,6 +108,67 @@ public class DataMainTainFirstController {
                     w.jTable = (JTable) cb.createTable(column, rows, w);
 
                     w.jTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);  //单选
+
+                    w.jTable.addMouseListener(new MouseAdapter(){
+
+                        public void mouseClicked(MouseEvent e) {//仅当鼠标单击时响应
+
+                            if(e.getClickCount()==1) {
+
+                                //得到选中的行列的索引值
+
+                                int r = w.jTable.getSelectedRow();
+
+                                int c = w.jTable.getSelectedColumn();
+
+                                //得到选中的单元格的值，表格中都是字符串
+
+                                Object value = w.jTable.getValueAt(r, c);
+
+                                String info = r + "行" + c + "列值 : " + value.toString();
+
+                                System.out.println("==info==" + info);
+                                // javax.swing.JOptionPane.showMessageDialog(null,info);
+                            }
+                        }
+
+                    });
+
+                    w.jTable.addKeyListener(new KeyListener() {
+
+
+                        @Override
+                        public void keyTyped(KeyEvent e) {
+
+                            if(e.getKeyChar()=='k'){
+
+                              //  System.out.println(e.getKeyChar());
+
+                            }
+                           // System.out.println("====1=="+e.getKeyChar());
+                        }
+
+                        @Override
+                        public void keyPressed(KeyEvent e) {
+
+                            if(RegExpValidatorUtils.IsIntNumber(e.getKeyChar()+"")){
+
+                                w.ok=true;
+                                System.out.println(e.getKeyChar());
+                               w.jTable.repaint();
+
+                            }
+
+                            System.out.println("====2=="+e.getKeyChar());
+                        }
+
+                        @Override
+                        public void keyReleased(KeyEvent e) {
+                         //   System.out.println("====3=="+e.getKeyChar());
+                            w.ok=false;
+                        }
+                    });
+
                     JScrollPane scrollPane = new JScrollPane(w.jTable);
                     scrollPane.setViewportView(w.jTable);
 

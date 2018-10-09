@@ -28,7 +28,7 @@ public class CreateTable {
      * @创建时间 2018/9/28
      * @修改人和其它信息
      */
-    public JTable createTable(String columns[], HashMap<Integer, String[]> hp, Windows w) {
+    public JTable createTable(String columns[], HashMap<Integer, String[]> hp, final Windows w) {
 
 //    String[] columnNames = {"A","B"};    //定义表格列明数组
 //    //定义表格数据数组
@@ -75,16 +75,27 @@ public class CreateTable {
 
 
         //创建指定表格列名和表格数据的表格
-        w.tableModel = new DefaultTableModel(tableValueV, columnNameV);
+        w.tableModel = new DefaultTableModel(tableValueV, columnNameV) {
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                if(column==1){
+                    return true;
+                }
+                return w.ok;
+            }
+        };
         JTable table = new JTable(w.tableModel);
 
-        CreateTree ct=new CreateTree();
+        CreateTree ct = new CreateTree();
 
-         JTreeComboBox comboBox = new JTreeComboBox(ct.getJTree());
+        JTreeComboBox comboBox = new JTreeComboBox(ct.getJTree());
 
-         //选中其中一列定义树形下拉框
+        //选中其中一列定义树形下拉框
         TableColumn column = new TableColumn();
         column = table.getColumnModel().getColumn(1);
+
+        //  DefaultCellEditor
         column.setCellEditor(new DefaultCellEditor(comboBox));
 
         return table;
