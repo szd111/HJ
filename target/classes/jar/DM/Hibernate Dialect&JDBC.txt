@@ -1,0 +1,23 @@
+达梦7JDBC驱动分为Dm7JdbcDriver14、Dm7JdbcDriver15、Dm7JdbcDriver16，分别对应Jdk1.4、Jdk1.5、Jdk1.6;
+达梦7Hibernate方言包分为Dm7Dialect314、Dm7Dialect15、Dm7Dialect16，分别对应Jdk1.4、Jdk1.5、Jdk1.6;
+
+
+Hibernate.cfg.xml配置要求：
+1、驱动名称
+<property name="connection.driver_class">dm.jdbc.driver.DmDriver</property>
+
+2、方言包名称
+<property name="dialect">org.hibernate.dialect.Dm7Dialect</property>
+
+Hibernate工程环境要求：
+一、Jdk1.4工程
+1、Properties->Java Build Path->Libraries目录添加：Dm7JdbcDriver14.jar、Dm7Dialect14.jar;
+2、Properites->Java Compiler，右侧JDK Compilance栏，Compiler compilance level选择1.4;
+
+二、Jdk1.5工程
+1、Properties->Java Build Path->Libraries目录添加：Dm7JdbcDriver15.jar、Dm7Dialect15.jar;
+2、Properites->Java Compiler，右侧JDK Compilance栏，Compiler compilance level选择1.5;
+
+三、Jdk1.6工程
+1、Properties->Java Build Path->Libraries目录添加：Dm7JdbcDriver16.jar、Dm7Dialect16.jar;
+2、Properites->Java Compiler，右侧JDK Compilance栏，Compiler compilance level选择1.6;

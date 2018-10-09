@@ -69,6 +69,7 @@ public class DataMainTainController {
         w.jp1.revalidate();
 
 
+        //对树节点进行事件监听
         jt.addTreeSelectionListener(new TreeSelectionListener() {
             @Override
             public void valueChanged(TreeSelectionEvent e) {
@@ -83,19 +84,20 @@ public class DataMainTainController {
 
                     w.p2_jl1 = new JLabel("You have chosen:" + object.toString());
 
+                    w.flagObject = object.toString();
 
-                    String column[]={"id","name","age","sex"};
+                    String column[] = {"id", "name", "age", "sex"};
 
-                    HashMap<Integer,String[]> rows=new HashMap<Integer,String[]>();
-
-
-                    rows.put(0,new String[]{"1","szd","11","boy"});
-                    rows.put(1,new String[]{"2","jetli","21","boy"});
-                    rows.put(2,new String[]{"3","tom","31","boy"});
-                    rows.put(3,new String[]{"4","jane","1","boy"});
+                    HashMap<Integer, String[]> rows = new HashMap<Integer, String[]>();
 
 
-                    w.jTable = (JTable) cb.createTable(column, rows,w);
+                    rows.put(0, new String[]{"1", "szd", "11", "boy"});
+                    rows.put(1, new String[]{"2", "jetli", "21", "boy"});
+                    rows.put(2, new String[]{"3", "tom", "31", "boy"});
+                    rows.put(3, new String[]{"4", "jane", "1", "boy"});
+
+
+                    w.jTable = (JTable) cb.createTable(column, rows, w);
 
                     w.jTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);  //单选
                     JScrollPane scrollPane = new JScrollPane(w.jTable);
@@ -143,34 +145,45 @@ public class DataMainTainController {
 
 
     /**
-     * @描述 对部队情况中的添加 删除作出相应
-     * @参数 flag 0是添加 1是删除
+     * @描述 对部队情况中的添加 作出相应反应，仅仅是添加 不与数据库连接
+     * @参数
      * @返回值
      * @创建人 szd
      * @创建时间 2018/9/28
      * @修改人和其它信息
      */
 
-    public void addDeleteTable(int flag, final Windows w) {
+    public void addRowTable(final Windows w) {
         CreateTable cb = new CreateTable();
 
-        if (flag == 0) {
-            cb.updateTable(1, w);
-        } else if (flag == 1) {
-
-            int selectedRow = w.jTable.getSelectedRow();//获得选中行的索引??
+        cb.updateTable(1, w);
 
 
-            // System.out.println("====selectedRow--==="+getname);
-            if (selectedRow != -1)//存在选中行??
-            {
-                w.tableModel.removeRow(selectedRow);//删除行??
-            }
-            else{
+    }
 
-                JOptionPane.showMessageDialog(w, "对不起！请选中一行删除！");
-            }
+    /**
+     * @描述 对部队情况中的删除 作出反应
+     * @参数
+     * @返回值
+     * @创建人 szd
+     * @创建时间 2018/10/9
+     * @修改人和其它信息
+     */
 
+    public void deleteRowTable(final Windows w) {
+        CreateTable cb = new CreateTable();
+
+
+        int selectedRow = w.jTable.getSelectedRow();//获得选中行的索引??
+
+
+        // System.out.println("====selectedRow--==="+getname);
+        if (selectedRow != -1)//存在选中行??
+        {
+            w.tableModel.removeRow(selectedRow);//删除行??
+        } else {
+
+            JOptionPane.showMessageDialog(w, "对不起！请选中一行删除！");
         }
 
 

@@ -56,7 +56,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
     public DefaultTableModel tableModel;//
 
     CardLayout myCard; //卡片模式
-    static String flag = "";
+    public static String flagObject = "";//指定数据库的操作对象
     Timer t;//可定时触发Action事件
     ControllerFactory cft;//工厂控制器
 
@@ -385,13 +385,14 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         if (e.getActionCommand() == "部队情况") {
 
            DataMainTainController c= (DataMainTainController) cft.getConTrollers("DataMainTain");
+           flagObject="部队情况";
            c.armySituation(this);
         }
         if(e.getActionCommand()=="添加"){
 
 
             DataMainTainController c= (DataMainTainController) cft.getConTrollers("DataMainTain");
-            c.addDeleteTable(0,this);
+            c.addRowTable(this);
 
             System.out.println("====add--===");
         }
@@ -399,7 +400,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
 
 
             DataMainTainController c= (DataMainTainController) cft.getConTrollers("DataMainTain");
-            c.addDeleteTable(1,this);
+            c.deleteRowTable(this);
 
             System.out.println("====delete--===");
         }
@@ -420,6 +421,8 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
 
 
         }
+
+
 
 
     }
