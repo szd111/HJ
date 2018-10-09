@@ -1,19 +1,15 @@
 package view;
 
-import controller.DataMainTainController;
+import controller.DataMainTainFirstController;
 import controller.factory.ControllerFactory;
-import util.CreateTree;
 import util.FontTools;
 import util.ImagePanel;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
 
 import javax.swing.table.DefaultTableModel;
 
-import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,7 +23,6 @@ import java.util.Calendar;
  * @创建人 shizhendong
  * @创建时间 2018.9.25
  * @描述 主窗体界面包括数据维护和字典维护
-
  */
 
 
@@ -41,13 +36,13 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
     public JMenu jm1, jm2, jm3, jm4, jm5, jm6, jmi6, jm7, jmi7;           //菜单一级
     public JMenuItem jmi1, jmi2, jmi3, jmi4, jmi5, jmi8, jmi9, jmi10, jmi11, jmi12;//对应的菜单栏二级
 
-    public JMenuItem jmii1, jmii2, jmii3, jmii4, jmii5, jmii6, jmii7,jmii8;//对应的菜单栏三级
+    public JMenuItem jmii1, jmii2, jmii3, jmii4, jmii5, jmii6, jmii7, jmii8;//对应的菜单栏三级
 
     public ImageIcon jmi1_icon1, jmi2_icon2, jmi3_icon3, jmi4_icon4, jmi5_icon5, jmi6_icon6, jmi7_icon7, jmi8_icon8, jmi9_icon9, jmi10_icon10, jmi11_icon11, jmi12_icon12;//图标对象
     public JToolBar jtb; //工具栏
     public static JButton jb1, jb2, jb3, jb4, jb5, jb6, jb7, jb8, jb9, jb10;//工具栏对应的按钮;
     public JButton jb11, jb22, jb33, jb44;//数据维护界面 对应的增删改查;
-    public JPanel jp1, jp2, jp3, jp4, jp5, jp6,jp7;
+    public JPanel jp1, jp2, jp3, jp4, jp5, jp6, jp7;
     public JLabel showTime;//显示时间
     public JLabel p2_jl1, p2_jl2;
     public JLabel p1_jl1, p1_jl2, p1_jl3, p1_jl4, p1_jl5, p1_jl6, p1_jl7, p1_jl8;
@@ -115,20 +110,11 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         //创建其二级菜单
         jmi1 = new JMenuItem("切换用户", jmi1_icon1);
         jmi1.setFont(FontTools.f2);
-        jmi2 = new JMenuItem("切换到收款界面", jmi2_icon2);
-        jmi2.setFont(FontTools.f2);
-        jmi3 = new JMenuItem("登陆管理", jmi3_icon3);
-        jmi3.setFont(FontTools.f2);
-        jmi4 = new JMenuItem("万年历", jmi4_icon4);
-        jmi4.setFont(FontTools.f2);
         jmi5 = new JMenuItem("退出", jmi5_icon5);
         jmi5.setFont(FontTools.f2);
         jmi5.addActionListener(this);
 
         jm1.add(jmi1);
-        jm1.add(jmi2);
-        jm1.add(jmi3);
-        jm1.add(jmi4);
         jm1.add(jmi5);
 
         jmi6_icon6 = new ImageIcon("src/main/resources/image/toolBar_image/jb4.jpg");
@@ -164,16 +150,16 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         jm3.setFont(FontTools.f3);
         jmi7 = new JMenu("树形字典维护");
         jmi7.setFont(FontTools.f2);
-        jmii3 = new JMenuItem("部队序型", jmi7_icon7);
+        jmii3 = new JMenuItem("部队序型 ", jmi7_icon7);
         jmii3.addActionListener(this);
         jmii3.setFont(FontTools.f2);
-        jmii4 = new JMenuItem("我军装备", jmi7_icon7);
+        jmii4 = new JMenuItem("我军装备 ", jmi7_icon7);
         jmii4.addActionListener(this);
         jmii4.setFont(FontTools.f2);
-        jmii5 = new JMenuItem("外军装备", jmi7_icon7);
+        jmii5 = new JMenuItem("外军装备 ", jmi7_icon7);
         jmii5.addActionListener(this);
         jmii5.setFont(FontTools.f2);
-        jmii6 = new JMenuItem("战备工程", jmi7_icon7);
+        jmii6 = new JMenuItem("战备工程 ", jmi7_icon7);
         jmii6.addActionListener(this);
         jmii6.setFont(FontTools.f2);
 
@@ -183,21 +169,6 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         jmi7.add(jmii6);
 
         jm3.add(jmi7);
-
-        jmi8_icon8 = new ImageIcon("src/main/resources/image/toolBar_image/jb5.jpg");
-        jm4 = new JMenu("报表统计");
-        jm4.setFont(FontTools.f3);
-        jmi8 = new JMenuItem("财务报表", jmi8_icon8);
-        jmi8.setFont(FontTools.f2);
-        jm4.add(jmi8);
-
-
-        jmi9_icon9 = new ImageIcon("src/main/resources/image/toolBar_image/jb7.jpg");
-        jm5 = new JMenu("成本及库房");
-        jm5.setFont(FontTools.f3);
-        jmi9 = new JMenuItem("成本控制", jmi9_icon9);
-        jmi9.setFont(FontTools.f2);
-        jm5.add(jmi9);
 
         jmi10_icon10 = new ImageIcon("src/main/resources/image/toolBar_image/jb9.jpg");
         jmi11_icon11 = new ImageIcon("src/main/resources/image/toolBar_image/jb10.jpg");
@@ -222,8 +193,6 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         jmb.add(jm1);
         jmb.add(jm2);
         jmb.add(jm3);
-        jmb.add(jm4);
-        jmb.add(jm5);
         jmb.add(jm6);
         this.setJMenuBar(jmb);
     }
@@ -337,7 +306,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
             // TODO 自动生成的 catch 块
             e.printStackTrace();
         }
-        cft=new ControllerFactory();
+        cft = new ControllerFactory();
 
         //菜单
         this.initMenu();
@@ -376,7 +345,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         if (e.getActionCommand() == "退出") {
 
 
-            DataMainTainController c= (DataMainTainController) cft.getConTrollers("DataMainTain");
+            DataMainTainFirstController c = (DataMainTainFirstController) cft.getConTrollers("DataMainTain");
             c.exit(this);
 
         }
@@ -384,46 +353,46 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         //部队情况
         if (e.getActionCommand() == "部队情况") {
 
-           DataMainTainController c= (DataMainTainController) cft.getConTrollers("DataMainTain");
-           flagObject="部队情况";
-           c.armySituation(this);
+            DataMainTainFirstController c = (DataMainTainFirstController) cft.getConTrollers("DataMainTain");
+            flagObject = "部队情况";
+            c.armySituation(this);
         }
-        if(e.getActionCommand()=="添加"){
+        //战备工程
+        if (e.getActionCommand() == "部队序型") {
 
 
-            DataMainTainController c= (DataMainTainController) cft.getConTrollers("DataMainTain");
-            c.addRowTable(this);
-
-            System.out.println("====add--===");
         }
-        if(e.getActionCommand()=="删除"){
+        //我军装备
+        if (e.getActionCommand() == "部队序型") {
 
 
-            DataMainTainController c= (DataMainTainController) cft.getConTrollers("DataMainTain");
-            c.deleteRowTable(this);
-
-            System.out.println("====delete--===");
         }
-        if(e.getActionCommand()=="提交"){
-
-            int selectedRow = jTable.getSelectedRow();//获得选中行的索引??
-
-            for(int n= 0; n < 4; n ++){
-               //object.add(jTable.getVauleAt(index,n));
-                System.out.println(selectedRow +"====ok--==="+jTable.getValueAt(selectedRow ,n));
-            }
-
-            System.out.println("====ok--===");
-        }
-
-        //部队情况
+        //外军装备
         if (e.getActionCommand() == "部队序型") {
 
 
         }
 
 
+        //部队情况维护
+        if (e.getActionCommand() == "部队情况 ") {
 
+        }
+        //战备工程维护
+        if (e.getActionCommand() == "部队序型 ") {
+
+
+        }
+        //我军装备维护
+        if (e.getActionCommand() == "部队序型 ") {
+
+
+        }
+        //外军装备维护
+        if (e.getActionCommand() == "部队序型 ") {
+
+
+        }
 
     }
 

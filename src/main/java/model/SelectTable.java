@@ -25,4 +25,13 @@ public interface SelectTable {
     public ArrayList<Columns> getColumnName(String name) throws SQLException;
 
 
+    /**
+     * @描述 根据表名 获取表中的每一行的数据
+     * @参数
+     * @返回值
+     * @创建人 szd
+     * @创建时间 2018/10/9
+     * @修改人和其它信息
+     */
+    public ArrayList<Object> getRowName(String name) throws SQLException;
 }

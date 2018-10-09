@@ -1,6 +1,6 @@
 package controller.factory;
 
-import controller.DataMainTainController;
+import controller.DataMainTainFirstController;
 import controller.DictionaryMainTainController;
 
 import controller.LoginController;
@@ -36,7 +36,7 @@ public class ControllerFactory {
         //根据实体名进行选择
         if (name.equals("DataMainTain")) {
 
-            return new DataMainTainController();
+            return new DataMainTainFirstController();
         } else if (name.equals("DictionaryMainTain")) {
             return new DictionaryMainTainController();
         } else if (name.equals("Login")) {

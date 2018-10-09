@@ -9,7 +9,7 @@ public class DictionaryMainTainController {
 
 
 
-     /*
+    /*
      *@描述 根据字典维护中的部队序型进行维护
 
      *@参数
@@ -24,12 +24,10 @@ public class DictionaryMainTainController {
 
      */
 
-     public void dd(){
+    public void dd() {
 
 
-
-     }
-
+    }
 
 
 }

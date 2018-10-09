@@ -1,5 +1,6 @@
 package model;
 
+import model.database.DatabaseDao;
 import model.database.DatabaseDaoImp;
 import model.entity.Columns;
 
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  */
 public class SelectTableImp implements SelectTable {
 
-    DatabaseDaoImp di = null;
+    DatabaseDao di = null;
     Columns cl = null;
 
     @Override
@@ -55,5 +56,20 @@ public class SelectTableImp implements SelectTable {
 
     }
 
+    @Override
+    public ArrayList<Object> getRowName(String name) throws SQLException {
+        return null;
+    }
+
+
+    public static  void main(String args[]){
+
+        SelectTableImp ss=new SelectTableImp();
+
+        ArrayList<Columns> cc=ss.getColumnName("TEST");
+
+        System.out.println("===="+cc.size());
+
+    }
 
 }

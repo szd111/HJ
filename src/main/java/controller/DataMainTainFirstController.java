@@ -1,5 +1,7 @@
 package controller;
 
+import model.OperateLine;
+import model.OperateLineImp;
 import util.CreateTable;
 import util.CreateTree;
 import util.ImagePanel;
@@ -12,6 +14,8 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -21,10 +25,12 @@ import java.util.HashMap;
 /**
  * @创建人 shizhendong
  * @创建时间 2018/9/26
- * @描述 针对windows界面中的数据维护中的actionformed进行事件的控制
+ * @描述 针对windows界面中的数据维护中的部队情况的actionformed进行事件的控制
  */
-public class DataMainTainController {
+public class DataMainTainFirstController {
 
+
+    OperateLine oc = null;
 
     /**
      * @描述 退出界面操作 通过鼠标点击退出键进行退出
@@ -115,12 +121,52 @@ public class DataMainTainController {
                     w.jp3Image = new ImagePanel(w.p3Icon);
                     w.jp3Image.setLayout(new BorderLayout());
                     w.jb11 = new JButton("添加");
-                    w.jb11.addActionListener(w);
-                    w.jb22 = new JButton("删除");
+                    w.jb11.addActionListener(new ActionListener() {
 
-                    w.jb22.addActionListener(w);
+
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+
+                            oc = new OperateLineImp();
+                            oc.addRowTable(w);
+                            System.out.println("====add--===");
+                            oc = null;
+
+                        }
+                    });
+
+
+                    w.jb22 = new JButton("删除");
+                    w.jb22.addActionListener(new ActionListener() {
+
+
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+
+                            oc = new OperateLineImp();
+                            oc.deleteRowTable(w);
+                            oc = null;
+                            System.out.println("====delete--===");
+
+
+                        }
+                    });
+
+
                     w.jb33 = new JButton("提交");
-                    w.jb33.addActionListener(w);
+                    w.jb33.addActionListener(new ActionListener() {
+
+
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+
+                            oc = new OperateLineImp();
+                            oc.uploadRowTable(w);
+                            oc = null;
+
+                        }
+                    });
+
                     w.jb44 = new JButton("撤销");
                     w.jb44.addActionListener(w);
 
@@ -141,51 +187,9 @@ public class DataMainTainController {
                 }
             }
         });
-    }
-
-
-    /**
-     * @描述 对部队情况中的添加 作出相应反应，仅仅是添加 不与数据库连接
-     * @参数
-     * @返回值
-     * @创建人 szd
-     * @创建时间 2018/9/28
-     * @修改人和其它信息
-     */
-
-    public void addRowTable(final Windows w) {
-        CreateTable cb = new CreateTable();
-
-        cb.updateTable(1, w);
 
 
     }
 
-    /**
-     * @描述 对部队情况中的删除 作出反应
-     * @参数
-     * @返回值
-     * @创建人 szd
-     * @创建时间 2018/10/9
-     * @修改人和其它信息
-     */
 
-    public void deleteRowTable(final Windows w) {
-        CreateTable cb = new CreateTable();
-
-
-        int selectedRow = w.jTable.getSelectedRow();//获得选中行的索引??
-
-
-        // System.out.println("====selectedRow--==="+getname);
-        if (selectedRow != -1)//存在选中行??
-        {
-            w.tableModel.removeRow(selectedRow);//删除行??
-        } else {
-
-            JOptionPane.showMessageDialog(w, "对不起！请选中一行删除！");
-        }
-
-
-    }
 }
