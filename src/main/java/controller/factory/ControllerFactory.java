@@ -1,8 +1,10 @@
 package controller.factory;
 
 import controller.DataMainTainFirstController;
+import controller.DataMainTainSecondController;
+import controller.DataMainTainThirdController;
+import controller.DataMainTainFourthController;
 import controller.DictionaryMainTainController;
-
 import controller.LoginController;
 
 
@@ -43,6 +45,12 @@ public class ControllerFactory {
 
             return new LoginController();
 
+        }else if(name.equals("DataMainTainSecond")){
+            return new DataMainTainSecondController();
+        }else if(name.equals("DataMainTainThird")){
+            return new DataMainTainThirdController();
+        }else if(name.equals("DataMainTainFourth")){
+            return new DataMainTainFourthController();
         }
 
         return null;

@@ -2,12 +2,14 @@ package controller;
 
 import model.OperateLine;
 import model.OperateLineImp;
+import model.database.DatabaseDaoImp;
 import util.CreateTable;
 import util.CreateTree;
 import util.ImagePanel;
 import util.RegExpValidatorUtils;
 import view.UserLogin;
 import view.Windows;
+
 import model.database.Databasezb;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -28,11 +30,11 @@ import static jdk.nashorn.internal.runtime.regexp.joni.Syntax.Java;
 
 
 /**
- * @创建人 shizhendong
- * @创建时间 2018/9/26
- * @描述 针对windows界面中的数据维护中的部队情况的actionformed进行事件的控制
+ * @创建人 rduan
+ * @创建时间 2018/10/10
+ * @描述 针对windows界面中的数据维护中的我军装备的actionformed进行事件的控制
  */
-public class DataMainTainFirstController {
+public class DataMainTainThirdController {
 
 
     OperateLine oc = null;
@@ -41,8 +43,8 @@ public class DataMainTainFirstController {
      * @描述 退出界面操作 通过鼠标点击退出键进行退出
      * @参数 JFrame窗体
      * @返回值 null
-     * @创建人 shizhengdong
-     * @创建时间 2018/9/27
+     * @创建人 rduan
+     * @创建时间 2018/10/10
      * @修改人和其它信息
      */
 
@@ -55,11 +57,11 @@ public class DataMainTainFirstController {
 
 
     /**
-     * @描述 对部队情况的actionformed作出监听
+     * @描述 对战备工程的actionformed作出监听
      * @参数
      * @返回值
-     * @创建人 szd
-     * @创建时间 2018/9/27
+     * @创建人 rduan
+     * @创建时间 2018/10/10
      * @修改人和其它信息
      */
 
@@ -88,7 +90,8 @@ public class DataMainTainFirstController {
 
                 Connection c = d.getConnection();
 
-                ResultSet r = d.executeQuery("select * from DR.表一", c);
+                ResultSet r = d.executeQuery("select * from DR.表三", c);
+
                 DefaultMutableTreeNode node = (DefaultMutableTreeNode) jt
                         .getLastSelectedPathComponent();
                 if (node == null)
@@ -102,25 +105,26 @@ public class DataMainTainFirstController {
 
                     w.flagObject = object.toString();
 
-                    String column[] = {"id", "name", "age", "sex"};
+                    String column[] = {"id", "name", "age"};
 
                     HashMap<Integer, String[]> rows = new HashMap<Integer, String[]>();
-
 
                     int i=0;
                     try {
                         while(r.next()){
 
-                            rows.put(i, new String[]{r.getInt("ID")+"", r.getString("NAME"), r.getString("AGE"), r.getString("SEX")});
+                            rows.put(i, new String[]{r.getInt("ID")+"", r.getString("NAME"), r.getString("AGE")});
                             i++;
 
                         }
                     } catch (SQLException e1) {
                         e1.printStackTrace();
                     }
-//                    rows.put(1, new String[]{"2", "jetli", "21", "boy"});
-//                    rows.put(2, new String[]{"3", "tom", "31", "boy"});
-//                    rows.put(3, new String[]{"4", "jane", "1", "boy"});
+
+//                    rows.put(0, new String[]{"1", "dr", "11", "boy","中国"});
+//                    rows.put(1, new String[]{"2", "mary", "11", "boy","中国"});
+//                    rows.put(2, new String[]{"3", "tom", "12", "girl","美国"});
+//                    rows.put(3, new String[]{"4", "bort", "12", "boy","美国"});
 
 
                     w.jTable = (JTable) cb.createTable(column, rows, w);
@@ -160,10 +164,10 @@ public class DataMainTainFirstController {
 
                             if(e.getKeyChar()=='k'){
 
-                              //  System.out.println(e.getKeyChar());
+                                //  System.out.println(e.getKeyChar());
 
                             }
-                           // System.out.println("====1=="+e.getKeyChar());
+                            // System.out.println("====1=="+e.getKeyChar());
                         }
 
                         @Override
@@ -173,7 +177,7 @@ public class DataMainTainFirstController {
 
                                 w.ok=true;
                                 System.out.println(e.getKeyChar());
-                               w.jTable.repaint();
+                                w.jTable.repaint();
 
                             }
 
@@ -182,7 +186,7 @@ public class DataMainTainFirstController {
 
                         @Override
                         public void keyReleased(KeyEvent e) {
-                         //   System.out.println("====3=="+e.getKeyChar());
+                            //   System.out.println("====3=="+e.getKeyChar());
                             w.ok=false;
                         }
                     });

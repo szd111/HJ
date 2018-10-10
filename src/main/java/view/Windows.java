@@ -1,7 +1,11 @@
 package view;
 
 import controller.DataMainTainFirstController;
+import controller.DataMainTainSecondController;
+import controller.DataMainTainThirdController;
+import controller.DataMainTainFourthController;
 import controller.factory.ControllerFactory;
+
 import util.FontTools;
 import util.ImagePanel;
 
@@ -137,9 +141,10 @@ public static boolean ok=false;//单元格是否可编辑
         jmi7.setFont(FontTools.f2);
         jmii7 = new JMenuItem("外军装备", jmi6_icon6);
         jmii7.setFont(FontTools.f2);
-
+        jmii7.addActionListener(this);
         jmii8 = new JMenuItem("我军装备", jmi6_icon6);
         jmii8.setFont(FontTools.f2);
+        jmii8.addActionListener(this);
         jmi7.add(jmii7);
         jmi7.add(jmii8);
 
@@ -359,18 +364,26 @@ public static boolean ok=false;//单元格是否可编辑
             c.armySituation(this);
         }
         //战备工程
-        if (e.getActionCommand() == "部队序型") {
+        if (e.getActionCommand() == "战备工程") {
+            DataMainTainSecondController c = (DataMainTainSecondController) cft.getConTrollers("DataMainTainSecond");
+            flagObject = "战备工程";
+            c.armySituation(this);
+
+        }
+        //外军装备
+        if (e.getActionCommand() == "外军装备") {
+            DataMainTainThirdController c = (DataMainTainThirdController) cft.getConTrollers("DataMainTainThird");
+            flagObject = "外军装备";
+            System.out.println("sdsdsd");
+            c.armySituation(this);
 
 
         }
         //我军装备
-        if (e.getActionCommand() == "部队序型") {
-
-
-        }
-        //外军装备
-        if (e.getActionCommand() == "部队序型") {
-
+        if (e.getActionCommand() == "我军装备") {
+            DataMainTainFourthController c = (DataMainTainFourthController) cft.getConTrollers("DataMainTainFourth");
+            flagObject = "我军装备";
+            c.armySituation(this);
 
         }
 

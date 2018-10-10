@@ -5,11 +5,11 @@ import util.Io;
 import java.sql.*;
 
 /**
- * @创建人 shizhendong
- * @创建时间 2018/9/27
+ * @创建人 rduan
+ * @创建时间 2018/10/10
  * @描述 对数据库底层操作的接口进行实现
  */
-public class DatabaseDaoImp implements DatabaseDao {
+public class Databasezb implements DatabaseDao {
 
     String PATH = "src/main/resources/sql.propertites";
 
@@ -121,21 +121,5 @@ public class DatabaseDaoImp implements DatabaseDao {
     }
 
 
-    public static void main(String args[]) throws SQLException {
 
-        DatabaseDaoImp d = new DatabaseDaoImp();
-
-        Connection c = d.getConnection();
-
-        ResultSet r = d.executeQuery("select * from DR.TABLE_1;", c);
-
-        System.out.println(r);
-        while (r.next()) {
-
-            System.out.println(r.getString("DATABASE_USER"));
-            System.out.println(r.getString("DATABASE_PASSWORD"));
-
-        }
-
-    }
 }
