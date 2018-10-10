@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 /**
  * @创建人 shizhendong
  * @创建时间 2018/9/26
- * @描述 数据库的抽象接口 对达梦数据库的链接 查找 更新 删除
+ * @描述 数据库的抽象接口 对达梦数据库和oracle数据库的链接 查找 更新 删除
  */
 public interface DatabaseDao {
 

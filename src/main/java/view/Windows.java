@@ -351,7 +351,7 @@ public static boolean ok=false;//单元格是否可编辑
 
         }
 
-        //部队情况
+        //部队情况 post get
         if (e.getActionCommand() == "部队情况") {
 
             DataMainTainFirstController c = (DataMainTainFirstController) cft.getConTrollers("DataMainTain");
@@ -359,17 +359,17 @@ public static boolean ok=false;//单元格是否可编辑
             c.armySituation(this);
         }
         //战备工程
-        if (e.getActionCommand() == "部队序型") {
+        if (e.getActionCommand() == "战备工程") {
 
 
         }
         //我军装备
-        if (e.getActionCommand() == "部队序型") {
+        if (e.getActionCommand() == "我军装备") {
 
 
         }
         //外军装备
-        if (e.getActionCommand() == "部队序型") {
+        if (e.getActionCommand() == "外军装备") {
 
 
         }
@@ -380,17 +380,17 @@ public static boolean ok=false;//单元格是否可编辑
 
         }
         //战备工程维护
-        if (e.getActionCommand() == "部队序型 ") {
+        if (e.getActionCommand() == "战备工程 ") {
 
 
         }
         //我军装备维护
-        if (e.getActionCommand() == "部队序型 ") {
+        if (e.getActionCommand() == "我军装备 ") {
 
 
         }
         //外军装备维护
-        if (e.getActionCommand() == "部队序型 ") {
+        if (e.getActionCommand() == "外军装备 ") {
 
 
         }
