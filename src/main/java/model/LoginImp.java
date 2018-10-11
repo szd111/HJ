@@ -1,7 +1,6 @@
 package model;
 
-import model.database.DatabaseDaoImp;
-import model.entity.User;
+import model.database.DatabaseDaoDmImp;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -21,7 +20,7 @@ public class LoginImp implements Login {
 
         int flag = 0;
 
-        DatabaseDaoImp d = new DatabaseDaoImp();
+        DatabaseDaoDmImp d = new DatabaseDaoDmImp();
 
         Connection c = d.getConnection();
 

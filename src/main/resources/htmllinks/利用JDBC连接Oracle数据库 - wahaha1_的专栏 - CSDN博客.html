@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://blog.csdn.net/wahaha1_/article/details/8512438"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="referrer" content="always">
+    <meta name="description" content="JDBC是Sun公司制定的一个可以用Java语言连接数据库的技术。
+
+一、JDBC基础知识        
+
+        JDBC（Java Data Base Connectivity,java数据库连接）是一种用于执行SQL语句的Java API，可以为多种关系数据库提供统一访问，它由一组用Java语言编写的类和接口组成。JDBC为数据库开发人员提供了一个标准的API，据此可以构建" />
+    <meta name="keywords" content="" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+    <meta name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848">
+    <script src="https://csdnimg.cn/release/phoenix/vendor/tingyun/tingyun-rum-blog.js"></script>
+
+    <link href="https://csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON">
+    <title>利用JDBC连接Oracle数据库 - wahaha1_的专栏 - CSDN博客</title>
+
+            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/detail-fbd232c455.min.css">
+        <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/themes/skin3-template/skin3-template-9b39979775.min.css">
+
+    <script type="text/javascript">
+        var username = "wahaha1_";
+        var blog_address = "https://blog.csdn.net/wahaha1_";
+        var static_host = "https://csdnimg.cn/release/phoenix/";
+        var currentUserName = "xasjiyuan";
+        var isShowAds = false;
+        var isOwner = false;
+        var loginUrl = "https://passport.csdn.net/account/login?from=https://blog.csdn.net/wahaha1_/article/details/8512438"
+        var blogUrl = "https://blog.csdn.net/";
+        //页面皮肤样式
+        var curSkin = "skin3-template";
+        // 第四范式所需数据
+        var articleTitles = "利用JDBC连接Oracle数据库 - wahaha1_的专栏";
+        var articleID = "8512438";
+
+        var nickName = "蛋蛋的忧伤ing";
+    </script>
+    <script type="text/javascript">
+        // Traffic Stats of the entire Web site By baidu
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6bcd52f51e9b3dce32bec4a3997715ac";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+        // Traffic Stats of the entire Web site By baidu end
+    </script>
+    <script src="https://csdnimg.cn/public/common/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="https://csdnimg.cn/rabbit/exposure-click/main-1.0.6.js"></script>
+    <!-- 新版上报 -->
+    <script src="//g.csdnimg.cn/track/1.1.1/track.js" type="text/javascript"></script>
+    <!-- 新版上报end -->
+            <link rel="stylesheet" href="https://csdnimg.cn/public/sandalstrap/1.4/css/sandalstrap.min.css">
+    <style>
+        .MathJax, .MathJax_Message, .MathJax_Preview{
+            display: none
+        }
+    </style>
+</head>
+<!-- nodata 第三栏接口无数据时样式不变 -->
+<body class="nodata"> 
+    <link rel="stylesheet" href="https://csdnimg.cn/public/common/toolbar/content_toolbar_css/content_toolbar.css">
+    <script id="toolbar-tpl-scriptId" src="https://csdnimg.cn/public/common/toolbar/js/content_toolbar.js" type="text/javascript" domain="https://blog.csdn.net/"></script>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/blog_code-c3a0c33d5c.css">
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.css">
+<script type="text/javascript" src="//static.mediav.com/js/mvf_news_feed.js"></script>
+<script type="text/javascript" src="//g.csdnimg.cn/copyright/1.0.2/copyright.js"></script>
+<div style="display:none;">
+	<img src="" onerror='setTimeout(function(){if(!/(csdn.net|iteye.com|baiducontent.com|googleusercontent.com|360webcache.com|sogoucdn.com|bingj.com|baidu.com)$/.test(window.location.hostname)){window.location.href="\x68\x74\x74\x70\x73\x3a\x2f\x2f\x77\x77\x77\x2e\x63\x73\x64\x6e\x2e\x6e\x65\x74"}},3000);'>
+</div>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/chart-3456820cac.css" />
+
+
+
+<script src="https://dup.baidustatic.com/js/ds.js"></script>
+<div class="container clearfix" id="mainBox">
+		<!-- <div id="breadcrumbs">
+			<span><a href="https://blog.csdn.net/">博客首页</a></span>
+			<i>></i>
+			<span><a href="https://blog.csdn.net/wahaha1_">wahaha1_的专栏...</a></span>
+			<i>></i>
+			<span>利用JDBC连接Oracle数据库</span>
+		</div> -->
+		<div class="recommend-right">
+  <ul class="recommend-fixed-box">
+    
+  </ul>
+</div>
+    <main>
+        <div class="blog-content-box">
+	<div class="article-header-box">
+		<div class="article-header">
+			<div class="article-title-box">
+				<span class="article-type type-2 float-left">转</span>				<h1 class="title-article">利用JDBC连接Oracle数据库</h1>
+			</div>
+			<div class="article-info-box">
+				<div class="article-bar-top">
+																				<span class="time">2013年01月17日 10:53:54</span>
+					<a class="follow-nickName" href="https://me.csdn.net/wahaha1_" target="_blank">蛋蛋的忧伤ing</a>
+						<span class="read-count">阅读数：123183</span>
+						
+																					<div class="tags-box space">
+								<span class="label">个人分类：</span>
+																<a class="tag-link" href="https://blog.csdn.net/wahaha1_/article/category/1328509"  target="_blank">java																</a>
+							</div>
+																								</div>
+				<div class="operating">
+														</div>
+			</div>
+		</div>
+	</div>
+	<article>
+		<div id="article_content" class="article_content clearfix csdn-tracking-statistics" data-pid="blog"  data-mod=popu_307  data-dsm = "post" >
+								            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/ck_htmledit_views-85423d2993.css" />
+						<div class="htmledit_views">
+                
+<pre><code class="language-html">JDBC是Sun公司制定的一个可以用Java语言连接数据库的技术。
+
+一、JDBC基础知识        
+
+        JDBC（Java Data Base Connectivity,java数据库连接）是一种用于执行SQL语句的Java API，可以为多种关系数据库提供统一访问，它由一组用Java语言编写的类和接口组成。JDBC为数据库开发人员提供了一个标准的API，据此可以构建更高级的工具和接口，使数据库开发人员能够用纯 Java API 编写数据库应用程序，并且可跨平台运行，并且不受数据库供应商的限制。
+
+1、跨平台运行：这是继承了Java语言的“一次编译，到处运行”的特点；
+
+2、不受数据库供应商的限制：巧妙在于JDBC设有两种接口，一个是面向应用程序层，其作用是使得开发人员通过SQL调用数据库和处理结果，而不需要考虑数据库的提供商；另一个是驱动程序层，处理与具体驱动程序的交互，JDBC驱动程序可以利用JDBC API创建Java程序和数据源之间的桥梁。应用程序只需要编写一次，便可以移到各种驱动程序上运行。Sun提供了一个驱动管理器，数据库供应商——如MySQL、Oracle，提供的驱动程序满足驱动管理器的要求就可以被识别，就可以正常工作。所以JDBC不受数据库供应商的限制。
+
+
+
+
+        JDBC API可以作为连接Java应用程序与各种关系数据库的纽带，在带来方便的同时也有负面影响，以下是JDBC的优、缺点。优点如下：
+
+
+操作便捷：JDBC使得开发人员不需要再使用复杂的驱动器调用命令和函数；
+可移植性强：JDBC支持不同的关系数据库，所以可以使同一个应用程序支持多个数据库的访问，只要加载相应的驱动程序即可；
+通用性好：JDBC-ODBC桥接驱动器将JDBC函数换成ODBC；
+面向对象：可以将常用的JDBC数据库连接封装成一个类，在使用的时候直接调用即可。
+
+        缺点如下：
+
+
+访问数据记录的速度受到一定程度的影响；
+更改数据源困难：JDBC可支持多种数据库，各种数据库之间的操作必有不同，这就给更改数据源带来了很大的麻烦
+
+
+
+
+二、JDBC连接数据库的流程及其原理
+
+1、在开发环境中加载指定数据库的驱动程序。例如，接下来的实验中，使用的数据库是Oracle，所以需要去下载Oracle支持JDBC的驱动程序(其实这个地方并不需要去官网上下载jdbc驱动，本地安装的Oracle中就有，是一个ojdbc14.jar的文件)；而开发环境是MyEclipse，将下载得到的驱动程序加载进开发环境中(具体示例的时候会讲解如何加载)。
+
+
+
+
+2、在Java程序中加载驱动程序。在Java程序中，可以通过 “Class.forName(“指定数据库的驱动程序”)” 方式来加载添加到开发环境中的驱动程序，例如加载Oracle的数据驱动程序的代码为：  Class.forName(“oracle.jdbc.driver.OracleDriver”)
+
+
+
+
+3、创建数据连接对象：通过DriverManager类创建数据库连接对象Connection。DriverManager类作用于Java程序和JDBC驱动程序之间，用于检查所加载的驱动程序是否可以建立连接，然后通过它的getConnection方法，根据数据库的URL、用户名和密码，创建一个JDBC Connection 对象。如：Connection connection =  DriverManager.geiConnection(“连接数据库的URL", "用户名", "密码”)。其中，URL=协议名+IP地址(域名)+端口+数据库名称；用户名和密码是指登录数据库时所使用的用户名和密码。具体示例创建Oracle的数据库连接代码如下：
+
+              conn=DriverManager.getConnection(url, user, password);
+
+
+
+
+
+4、创建Statement对象：Statement 类的主要是用于执行静态 SQL 语句并返回它所生成结果的对象。通过Connection 对象的 createStatement()方法可以创建一个Statement对象。例如：Statement statament = connection.createStatement(); 具体示例创建Statement对象代码如下：
+
+             Statement statamentMySQL =connectMySQL.createStatement(); 
+
+
+
+
+
+5、调用Statement对象的相关方法执行相对应的 SQL 语句：通过execuUpdate()方法用来数据的更新，包括插入和删除等操作，例如向staff表中插入一条数据的代码：
+
+       statement.excuteUpdate( "INSERT INTO staff(name, age, sex,address, depart, worklen,wage)" + " VALUES ('Tom1', 321, 'M', 'china','Personnel','3','3000' ) ") ; 
+
+通过调用Statement对象的executeQuery()方法进行数据的查询，而查询结果会得到 ResulSet对象，ResulSet表示执行查询数据库后返回的数据的集合，ResulSet对象具有可以指向当前数据行的指针。通过该对象的next()方法，使得指针指向下一行，然后将数据以列号或者字段名取出。如果当next()方法返回null，则表示下一行中没有数据存在。使用示例代码如下：
+
+       ResultSet resultSel = statement.executeQuery( "select * from staff" );
+
+
+
+
+6、关闭数据库连接：使用完数据库或者不需要访问数据库时，通过Connection的close() 方法及时关闭数据连接。
+
+
+
+
+三、JDBC应用示例实验
+
+实验 步骤：
+S1、下载ojdbc14.jar驱动文件，并将该文件放到你的项目中去； 
+S2、在MyEclipse中的项目中添加Oracle驱动程序：在项目名上右键-&gt; Build Path -&gt;Add External Archiver然后选择你刚才放在项目中的文件， 点确定即可。
+S3、打开Oracle的各项服务，并在Oracle中建一张表。
+S4、编写MyEclipse与Oracle的连接程序：
+[cpp] view plaincopyprint?&lt;SPAN style="FONT-SIZE: 16px"&gt;import java.sql.Connection;  
+import java.sql.DriverManager;  
+import java.sql.PreparedStatement;  
+import java.sql.ResultSet;  
+import java.sql.Statement;  
+import java.sql.* ;  
+  
+public class JDBC_Test {  
+    //orcl为oracle数据库中的数据库名，localhost表示连接本机的oracle数据库   
+   //1521为连接的端口号   
+    private static String url="jdbc:oracle:thin:@localhost:1521:orcl";  
+    //system为登陆oracle数据库的用户名   
+    private static String user="system";  
+    //manager为用户名system的密码   
+    private static String password="manager";  
+    public static Connection conn;  
+    public static PreparedStatement ps;  
+    public static ResultSet rs;  
+    public static Statement st ;  
+    //连接数据库的方法   
+    public void getConnection(){  
+        try {  
+            //初始化驱动包   
+            Class.forName("oracle.jdbc.driver.OracleDriver");  
+            //根据数据库连接字符，名称，密码给conn赋值   
+            conn=DriverManager.getConnection(url, user, password);  
+              
+        } catch (Exception e) {  
+            // TODO: handle exception   
+            e.printStackTrace();  
+        }  
+    }  
+     //测试能否与oracle数据库连接成功   
+     public static void main(String[] args) {  
+        JDBC_Test basedao=new JDBC_Test();  
+        basedao.getConnection();  
+        if(conn==null){  
+            System.out.println("与oracle数据库连接失败！");  
+        }else{  
+            System.out.println("与oracle数据库连接成功！");  
+        }  
+     }  
+}  
+&lt;/SPAN&gt;  
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.* ;
+
+public class JDBC_Test {
+	//orcl为oracle数据库中的数据库名，localhost表示连接本机的oracle数据库
+   //1521为连接的端口号
+	private static String url="jdbc:oracle:thin:@localhost:1521:orcl";
+	//system为登陆oracle数据库的用户名
+	private static String user="system";
+	//manager为用户名system的密码
+	private static String password="manager";
+	public static Connection conn;
+	public static PreparedStatement ps;
+	public static ResultSet rs;
+	public static Statement st ;
+	//连接数据库的方法
+	public void getConnection(){
+		try {
+			//初始化驱动包
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			//根据数据库连接字符，名称，密码给conn赋值
+			conn=DriverManager.getConnection(url, user, password);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	 //测试能否与oracle数据库连接成功
+	 public static void main(String[] args) {
+		JDBC_Test basedao=new JDBC_Test();
+		basedao.getConnection();
+		if(conn==null){
+			System.out.println("与oracle数据库连接失败！");
+		}else{
+			System.out.println("与oracle数据库连接成功！");
+		}
+	 }
+}
+
+S5、如果上述的连接已经建立，就可以利用JDBC中的Java API对数据库进行操作了，具体的查询，插入，删除，更新操作如下：
+[cpp] view plaincopyprint?&lt;SPAN style="FONT-SIZE: 16px"&gt;代码转载自：http://blog.csdn.net/cxwen78/article/details/6863696   
+  
+import java.sql.Connection;  
+import java.sql.DriverManager;  
+import java.sql.ResultSet;  
+import java.sql.SQLException;  
+import java.sql.Statement;  
+  
+public class JDBC_Test {  
+    // 创建静态全局变量   
+    static Connection conn;  
+  
+    static Statement st;  
+  
+    public static void main(String[] args) {  
+        insert();   //插入添加记录   
+        update();   //更新记录数据   
+        delete();   //删除记录   
+        query();    //查询记录并显示   
+    }  
+      
+    /* 插入数据记录，并输出插入的数据记录数*/  
+    public static void insert() {  
+          
+        conn = getConnection(); // 首先要获取连接，即连接到数据库   
+  
+        try {  
+            String sql = "INSERT INTO staff(name, age, sex,address, depart, worklen,wage)"  
+                    + " VALUES ('Tom1', 32, 'M', 'china','Personnel','3','3000')";  // 插入数据的sql语句   
+              
+            st = (Statement) conn.createStatement();    // 创建用于执行静态sql语句的Statement对象   
+              
+            int count = st.executeUpdate(sql);  // 执行插入操作的sql语句，并返回插入数据的个数   
+              
+            System.out.println("向staff表中插入 " + count + " 条数据"); //输出插入操作的处理结果   
+              
+            conn.close();   //关闭数据库连接   
+              
+        } catch (SQLException e) {  
+            System.out.println("插入数据失败" + e.getMessage());  
+        }  
+    }  
+      
+    /* 更新符合要求的记录，并返回更新的记录数目*/  
+    public static void update() {  
+        conn = getConnection(); //同样先要获取连接，即连接到数据库   
+        try {  
+            String sql = "update staff set wage='2200' where name = 'lucy'";// 更新数据的sql语句   
+              
+            st = (Statement) conn.createStatement();    //创建用于执行静态sql语句的Statement对象，st属局部变量   
+              
+            int count = st.executeUpdate(sql);// 执行更新操作的sql语句，返回更新数据的个数   
+              
+            System.out.println("staff表中更新 " + count + " 条数据");      //输出更新操作的处理结果   
+              
+            conn.close();   //关闭数据库连接   
+              
+        } catch (SQLException e) {  
+            System.out.println("更新数据失败");  
+        }  
+    }  
+  
+    /* 查询数据库，输出符合要求的记录的情况*/  
+    public static void query() {  
+          
+        conn = getConnection(); //同样先要获取连接，即连接到数据库   
+        try {  
+            String sql = "select * from staff";     // 查询数据的sql语句   
+            st = (Statement) conn.createStatement();    //创建用于执行静态sql语句的Statement对象，st属局部变量   
+              
+            ResultSet rs = st.executeQuery(sql);    //执行sql查询语句，返回查询数据的结果集   
+            System.out.println("最后的查询结果为：");  
+            while (rs.next()) { // 判断是否还有下一个数据   
+                  
+                // 根据字段名获取相应的值   
+                String name = rs.getString("name");  
+                int age = rs.getInt("age");  
+                String sex = rs.getString("sex");  
+                String address = rs.getString("address");  
+                String depart = rs.getString("depart");  
+                String worklen = rs.getString("worklen");  
+                String wage = rs.getString("wage");  
+                  
+                //输出查到的记录的各个字段的值   
+                System.out.println(name + " " + age + " " + sex + " " + address  
+                        + " " + depart + " " + worklen + " " + wage);  
+              
+            }  
+            conn.close();   //关闭数据库连接   
+              
+        } catch (SQLException e) {  
+            System.out.println("查询数据失败");  
+        }  
+    }  
+  
+    /* 删除符合要求的记录，输出情况*/  
+    public static void delete() {  
+  
+        conn = getConnection(); //同样先要获取连接，即连接到数据库   
+        try {  
+            String sql = "delete from staff  where name = 'lili'";// 删除数据的sql语句   
+            st = (Statement) conn.createStatement();    //创建用于执行静态sql语句的Statement对象，st属局部变量   
+              
+            int count = st.executeUpdate(sql);// 执行sql删除语句，返回删除数据的数量   
+              
+            System.out.println("staff表中删除 " + count + " 条数据\n");    //输出删除操作的处理结果   
+              
+            conn.close();   //关闭数据库连接   
+              
+        } catch (SQLException e) {  
+            System.out.println("删除数据失败");  
+        }  
+          
+    }  
+      
+    /* 获取数据库连接的函数*/  
+    public static Connection getConnection() {  
+        Connection con = null;  //创建用于连接数据库的Connection对象   
+        try {  
+            Class.forName("com.mysql.jdbc.Driver");// 加载Mysql数据驱动   
+              
+            con = DriverManager.getConnection(  
+                    "jdbc:mysql://localhost:3306/myuser", "root", "root");// 创建数据连接  
+              
+        } catch (Exception e) {  
+            System.out.println("数据库连接失败" + e.getMessage());  
+        }  
+        return con; //返回所建立的数据库连接   
+    }  
+}  
+&lt;/SPAN&gt;  
+</code></pre><br />            </div>
+                </div>
+					</article>
+	
+</div>
+<script>
+		$(".MathJax").remove();
+		if($('div.markdown_views pre.prettyprint code.hljs').length > 0 ){
+				$('div.markdown_views')[0].className = 'markdown_views';
+		}
+</script>
+                <a id="commentBox"></a>
+<div class="comment-box">
+	  	<div class="comment-edit-box d-flex">
+		<a id="commentsedit"></a>
+		<div class="user-img">
+			<img src="https://avatar.csdn.net/0/6/0/3_xasjiyuan.jpg">
+		</div>
+		<form id="commentform">
+			<input type="hidden" id="comment_replyId">
+			<textarea class="comment-content" name="comment_content" id="comment_content" placeholder="想对作者说点什么"></textarea>
+			<div class="opt-box"> <!-- d-flex -->
+				<div id="ubbtools" class="add_code">
+					<a href="#insertcode" code="code" target="_self"><i class="icon iconfont icon-daima"></i></a>
+				</div>
+				<input type="hidden" id="comment_replyId" name="comment_replyId">
+				<input type="hidden" id="comment_userId" name="comment_userId" value="">
+				<input type="hidden" id="commentId" name="commentId" value="">
+				<div style="display: none;" class="csdn-tracking-statistics tracking-click" data-mod="popu_384"><a href="#" target="_blank" class="comment_area_btn">发表评论</a></div>
+				<div class="dropdown" id="myDrap">
+					<a class="dropdown-face d-flex align-items-center" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					<div class="txt-selected text-truncate">添加代码片</div>
+					<svg class="icon d-block" aria-hidden="true">
+						<use xlink:href="#csdnc-triangledown"></use>
+					</svg>
+					</a>
+					<ul class="dropdown-menu" id="commentCode" aria-labelledby="drop4">
+						<li><a data-code="html">HTML/XML</a></li>
+						<li><a data-code="objc">objective-c</a></li>
+						<li><a data-code="ruby">Ruby</a></li>
+						<li><a data-code="php">PHP</a></li>
+						<li><a data-code="csharp">C</a></li>
+						<li><a data-code="cpp">C++</a></li>
+						<li><a data-code="javascript">JavaScript</a></li>
+						<li><a data-code="python">Python</a></li>
+						<li><a data-code="java">Java</a></li>
+						<li><a data-code="css">CSS</a></li>
+						<li><a data-code="sql">SQL</a></li>
+						<li><a data-code="plain">其它</a></li>
+					</ul>
+				</div>  
+				<div class="right-box">
+					<span id="tip_comment" class="tip">还能输入<em>1000</em>个字符</span>
+					<input type="submit" class="btn btn-sm btn-red btn-comment" value="发表评论">
+				</div>
+			</div>
+		</form>
+	</div>
+			<div class="comment-list-container">
+		<a id="comments"></a>
+		<div class="comment-list-box">
+		</div>
+		<div id="commentPage" class="pagination-box d-none"></div>
+		<div class="opt-box text-center">
+			<button class="btn btn-sm btn-link-blue" id="btnMoreComment"></button>
+		</div>
+	</div>
+</div>
+        <div class="recommend-box">
+            		<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/xiongmaodeguju/article/details/70946064,BlogCommendFromBaidu_0"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/xiongmaodeguju/article/details/70946064,BlogCommendFromBaidu_0"}'>
+		<a href="https://blog.csdn.net/xiongmaodeguju/article/details/70946064" target="_blank" title="使用jdbc连接ORACLE数据库进行查询的一个例子">
+			<div class="content">
+				<h4 class="text-truncate oneline">
+						使用<em>jdbc</em><em>连接</em><em>ORACLE数据库</em>进行查询的一个例子				</h4>
+				<div class="info-box d-flex align-content-center">
+					<p class="avatar">
+							<img src="https://avatar.csdn.net/6/5/B/3_xiongmaodeguju.jpg" alt="xiongmaodeguju" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">xiongmaodeguju</span>
+								<span class="triangle"></span>
+							</span>
+					</p>
+					<p class="date-and-readNum">
+						<span class="date hover-show">04-29</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							1.2万</span>
+						</p>
+					</div>
+					<p class="content oneline">
+							使用jdbc连接ORACLE数据库进行查询的一个例子					</p>
+			</div>
+					</a>
+	</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/u012744159/article/details/49719895,BlogCommendFromBaidu_1"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/u012744159/article/details/49719895,BlogCommendFromBaidu_1"}'>
+		<a href="https://blog.csdn.net/u012744159/article/details/49719895" target="_blank" title="JDBC链接Oracle数据库的6个步骤">
+			<div class="content">
+				<h4 class="text-truncate oneline">
+						<em>JDBC</em>链接<em>Oracle数据库</em>的6个步骤				</h4>
+				<div class="info-box d-flex align-content-center">
+					<p class="avatar">
+							<img src="https://avatar.csdn.net/B/3/0/3_u012744159.jpg" alt="u012744159" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">u012744159</span>
+								<span class="triangle"></span>
+							</span>
+					</p>
+					<p class="date-and-readNum">
+						<span class="date hover-show">11-08</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							2568</span>
+						</p>
+					</div>
+					<p class="content oneline">
+							JDBC					</p>
+			</div>
+					</a>
+	</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/tzs_1041218129/article/details/53899094,BlogCommendFromBaidu_2"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/tzs_1041218129/article/details/53899094,BlogCommendFromBaidu_2"}'>
+		<a href="https://blog.csdn.net/tzs_1041218129/article/details/53899094" target="_blank" title="Java连接Oracle数据库的三种连接方式">
+			<div class="content">
+				<h4 class="text-truncate oneline">
+						Java<em>连接</em><em>Oracle数据库</em>的三种<em>连接</em>方式				</h4>
+				<div class="info-box d-flex align-content-center">
+					<p class="avatar">
+							<img src="https://avatar.csdn.net/9/8/B/3_tzs_1041218129.jpg" alt="tzs_1041218129" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">tzs_1041218129</span>
+								<span class="triangle"></span>
+							</span>
+					</p>
+					<p class="date-and-readNum">
+						<span class="date hover-show">12-27</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							3.1万</span>
+						</p>
+					</div>
+					<p class="content oneline">
+							背景：这两天在学习Oracle数据库，这里就总结下自己上课所学的知识，同时记录下来，方便整理当天所学下的知识，也同时方便日后自己查询。SQL语句的话，这里我就不多讲了，感觉和其他的数据库（MySQL、...					</p>
+			</div>
+					</a>
+	</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/vitelon/article/details/70093358,BlogCommendFromBaidu_3"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/vitelon/article/details/70093358,BlogCommendFromBaidu_3"}'>
+		<a href="https://blog.csdn.net/vitelon/article/details/70093358" target="_blank" title="使用jdbc连接oracle数据库">
+			<div class="content">
+				<h4 class="text-truncate oneline">
+						使用<em>jdbc</em><em>连接</em><em>oracle数据库</em>				</h4>
+				<div class="info-box d-flex align-content-center">
+					<p class="avatar">
+							<img src="https://avatar.csdn.net/1/4/7/3_vitelon.jpg" alt="vitelon" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">vitelon</span>
+								<span class="triangle"></span>
+							</span>
+					</p>
+					<p class="date-and-readNum">
+						<span class="date hover-show">04-11</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							2134</span>
+						</p>
+					</div>
+					<p class="content oneline">
+							使用jdbc连接oracle数据库Java类：
+import java.sql.*;
+
+public class DBHelper {
+	public static String url = &quot;jd...					</p>
+			</div>
+					</a>
+	</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/weixin_38569499/article/details/80418312,BlogCommendFromBaidu_4"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/weixin_38569499/article/details/80418312,BlogCommendFromBaidu_4"}'>
+		<a href="https://blog.csdn.net/weixin_38569499/article/details/80418312" target="_blank" title="JDBC连接oracle数据库的基本步骤">
+			<div class="content">
+				<h4 class="text-truncate oneline">
+						<em>JDBC</em><em>连接</em><em>oracle数据库</em>的基本步骤				</h4>
+				<div class="info-box d-flex align-content-center">
+					<p class="avatar">
+							<img src="https://avatar.csdn.net/4/0/A/3_weixin_38569499.jpg" alt="weixin_38569499" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">weixin_38569499</span>
+								<span class="triangle"></span>
+							</span>
+					</p>
+					<p class="date-and-readNum">
+						<span class="date hover-show">05-23</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							2128</span>
+						</p>
+					</div>
+					<p class="content oneline">
+							0、基础：创建java项目，导入jdbc的jar包。jdbc jar包下载传送门：https://download.csdn.net/download/weixin_38569499/10431997...					</p>
+			</div>
+					</a>
+	</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/Nanximuzi/article/details/77504517,BlogCommendFromBaidu_5"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/Nanximuzi/article/details/77504517,BlogCommendFromBaidu_5"}'>
+		<a href="https://blog.csdn.net/Nanximuzi/article/details/77504517" target="_blank" title="JDBC连接oracle数据库代码">
+			<div class="content">
+				<h4 class="text-truncate oneline">
+						<em>JDBC</em><em>连接</em><em>oracle数据库</em>代码				</h4>
+				<div class="info-box d-flex align-content-center">
+					<p class="avatar">
+							<img src="https://avatar.csdn.net/F/2/E/3_nanximuzi.jpg" alt="Nanximuzi" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">Nanximuzi</span>
+								<span class="triangle"></span>
+							</span>
+					</p>
+					<p class="date-and-readNum">
+						<span class="date hover-show">08-23</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							1459</span>
+						</p>
+					</div>
+					<p class="content oneline">
+							需先配置好数据库驱动百度云下载 密码：w2wi 
+封装一个连接Oracle数据库的类package com.muzi.unit;import java.sql.Connection;
+import j...					</p>
+			</div>
+					</a>
+	</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/chinahuanghuajun/article/details/79035092,BlogCommendFromBaidu_6"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/chinahuanghuajun/article/details/79035092,BlogCommendFromBaidu_6"}'>
+		<a href="https://blog.csdn.net/chinahuanghuajun/article/details/79035092" target="_blank" title="JDBC连接ORACLE数据库的几种方式">
+			<div class="content">
+				<h4 class="text-truncate oneline">
+						<em>JDBC</em><em>连接</em><em>ORACLE数据库</em>的几种方式				</h4>
+				<div class="info-box d-flex align-content-center">
+					<p class="avatar">
+							<img src="https://avatar.csdn.net/1/6/B/3_chinahuanghuajun.jpg" alt="chinahuanghuajun" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">chinahuanghuajun</span>
+								<span class="triangle"></span>
+							</span>
+					</p>
+					<p class="date-and-readNum">
+						<span class="date hover-show">01-11</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							1047</span>
+						</p>
+					</div>
+					<p class="content oneline">
+												</p>
+			</div>
+					</a>
+	</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/qq_27289001/article/details/52249711,BlogCommendFromBaidu_7"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/qq_27289001/article/details/52249711,BlogCommendFromBaidu_7"}'>
+		<a href="https://blog.csdn.net/qq_27289001/article/details/52249711" target="_blank" title="解决JAVA通过JDBC连接Oracle数据库出现的问题">
+			<div class="content">
+				<h4 class="text-truncate oneline">
+						解决JAVA通过<em>JDBC</em><em>连接</em><em>Oracle数据库</em>出现的问题				</h4>
+				<div class="info-box d-flex align-content-center">
+					<p class="avatar">
+							<img src="https://avatar.csdn.net/D/3/3/3_qq_27289001.jpg" alt="qq_27289001" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">qq_27289001</span>
+								<span class="triangle"></span>
+							</span>
+					</p>
+					<p class="date-and-readNum">
+						<span class="date hover-show">08-19</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							5820</span>
+						</p>
+					</div>
+					<p class="content oneline">
+							Java连接Oracle步骤：
+
+1.注册加载驱动
+
+驱动名：DRIVER=&quot;oracle.jdbc.driver.OracleDriver&quot;;
+Class.forName(&quot;驱动类名&quot;);...					</p>
+			</div>
+					</a>
+	</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/wangyy130/article/details/47946465,BlogCommendFromBaidu_8"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/wangyy130/article/details/47946465,BlogCommendFromBaidu_8"}'>
+		<a href="https://blog.csdn.net/wangyy130/article/details/47946465" target="_blank" title="如何利用JDBC连接并操作Oracle数据库">
+			<div class="content">
+				<h4 class="text-truncate oneline">
+						如何<em>利用</em><em>JDBC</em><em>连接</em>并操作<em>Oracle数据库</em>				</h4>
+				<div class="info-box d-flex align-content-center">
+					<p class="avatar">
+							<img src="https://avatar.csdn.net/B/4/9/3_wangyy130.jpg" alt="wangyy130" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">wangyy130</span>
+								<span class="triangle"></span>
+							</span>
+					</p>
+					<p class="date-and-readNum">
+						<span class="date hover-show">08-24</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							1.3万</span>
+						</p>
+					</div>
+					<p class="content oneline">
+							之前学习.NET的时候，曾经利用ODBC进行连接数据库，而在Java中通常采用JDBC连接数据库，这里以oracle数据库为例简单的总结一下利用JDBC如何连接并操作数据库。
+1、连接
+publi...					</p>
+			</div>
+					</a>
+	</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/Vicky__Liu/article/details/78900236,BlogCommendFromBaidu_9"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/Vicky__Liu/article/details/78900236,BlogCommendFromBaidu_9"}'>
+		<a href="https://blog.csdn.net/Vicky__Liu/article/details/78900236" target="_blank" title="oracle.jdbc.OracleDriver 找不到类的报错解决">
+			<div class="content">
+				<h4 class="text-truncate oneline">
+						oracle.<em>jdbc</em>.OracleDriver 找不到类的报错解决				</h4>
+				<div class="info-box d-flex align-content-center">
+					<p class="avatar">
+							<img src="https://avatar.csdn.net/F/5/6/3_vicky__liu.jpg" alt="Vicky__Liu" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">Vicky__Liu</span>
+								<span class="triangle"></span>
+							</span>
+					</p>
+					<p class="date-and-readNum">
+						<span class="date hover-show">12-26</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							5279</span>
+						</p>
+					</div>
+					<p class="content oneline">
+							在JSP页面里连接数据库时，报错，网上搜索的答案都是说没有引入jar，但是多次尝试引入，使用eclipse的ctrl+shift+t已经能搜索到OracleDriver类了，但是运行页面时依旧报错。...					</p>
+			</div>
+					</a>
+	</div>
+						<div class="recommend-item-box type_hot_word">
+									<div class="content clearfix oneline">
+				<h5 class="float-left">相关热词</h5>
+				<div class="float-left">
+									<span>
+						<a href="https://blog.csdn.net/sunjing_/article/details/51820213" target="_blank">
+						smb利用</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/guomutian911/article/details/55803826" target="_blank">
+						ipad1利用</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/mickeymouse1928/article/details/69668410" target="_blank">
+						beef利用</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/m0_37170593/article/details/76445972" target="_blank">
+						dll利用</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/clearlovexue/article/details/79716166" target="_blank">
+						利用jar</a>
+					</span>
+								</div>
+			</div>
+					</div>
+		<div class="recommend-item-box blog-expert-recommend-box">
+			<h4 class="text-truncate">博主推荐
+			</h4>
+			<div class="blog-expert-recommend">
+				<div class="blog-expert-load-new" data-index="3">
+					<svg version="1.1" viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+					<path d="M142.5,57.5c-1.3-1.2-2.1-3.3-2.1-5.4c0-4.2,3.3-7.5,7.5-7.5h19.6c4.2,0,7.5,3.3,7.5,7.5s-3.3,7.5-7.5,7.5h-4.2
+					 C170.8,71.2,175,85,175,100c0,41.7-33.8,75-75,75c-4.2,0-7.5-3.3-7.5-7.5c0-4.2,3.3-7.5,7.5-7.5c33.3,0,60-27.1,60-60
+					 C160,83.7,153.8,68.7,142.5,57.5L142.5,57.5z M57.5,142.5c1.2,1.2,2.1,3.3,2.1,5.4c0,4.2-3.3,7.5-7.5,7.5H32.5
+					 c-4.2,0-7.5-3.3-7.5-7.5c0-4.2,3.3-7.5,7.5-7.5h4.2C29.2,128.8,25,115,25,100c0-41.7,33.7-75,75-75c4.2,0,7.5,3.3,7.5,7.5
+					 S104.2,40,100,40c-33.3,0-60,27.1-60,60C40,116.2,46.2,131.2,57.5,142.5z"/>
+					</svg>
+					<span>换一批</span>
+				</div>
+				<div class="blog-expert">
+				</div>
+			</div>
+		</div>
+
+
+            <div class="recommend-loading-box">
+                <img src='https://csdnimg.cn/release/phoenix/images/feedLoading.gif'>
+            </div>
+            <div class="recommend-end-box">
+                <p class="text-center">没有更多推荐了，<a href="https://blog.csdn.net/" class="c-blue c-blue-hover c-blue-focus">返回首页</a></p>
+            </div>
+        </div>
+    </main>
+
+    <aside>
+		    <div id="asideProfile" class="aside-box">
+    <!-- <h3 class="aside-title">个人资料</h3> -->
+    <div class="profile-intro d-flex">
+        <div class="avatar-box d-flex justify-content-center flex-column">
+            <a href="https://blog.csdn.net/wahaha1_">
+                <img src="https://avatar.csdn.net/2/6/3/3_wahaha1_.jpg" class="avatar_pic">
+            </a>
+        </div>
+        <div class="user-info d-flex justify-content-center flex-column">
+            <p class="name csdn-tracking-statistics tracking-click" data-mod="popu_379">
+                <a href="https://blog.csdn.net/wahaha1_" target="_blank" class="" id="uid">蛋蛋的忧伤ing</a>
+            </p>
+                    </div>
+                <div class="opt-box d-flex justify-content-center flex-column">
+            <span  class="csdn-tracking-statistics tracking-click" data-mod="popu_379">
+                <a class="btn btn-sm btn-red-hollow" id="btnAttent">关注</a>
+            </span>
+                    </div>
+            </div>
+    <div class="data-info d-flex item-tiling">
+                <dl class="text-center" title="214">
+                        <dt><a href="https://blog.csdn.net/wahaha1_?t=1">原创</a></dt>
+            <dd><a href="https://blog.csdn.net/wahaha1_?t=1"><span class="count">214</span></a></dd>
+                    </dl>
+        <dl class="text-center" id="fanBox" title="66">
+            <dt>粉丝</dt>
+            <dd><span class="count" id="fan">66</span></dd>
+        </dl>
+        <dl class="text-center" title="3">
+            <dt>喜欢</dt>
+            <dd><span class="count">3</span></dd>
+        </dl>
+        <dl class="text-center" title="34">
+            <dt>评论</dt>
+            <dd><span class="count">34</span></dd>
+        </dl>
+    </div>
+    <div class="grade-box clearfix">
+        <dl>
+            <dt>等级：</dt>
+            <dd>
+                <a href="https://blog.csdn.net/home/help.html#level" title="5级,点击查看等级说明" target="_blank">
+                    <svg class="icon icon-level" aria-hidden="true">
+                        <use xlink:href="#csdnc-bloglevel-5"></use>
+                    </svg>
+                </a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>访问：</dt>
+            <dd title="295748">
+                29万+            </dd>
+        </dl>
+        <dl>
+            <dt>积分：</dt>
+            <dd title="4324">
+                4324            </dd>
+        </dl>
+        <dl title="10005">
+            <dt>排名：</dt>
+            <dd>1万+</dd>
+        </dl>
+    </div>
+    </div>
+		    		    <div id="asideNewArticle" class="aside-box">
+    <h3 class="aside-title">最新文章</h3>
+    <div class="aside-content">
+        <ul class="inf_list clearfix csdn-tracking-statistics tracking-click" data-mod="popu_382">
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/wahaha1_/article/details/72817301" target="_blank">图像的裁剪—首先获取图像的源点，根据源点裁出所需的图像大小</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/wahaha1_/article/details/60570105" target="_blank">矩阵和特征值的本质</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/wahaha1_/article/details/53114783" target="_blank">利用Dlib进行人脸特征局部定位</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/wahaha1_/article/details/52996752" target="_blank">KMeans算法的实现</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/wahaha1_/article/details/52973622" target="_blank">KMeans——之我见</a>
+            </li>
+                    </ul>
+    </div>
+</div>
+		    		    <div id="asideCategory" class="aside-box flexible-box">
+    <h3 class="aside-title">个人分类</h3>
+    <div class="aside-content">
+        <ul>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1245384">
+                    <span class="title oneline">组合数学</span>
+                    <span class="count float-right">4篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1245971">
+                    <span class="title oneline">杂题</span>
+                    <span class="count float-right">17篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1316727">
+                    <span class="title oneline">数据结构</span>
+                    <span class="count float-right">26篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1237875">
+                    <span class="title oneline">ACM——之路</span>
+                    <span class="count float-right">24篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1247219">
+                    <span class="title oneline">ACM——之路</span>
+                    <span class="count float-right">21篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1253111">
+                    <span class="title oneline">组合数学--容斥原理</span>
+                    <span class="count float-right">3篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1256723">
+                    <span class="title oneline">数据结构之并查集</span>
+                    <span class="count float-right">8篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1257156">
+                    <span class="title oneline">ACM--搜索</span>
+                    <span class="count float-right">12篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1260451">
+                    <span class="title oneline">母函数</span>
+                    <span class="count float-right">9篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1277500">
+                    <span class="title oneline">约瑟夫环问题</span>
+                    <span class="count float-right">3篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1299231">
+                    <span class="title oneline">中国剩余定理</span>
+                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1301820">
+                    <span class="title oneline">codeForces</span>
+                    <span class="count float-right">8篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1316859">
+                    <span class="title oneline">随想</span>
+                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1328509">
+                    <span class="title oneline">java</span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1330356">
+                    <span class="title oneline">矩阵相乘</span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1330387">
+                    <span class="title oneline">最短路</span>
+                    <span class="count float-right">24篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1332689">
+                    <span class="title oneline">最大流最小割</span>
+                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1347749">
+                    <span class="title oneline">动态规划</span>
+                    <span class="count float-right">8篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1352170">
+                    <span class="title oneline">树状数组与线段树</span>
+                    <span class="count float-right">21篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1379222">
+                    <span class="title oneline">背包</span>
+                    <span class="count float-right">15篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1393363">
+                    <span class="title oneline">图论</span>
+                    <span class="count float-right">14篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/1395640">
+                    <span class="title oneline">贪心</span>
+                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/wahaha1_/article/category/6071594">
+                    <span class="title oneline">图像处理</span>
+                    <span class="count float-right">7篇</span>
+                </a>
+            </li>
+                    </ul>
+    </div>
+        <p class="text-center">
+        <a class="btn btn-link-blue flexible-btn" data-fbox="aside-archive">展开</a>
+    </p>
+    </div>
+		    <div id="asideArchive" class="aside-box flexible-box">
+    <h3 class="aside-title">归档</h3>
+    <div class="aside-content">
+        <ul class="archive-list">
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/wahaha1_/article/month/2017/05">
+                    2017年5月                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/wahaha1_/article/month/2017/03">
+                    2017年3月                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/wahaha1_/article/month/2016/11">
+                    2016年11月                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/wahaha1_/article/month/2016/10">
+                    2016年10月                    <span class="count float-right">3篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/wahaha1_/article/month/2016/01">
+                    2016年1月                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/wahaha1_/article/month/2013/06">
+                    2013年6月                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/wahaha1_/article/month/2013/05">
+                    2013年5月                    <span class="count float-right">20篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/wahaha1_/article/month/2013/04">
+                    2013年4月                    <span class="count float-right">50篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/wahaha1_/article/month/2013/03">
+                    2013年3月                    <span class="count float-right">23篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/wahaha1_/article/month/2013/02">
+                    2013年2月                    <span class="count float-right">9篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/wahaha1_/article/month/2013/01">
+                    2013年1月                    <span class="count float-right">43篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/wahaha1_/article/month/2012/12">
+                    2012年12月                    <span class="count float-right">21篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/wahaha1_/article/month/2012/11">
+                    2012年11月                    <span class="count float-right">16篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/wahaha1_/article/month/2012/10">
+                    2012年10月                    <span class="count float-right">32篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/wahaha1_/article/month/2012/09">
+                    2012年9月                    <span class="count float-right">12篇</span>
+                </a>
+            </li>
+                    </ul>
+    </div>
+        <p class="text-center">
+        <a class="btn btn-link-blue flexible-btn" data-fbox="aside-archive">展开</a>
+    </p>
+    </div>
+		    <div id="asideHotArticle" class="aside-box">
+	<h3 class="aside-title">热门文章</h3>
+	<div class="aside-content">
+		<ul class="hotArticle-list csdn-tracking-statistics tracking-click" data-mod="popu_521">
+							<li>
+					<a href="https://blog.csdn.net/wahaha1_/article/details/8512438">利用JDBC连接Oracle数据库</a>
+					<p class="read">阅读量：<span>123165</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/wahaha1_/article/details/50529501">图像处理常用算法(基础)</a>
+					<p class="read">阅读量：<span>8096</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/wahaha1_/article/details/8847156">poj1679 判断最小生成树是不是唯一？        如果让我说：我只能说，实力决定一切。</a>
+					<p class="read">阅读量：<span>6733</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/wahaha1_/article/details/8775085">数位DP 《 菜鸟与大牛在于一念之间》</a>
+					<p class="read">阅读量：<span>3699</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/wahaha1_/article/details/8531285">求次短路 经典啊！</a>
+					<p class="read">阅读量：<span>2949</span></p>
+				</li>
+					</ul>
+	</div>
+</div>
+		    <div id="asideNewComments" class="aside-box">
+    <h3 class="aside-title">最新评论</h3>
+    <div class="aside-content">
+        <ul class="newcomment-list">
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/wahaha1_/article/details/8094568#comments">hdu1398 母函数</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/weixin_42324579" class="user-name" target="_blank">weixin_42324579</a>：数组是不是开小了呀                </p>
+            </li>
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/wahaha1_/article/details/53114783#comments">利用Dlib进行人脸特征局部定位</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/sisixiaozhan" class="user-name" target="_blank">sisixiaozhan</a>：楼主有没有遇到这种情况vs2013无法打开包括文件: “../base64/base64_kern...                </p>
+            </li>
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/wahaha1_/article/details/8512438#comments">利用JDBC连接Oracle数据库</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/yy15122906931" class="user-name" target="_blank">yy15122906931</a>：你这不全嘛，，，用上有好多错误                </p>
+            </li>
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/wahaha1_/article/details/8512438#comments">利用JDBC连接Oracle数据库</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/fenyelove" class="user-name" target="_blank">fenyelove</a>：不错不错，收藏了。
+
+推荐下，分库分表中间件 Sharding-JDBC 源码解析 17 篇：ht...                </p>
+            </li>
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/wahaha1_/article/details/8512438#comments">利用JDBC连接Oracle数据库</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/z15732621582" class="user-name" target="_blank">z15732621582</a>：感谢楼主的分享学习了                </p>
+            </li>
+                    </ul>
+    </div>
+</div>
+		<div id="asideFooter">
+				<div class="aside-box">
+			<div class="persion_article">
+			</div>
+		</div>
+	</div>
+</aside>
+<script src="https://csdnimg.cn/pubfooter/js/publib_footer-1.0.3.js" data-isfootertrack="false" type="text/javascript"></script>
+<script>
+	$("a.flexible-btn").click(function(){
+		$(this).parents('div.aside-box').removeClass('flexible-box');
+		$(this).remove();
+	})
+</script>
+</div>
+<div class="mask-dark"></div>
+<div class="tool-box">
+	<ul class="meau-list">
+		<li class="btn-like-box long-width">
+			<button class=" long-height hover-box btn-like " title="点赞">
+				<svg class="icon active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup-ok"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup"></use>
+				</svg>
+				<span class="hover-show text-box text">
+					<span class="no-active">点赞</span>
+					<span class="active">取消点赞</span>
+				</span>
+				<p>17</p>
+			</button>
+		</li>
+		<li class="">
+						<a class="btn-comments long-height hover-box" title="写评论" href="#commentBox">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-comments"></use>
+				</svg>
+				<span class="hover-show text">评论</span>
+				<p class="">
+						9				</p>
+			</a>
+		</li>
+		<li class="toc-container-box" id="liTocBox">
+			<button class="btn-toc low-height hover-box" title="目录">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-contents"></use>
+				</svg>
+				<span class="hover-show text">目录</span>
+			</button>
+			<div class="toc-container">
+				<div class="pos-box">
+					<div class="icon-arrow"></div>
+					<div class="scroll-box">
+						<div class="toc-box"></div>
+					</div>
+				</div>
+				<div class="opt-box">
+					<button class="btn-opt prev nomore" title="向上">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevronup"></use>
+						</svg>
+					</button>
+					<button class="btn-opt next">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevrondown"></use>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</li>
+		<li>
+			<button class="btn-bookmark low-height hover-box" title="收藏">
+				<svg class="icon active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-bookmark-ok"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-bookmark"></use>
+				</svg>
+					<span class="hover-show text">收藏</span>
+				<!-- <span class="hover-show text-box text">
+					<span class="no-active">收藏</span>
+					<span class="active">取消收藏</span>
+				</span> -->
+			</button>
+		</li>
+				<li class="bdsharebuttonbox">
+			<button class="btn-comments low-height hover-box" >
+				<a href="#" class="bds_weixin clear-share-style" data-cmd="weixin" title="手机看"></a>
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-wechat"></use>
+				</svg>
+				<span class="hover-show text text3">
+					手机看
+				</span>
+			</button>
+		</li>
+							<li class="widescreen-hide">
+				<a class="btn-comments low-height hover-box" href="https://blog.csdn.net/wahaha1_/article/details/8497906" title="hdu2896 AC自动机">
+					<svg class="icon hover-hide" aria-hidden="true">
+						<use xlink:href="#csdnc-shangyiye"></use>
+					</svg>
+					<span class="hover-show text text3">上一篇</span>
+				</a>
+			</li>
+								<li class="widescreen-hide">
+			<a class="btn-comments hover-box low-height" href="https://blog.csdn.net/wahaha1_/article/details/8520534" title="hdu1575">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-xiayiye"></use>
+				</svg>
+				<span class="hover-show text text3">下一篇</span>
+			</a>
+		</li>
+				
+		<!-- 宽屏更多按钮 -->
+		<li class="widescreen-more">
+			<a class="btn-comments chat-ask-button low-height hover-box" title="快问" href="#chatqa">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-more"></use>
+				</svg>
+				<span class="hover-show text">更多</span>
+				
+			</a>
+			<ul class="widescreen-more-box">
+													<li class="widescreen-more">
+						<a class="btn-comments low-height hover-box" href="https://blog.csdn.net/wahaha1_/article/details/8497906" title="hdu2896 AC自动机">
+							<svg class="icon hover-hide" aria-hidden="true">
+								<use xlink:href="#csdnc-shangyiye"></use>
+							</svg>
+							<span class="hover-show text text3">上一篇</span>
+						</a>
+					</li>
+																<li class="widescreen-more">
+					<a class="btn-comments hover-box low-height" href="https://blog.csdn.net/wahaha1_/article/details/8520534" title="hdu1575">
+						<svg class="icon hover-hide" aria-hidden="true">
+							<use xlink:href="#csdnc-xiayiye"></use>
+						</svg>
+						<span class="hover-show text text3">下一篇</span>
+					</a>
+				</li>
+							</ul>
+		</li>
+	</ul>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'https://csdnimg.cn/static/api/js/share.js?v=89860594'];</script>
+<script>
+    var recommendCount = 10;
+    recommendCount = recommendCount > 1 ? (recommendCount + (recommendCount>6 ? 2 : 1)) : recommendCount;
+    var articleTit = "利用JDBC连接Oracle数据库";
+    var ChannelId = 0;
+    var articleId = "8512438";
+    var commentscount = 9;
+    var islock = false;
+    var curentUrl = "https://blog.csdn.net/wahaha1_/article/details/8512438";
+    var myUrl = "https://my.csdn.net/";
+    //1禁止评论，2正常
+    var commentAuth = 2;
+    //百度搜索
+    var baiduKey = "%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E4%BD%BF%E7%94%A8oracle%E8%BF%9E%E6%8E%A5%E9%A9%B1%E5%8A%A8%E4%B8%8Eoracle%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E7%9A%84%E7%A8%8B%E5%BA%8F%E3%80%82";
+    var needInsertBaidu = false;
+    // 代码段样式
+    var codeStyle = '';
+		var highlight = ["\u5229\u7528","jdbc","\u8fde\u63a5","oracle\u6570\u636e\u5e93"];//高亮数组
+		// 相关推荐博主数据
+    var RecommendBlogExpertList = [{"user_name":"xuejian0616","nick_name":"xuejian0616","avatar":"https:\/\/avatar.csdn.net\/F\/A\/D\/3_xuejian0616.jpg","is_expert":false,"article_count":13},{"user_name":"wang_gmail","nick_name":"wang_gmail","avatar":"https:\/\/avatar.csdn.net\/5\/B\/7\/3_wang_gmail.jpg","is_expert":false,"article_count":16},{"user_name":"lzl1101206656","nick_name":"lzl1101206656","avatar":"https:\/\/avatar.csdn.net\/B\/7\/7\/3_lzl1101206656.jpg","is_expert":false,"article_count":94},{"user_name":"qq_26400953","nick_name":"qq_26400953","avatar":"https:\/\/avatar.csdn.net\/8\/D\/E\/3_qq_26400953.jpg","is_expert":false,"article_count":175},{"user_name":"pretend_b","nick_name":"pretend_b","avatar":"https:\/\/avatar.csdn.net\/5\/A\/E\/3_pretend_b.jpg","is_expert":false,"article_count":56},{"user_name":"u012301841","nick_name":"u012301841","avatar":"https:\/\/avatar.csdn.net\/D\/0\/0\/3_u012301841.jpg","is_expert":false,"article_count":174},{"user_name":"s346658910","nick_name":"s346658910","avatar":"https:\/\/avatar.csdn.net\/7\/F\/6\/3_s346658910.jpg","is_expert":false,"article_count":39},{"user_name":"cxc19890214","nick_name":"cxc19890214","avatar":"https:\/\/avatar.csdn.net\/7\/2\/8\/3_cxc19890214.jpg","is_expert":false,"article_count":235},{"user_name":"sjg749628618","nick_name":"sjg749628618","avatar":"https:\/\/avatar.csdn.net\/7\/4\/5\/3_sjg749628618.jpg","is_expert":false,"article_count":0},{"user_name":"six_six_six","nick_name":"six_six_six","avatar":"https:\/\/avatar.csdn.net\/6\/9\/D\/3_six_six_six.jpg","is_expert":false,"article_count":5}];
+		
+		var articleType = 2;
+		var CopyrightContent = '';
+</script>
+<script src="https://csdnimg.cn/public/sandalstrap/1.4/js/sandalstrap.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.js"></script>
+<script src='https://csdnimg.cn/public/common/gotop/js/goTop-v1.0.min.js?v201803151422'></script>
+<script>
+    GoTop({
+        right: 8,
+        hasReport: true,
+        reportFun: function() {
+            showReport(false,"利用JDBC连接Oracle数据库");
+        }
+    })
+</script>
+<script src="https://g.csdnimg.cn/login-box/1.0.1/login-box.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/common-ff25a7a98a.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/detail-a341548e20.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/themes/skin3-template/skin3-template-9376486353.min.js"></script>
+<script src="https://csdnimg.cn/search/baidu_search-1.1.2.js?v=201802071056&autorun=true&install=true&keyword=%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E4%BD%BF%E7%94%A8oracle%E8%BF%9E%E6%8E%A5%E9%A9%B1%E5%8A%A8%E4%B8%8Eoracle%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E7%9A%84%E7%A8%8B%E5%BA%8F%E3%80%82"  type="text/javascript"></script>
+</body>
+<!-- 第四范式SDK -->
+
+<!-- 高亮未与 markdown兼容  -->
+	<link rel="stylesheet" href="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/chart.css" />
+	<script type="text/javascript" src="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/lib/chart.min.js"></script>
+	<script type="text/javascript" src="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/widget2chart.js"></script>
+	<link rel="stylesheet" href="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/codesnippet/lib/highlight/styles/atom-one-dark.css">
+	<script type="text/javascript" src="https://csdnimg.cn/release/phoenix/production/pc_wap_common-676a063698.js" /></script>
+
+	<script type="text/javascript">
+	$(function(){
+		var allEscRegex = /&(lt|gt|amp|quot|nbsp|shy|#\d{1,5});/g,
+		    namedEntities = {
+					lt: '<',
+					gt: '>',
+					amp: '&',
+					quot: '"',
+					nbsp: '\u00a0',
+					shy: '\u00ad'
+				}
+		var allEscDecode = function( match, code ) {
+				return namedEntities[ code ];
+		};
+		htmlDecodeAttr = function( text ) {
+				return text.replace( allEscRegex, allEscDecode );
+		}
+	  hljs.initHighlightingOnLoad();
+	  hljs.initCopyButtonOnLoad();
+	  hljs.initLineNumbersOnLoad();
+		if($('pre .language-plain').length>0){
+			$('pre .language-plain').each(function(i,e){
+				var highlightRe = hljs.highlightAuto(htmlDecodeAttr(e.innerHTML))
+				e.innerHTML = highlightRe.value;
+				e.className = 'language-'+highlightRe.language;
+			});
+		}
+	})
+	</script>
+<script type="text/javascript" src="https://static-blog.csdn.net/mdeditor/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            "HTML-CSS": {
+                    linebreaks: { automatic: true, width: "94%container" },
+                    imageFont: null
+            },
+            tex2jax: {
+                preview: "none"
+            },
+            mml2jax: {
+                preview: 'none'
+            }
+    });
+</script>
+</html>

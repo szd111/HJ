@@ -26,7 +26,7 @@ import java.util.Calendar;
 /**
  * @创建人 shizhendong
  * @创建时间 2018.9.25
- * @描述 主窗体界面包括数据维护和字典维护
+ * @描述 主窗体界面包括数据维护和字典维护我军装备
  */
 
 
@@ -356,7 +356,7 @@ public static boolean ok=false;//单元格是否可编辑
 
         }
 
-        //部队情况
+        //部队情况 post get
         if (e.getActionCommand() == "部队情况") {
 
             DataMainTainFirstController c = (DataMainTainFirstController) cft.getConTrollers("DataMainTain");
@@ -365,6 +365,7 @@ public static boolean ok=false;//单元格是否可编辑
         }
         //战备工程
         if (e.getActionCommand() == "战备工程") {
+<<<<<<< HEAD
             DataMainTainSecondController c = (DataMainTainSecondController) cft.getConTrollers("DataMainTainSecond");
             flagObject = "战备工程";
             c.armySituation(this);
@@ -384,6 +385,19 @@ public static boolean ok=false;//单元格是否可编辑
             DataMainTainFourthController c = (DataMainTainFourthController) cft.getConTrollers("DataMainTainFourth");
             flagObject = "我军装备";
             c.armySituation(this);
+=======
+
+
+        }
+        //我军装备
+        if (e.getActionCommand() == "我军装备") {
+
+
+        }
+        //外军装备
+        if (e.getActionCommand() == "外军装备") {
+
+>>>>>>> 05870a6e60cd9910fc7cf6ed08949023710ef6ce
 
         }
 
@@ -393,17 +407,17 @@ public static boolean ok=false;//单元格是否可编辑
 
         }
         //战备工程维护
-        if (e.getActionCommand() == "部队序型 ") {
+        if (e.getActionCommand() == "战备工程 ") {
 
 
         }
         //我军装备维护
-        if (e.getActionCommand() == "部队序型 ") {
+        if (e.getActionCommand() == "我军装备 ") {
 
 
         }
         //外军装备维护
-        if (e.getActionCommand() == "部队序型 ") {
+        if (e.getActionCommand() == "外军装备 ") {
 
 
         }

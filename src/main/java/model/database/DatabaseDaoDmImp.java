@@ -9,16 +9,27 @@ import java.sql.*;
  * @创建时间 2018/9/27
  * @描述 对数据库底层操作的接口进行实现
  */
-public class DatabaseDaoImp implements DatabaseDao {
+public class DatabaseDaoDmImp implements DatabaseDao {
 
-    String PATH = "src/main/resources/sql.propertites";
+    String database="dm";
+
+    String PATH = "src/main/resources/dm.sql.propertites";
+    String PATHS = "src/main/resources/oracle.sql.propertites";
 
     @Override
     public Connection getConnection() {
         Connection connection = null;
         try {
             try {
-                Class.forName(Io.readPropertites(PATH, "DRIVER_NAME"));
+
+                if(database.equals("dm")) {
+                    Class.forName(Io.readPropertites(PATH, "DRIVER_NAME"));
+                }
+                else if(database.equals("oracle")) {
+                    Class.forName(Io.readPropertites(PATHS, "DRIVER_NAME"));
+                }{
+
+                }
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -123,7 +134,7 @@ public class DatabaseDaoImp implements DatabaseDao {
 
     public static void main(String args[]) throws SQLException {
 
-        DatabaseDaoImp d = new DatabaseDaoImp();
+        DatabaseDaoDmImp d = new DatabaseDaoDmImp();
 
         Connection c = d.getConnection();
 

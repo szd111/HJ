@@ -19,7 +19,7 @@ public class TestMains {
         logger.error("This is a error");
 
         Properties pps = new Properties();
-                pps.load(new FileInputStream("src/main/resources/sql.propertites"));
+                pps.load(new FileInputStream("src/main/resources/dm.sql.propertites"));
                 Enumeration enum1 = pps.propertyNames();//得到配置文件的名字
                  while(enum1.hasMoreElements()) {
                          String strKey = (String) enum1.nextElement();
