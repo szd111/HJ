@@ -11,7 +11,7 @@ import java.sql.*;
  */
 public class Databasezb implements DatabaseDao {
 
-    String PATH = "src/main/resources/sql.propertites";
+    String PATH = "src/main/resources/dm.sql.propertites";
 
     @Override
     public Connection getConnection() {

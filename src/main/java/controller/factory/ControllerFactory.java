@@ -14,9 +14,7 @@ import controller.LoginController;
 /**
  * @创建人 shizhendong
  * @创建时间 2018/9/27
-
  * @描述 工厂模式选择创建实体类
-
  */
 public class ControllerFactory {
 
@@ -46,12 +44,12 @@ public class ControllerFactory {
             return new DictionaryMainTainController();
         } else if (name.equals("Login")) {
 
-
-        }else if(name.equals("DataMainTainSecond")){
+            return new LoginController();
+        } else if (name.equals("DataMainTainSecond")) {
             return new DataMainTainSecondController();
-        }else if(name.equals("DataMainTainThird")){
+        } else if (name.equals("DataMainTainThird")) {
             return new DataMainTainThirdController();
-        }else if(name.equals("DataMainTainFourth")){
+        } else if (name.equals("DataMainTainFourth")) {
             return new DataMainTainFourthController();
 
         }

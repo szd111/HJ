@@ -97,7 +97,7 @@ public class DataMainTainFourthController {
                 if (node == null)
                     return;
                 Object object = node.getUserObject();
-                if (node.isLeaf()) {
+              //  if (node.isLeaf()) {
 
                     System.out.println("You have chosen:" + object.toString());
 
@@ -270,7 +270,7 @@ public class DataMainTainFourthController {
 
 
                 }
-            }
+        //    }
         });
 
 

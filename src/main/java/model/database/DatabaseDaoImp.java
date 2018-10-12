@@ -9,7 +9,7 @@ import java.sql.*;
  * @创建时间 2018/9/27
  * @描述 对数据库底层操作的接口进行实现
  */
-public class DatabaseDaoDmImp implements DatabaseDao {
+public class DatabaseDaoImp implements DatabaseDao {
 
     String database="dm";
 
@@ -134,7 +134,7 @@ public class DatabaseDaoDmImp implements DatabaseDao {
 
     public static void main(String args[]) throws SQLException {
 
-        DatabaseDaoDmImp d = new DatabaseDaoDmImp();
+        DatabaseDaoImp d = new DatabaseDaoImp();
 
         Connection c = d.getConnection();
 

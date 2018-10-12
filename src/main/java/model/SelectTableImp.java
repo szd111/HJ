@@ -1,7 +1,7 @@
 package model;
 
 import model.database.DatabaseDao;
-import model.database.DatabaseDaoDmImp;
+import model.database.DatabaseDaoImp;
 import model.entity.Columns;
 
 import java.sql.Connection;
@@ -23,7 +23,7 @@ public class SelectTableImp implements SelectTable {
     public ArrayList<Columns> getColumnName(String name) {
 
         ArrayList<Columns> als = new ArrayList<Columns>();
-        di = new DatabaseDaoDmImp();
+        di = new DatabaseDaoImp();
         String sql = "select COLUMN_NAME, DATA_TYPE, DATA_LENGTH from ALL_tab_cols where TABLE_NAME='"+name+"'";
         Connection cn = di.getConnection();
         ResultSet rs = di.executeQuery(sql, cn);
