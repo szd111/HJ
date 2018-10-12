@@ -8,7 +8,9 @@ import util.ImagePanel;
 import util.RegExpValidatorUtils;
 import view.UserLogin;
 import view.Windows;
+
 import model.database.Databasezb;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.TreeSelectionEvent;
@@ -22,6 +24,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import java.util.HashMap;
 
 import static jdk.nashorn.internal.runtime.regexp.joni.Syntax.Java;
@@ -74,6 +77,7 @@ public class DataMainTainFirstController {
         final JTree jt = ct.getJTree();
 
 
+        //¸üÐÂÃæ°å
         w.jp1.removeAll();
         w.jp1.repaint();
         w.jp1.add(jt);
@@ -84,6 +88,7 @@ public class DataMainTainFirstController {
         jt.addTreeSelectionListener(new TreeSelectionListener() {
             @Override
             public void valueChanged(TreeSelectionEvent e) {
+
                 Databasezb d = new Databasezb();
 
                 Connection c = d.getConnection();
@@ -121,6 +126,7 @@ public class DataMainTainFirstController {
 //                    rows.put(1, new String[]{"2", "jetli", "21", "boy"});
 //                    rows.put(2, new String[]{"3", "tom", "31", "boy"});
 //                    rows.put(3, new String[]{"4", "jane", "1", "boy"});
+
 
 
                     w.jTable = (JTable) cb.createTable(column, rows, w);
@@ -246,7 +252,9 @@ public class DataMainTainFirstController {
 
 
                 }
+
             }
+
         });
 
 

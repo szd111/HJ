@@ -140,7 +140,9 @@ public class DatabaseDaoDmImp implements DatabaseDao {
 
         ResultSet r = d.executeQuery("select * from DR.TABLE_1;", c);
 
+
         System.out.println(r);
+
         while (r.next()) {
 
             System.out.println(r.getString("DATABASE_USER"));

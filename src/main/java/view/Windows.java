@@ -1,10 +1,12 @@
 package view;
 
 import controller.DataMainTainFirstController;
+
 import controller.DataMainTainSecondController;
 import controller.DataMainTainThirdController;
 import controller.DataMainTainFourthController;
 import controller.factory.ControllerFactory;
+
 
 import util.FontTools;
 import util.ImagePanel;
@@ -26,7 +28,9 @@ import java.util.Calendar;
 /**
  * @创建人 shizhendong
  * @创建时间 2018.9.25
+
  * @描述 主窗体界面包括数据维护和字典维护我军装备
+
  */
 
 
@@ -141,10 +145,12 @@ public static boolean ok=false;//单元格是否可编辑
         jmi7.setFont(FontTools.f2);
         jmii7 = new JMenuItem("外军装备", jmi6_icon6);
         jmii7.setFont(FontTools.f2);
+
         jmii7.addActionListener(this);
         jmii8 = new JMenuItem("我军装备", jmi6_icon6);
         jmii8.setFont(FontTools.f2);
         jmii8.addActionListener(this);
+
         jmi7.add(jmii7);
         jmi7.add(jmii8);
 
@@ -365,7 +371,7 @@ public static boolean ok=false;//单元格是否可编辑
         }
         //战备工程
         if (e.getActionCommand() == "战备工程") {
-<<<<<<< HEAD
+
             DataMainTainSecondController c = (DataMainTainSecondController) cft.getConTrollers("DataMainTainSecond");
             flagObject = "战备工程";
             c.armySituation(this);
@@ -385,19 +391,6 @@ public static boolean ok=false;//单元格是否可编辑
             DataMainTainFourthController c = (DataMainTainFourthController) cft.getConTrollers("DataMainTainFourth");
             flagObject = "我军装备";
             c.armySituation(this);
-=======
-
-
-        }
-        //我军装备
-        if (e.getActionCommand() == "我军装备") {
-
-
-        }
-        //外军装备
-        if (e.getActionCommand() == "外军装备") {
-
->>>>>>> 05870a6e60cd9910fc7cf6ed08949023710ef6ce
 
         }
 
