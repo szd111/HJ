@@ -1,9 +1,12 @@
 package util;
 
 
+import model.entity.TreeNode;
+
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
+import java.util.ArrayList;
 
 /**
  * @创建人 shizhendong
@@ -76,6 +79,74 @@ public class CreateTree {
 
 
     /**
+     * @描述 根据父节点实体 在集合中选出对应的下标
+     * @参数
+     * @返回值
+     * @创建人 szd
+     * @创建时间 2018/10/12
+     * @修改人和其它信息
+     */
+    public static int getTreeNodeIndex(TreeNode ff, ArrayList<TreeNode> als) {
+
+        int p = 0;
+        for (int i = 0; i < als.size(); i++) {
+
+            if (als.get(i).name.equals(ff.name)) {
+                p = i;
+                break;
+            }
+
+        }
+
+        return p;
+    }
+
+
+    /**
+     * @描述 根据生成的树状集合 动态生成树状目录图
+     * @参数
+     * @返回值
+     * @创建人 szd
+     * @创建时间 2018/10/12
+     * @修改人和其它信息
+     */
+    private void createDynamicNode(DefaultMutableTreeNode tops, ArrayList<TreeNode> als) {
+
+        ArrayList<DefaultMutableTreeNode> al = new ArrayList<DefaultMutableTreeNode>();
+
+        for (int k = 0; k < als.size(); k++) {
+
+
+            DefaultMutableTreeNode dn = new DefaultMutableTreeNode(als.get(k).name);
+
+            al.add(dn);
+        }
+
+
+
+        for (int k = 0; k < al.size(); k++) {
+
+
+            //如果是根节点下的第一层节点则直接加入
+            if (als.get(k).name.getBytes().length == 1) {
+
+                tops.add(al.get(k));
+
+            } else {
+
+                System.out.printf("=flag==" + CreateTree.getTreeNodeIndex(als.get(k).parent, als));
+
+                al.get(CreateTree.getTreeNodeIndex(als.get(k).parent, als)).add(al.get(k));
+
+            }
+
+        }
+
+
+    }
+
+
+    /**
      * @描述 根据创立的节点构建一棵树
      * @参数
      * @返回值 JTree
@@ -85,17 +156,18 @@ public class CreateTree {
      */
     public JTree getJTree() {
 
-        JTree jTree=null;
+        JTree jTree = null;
 
         if (jTree == null) {
 
-            DefaultMutableTreeNode  top = new DefaultMutableTreeNode("HJ");
+            DefaultMutableTreeNode top = new DefaultMutableTreeNode("HJ");
 
-            createNodes(top);
+            createDynamicNode(top, TreeNode.createTree1());
+
             jTree = new JTree(top);
             jTree.getSelectionModel().setSelectionMode(
                     TreeSelectionModel.SINGLE_TREE_SELECTION);
-            //jTree.addTreeSelectionListener(this);
+
         }
         return jTree;
     }
