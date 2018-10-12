@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="GBK">
+    <file url="file://$PROJECT_DIR$/src/main/java/controller/DataMainTainFirstController.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/controller/DictionaryMainTainController.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/controller/LoginController.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/controller/factory/ControllerFactory.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/model/Login.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/model/LoginImp.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/model/database/DatabaseDao.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/model/database/DatabaseDaoDmImp.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/model/entity/TreeNode.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/model/entity/User.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/util/CreateTable.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/util/CreateTree.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/util/Io.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/util/JTreeComboBox.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/util/JTreeComboBoxRenderer.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/util/TreePopup.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/util/Utf8Gbk.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/view/UserLogin.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/view/Windows.java" charset="GBK" />
+    <file url="PROJECT" charset="GBK" />
+  </component>
+</project>

@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://blog.csdn.net/pzasdq/article/details/49893065"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="referrer" content="always">
+    <meta name="description" content="&quot;ORACLE数据字典视图的种类分别为：USER,ALL 和 DBA.
+　　USER_*:有关用户所拥有的对象信息，即用户自己创建的对象信息
+　　ALL_*:有关用户可以访问的对象的信息，即用户自己创建的对象的信息加上
+　　其他用户创建的对象但该用户有权访问的信息
+　　DBA_*:有关整个数据库中对象的信息
+　　(这里的*可以为TABLES,INDEXES,OBJECTS,USERS等。" />
+    <meta name="keywords" content="" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+    <meta name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848">
+    <script src="https://csdnimg.cn/release/phoenix/vendor/tingyun/tingyun-rum-blog.js"></script>
+
+    <link href="https://csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON">
+    <title>&quot;ORACLE数据字典视图的种类分别为：USER,ALL 和 DBA. - knowledge-&gt;study-&gt;calm-&gt;love   - CSDN博客</title>
+
+            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/detail-fbd232c455.min.css">
+        <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/themes/skin3-template/skin3-template-9b39979775.min.css">
+
+    <script type="text/javascript">
+        var username = "pzasdq";
+        var blog_address = "https://blog.csdn.net/pzasdq";
+        var static_host = "https://csdnimg.cn/release/phoenix/";
+        var currentUserName = "xasjiyuan";
+        var isShowAds = false;
+        var isOwner = false;
+        var loginUrl = "https://passport.csdn.net/account/login?from=https://blog.csdn.net/pzasdq/article/details/49893065"
+        var blogUrl = "https://blog.csdn.net/";
+        //页面皮肤样式
+        var curSkin = "skin3-template";
+        // 第四范式所需数据
+        var articleTitles = "&quot;ORACLE数据字典视图的种类分别为：USER,ALL 和 DBA. - knowledge-&gt;study-&gt;calm-&gt;love  ";
+        var articleID = "49893065";
+
+        var nickName = "KSCL";
+    </script>
+    <script type="text/javascript">
+        // Traffic Stats of the entire Web site By baidu
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6bcd52f51e9b3dce32bec4a3997715ac";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+        // Traffic Stats of the entire Web site By baidu end
+    </script>
+    <script src="https://csdnimg.cn/public/common/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="https://csdnimg.cn/rabbit/exposure-click/main-1.0.6.js"></script>
+    <!-- 新版上报 -->
+    <script src="//g.csdnimg.cn/track/1.1.1/track.js" type="text/javascript"></script>
+    <!-- 新版上报end -->
+            <link rel="stylesheet" href="https://csdnimg.cn/public/sandalstrap/1.4/css/sandalstrap.min.css">
+    <style>
+        .MathJax, .MathJax_Message, .MathJax_Preview{
+            display: none
+        }
+    </style>
+</head>
+<!-- nodata 第三栏接口无数据时样式不变 -->
+<body class="nodata"> 
+    <link rel="stylesheet" href="https://csdnimg.cn/public/common/toolbar/content_toolbar_css/content_toolbar.css">
+    <script id="toolbar-tpl-scriptId" src="https://csdnimg.cn/public/common/toolbar/js/content_toolbar.js" type="text/javascript" domain="https://blog.csdn.net/"></script>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/blog_code-c3a0c33d5c.css">
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.css">
+<script type="text/javascript" src="//static.mediav.com/js/mvf_news_feed.js"></script>
+<script type="text/javascript" src="//g.csdnimg.cn/copyright/1.0.2/copyright.js"></script>
+<div style="display:none;">
+	<img src="" onerror='setTimeout(function(){if(!/(csdn.net|iteye.com|baiducontent.com|googleusercontent.com|360webcache.com|sogoucdn.com|bingj.com|baidu.com)$/.test(window.location.hostname)){window.location.href="\x68\x74\x74\x70\x73\x3a\x2f\x2f\x77\x77\x77\x2e\x63\x73\x64\x6e\x2e\x6e\x65\x74"}},3000);'>
+</div>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/chart-3456820cac.css" />
+
+
+
+<script src="https://dup.baidustatic.com/js/ds.js"></script>
+<div class="container clearfix" id="mainBox">
+		<!-- <div id="breadcrumbs">
+			<span><a href="https://blog.csdn.net/">博客首页</a></span>
+			<i>></i>
+			<span><a href="https://blog.csdn.net/pzasdq">knowledge-&gt;s...</a></span>
+			<i>></i>
+			<span>&quot;ORACLE数据字典视图的种类分别为：USER,ALL 和 DBA....</span>
+		</div> -->
+		<div class="recommend-right">
+  <ul class="recommend-fixed-box">
+    
+  </ul>
+</div>
+    <main>
+        <div class="blog-content-box">
+	<div class="article-header-box">
+		<div class="article-header">
+			<div class="article-title-box">
+				<span class="article-type type-2 float-left">转</span>				<h1 class="title-article">&quot;ORACLE数据字典视图的种类分别为：USER,ALL 和 DBA.</h1>
+			</div>
+			<div class="article-info-box">
+				<div class="article-bar-top">
+																				<span class="time">2015年11月17日 20:54:48</span>
+					<a class="follow-nickName" href="https://me.csdn.net/pzasdq" target="_blank">KSCL</a>
+						<span class="read-count">阅读数：252</span>
+										</div>
+				<div class="operating">
+														</div>
+			</div>
+		</div>
+	</div>
+	<article>
+		<div id="article_content" class="article_content clearfix csdn-tracking-statistics" data-pid="blog"  data-mod=popu_307  data-dsm = "post" >
+								            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/ck_htmledit_views-85423d2993.css" />
+						<div class="htmledit_views">
+                
+<span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">"ORACLE数据字典视图的种类分别为：USER,ALL 和 DBA.</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　USER_*:有关用户所拥有的对象信息，即用户自己创建的对象信息</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　ALL_*:有关用户可以访问的对象的信息，即用户自己创建的对象的信息加上</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　其他用户创建的对象但该用户有权访问的信息</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　DBA_*:有关整个数据库中对象的信息</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　(这里的*可以为TABLES,INDEXES,OBJECTS,USERS等。)</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　1、查看所有用户</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　select * from dba_user;</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　select * from all_users;</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　select * from user_users;</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　2、查看用户系统权限</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　select * from dba_sys_privs;</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　select * from all_sys_privs;</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　select * from user_sys_privs;</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　3、查看用户对象权限</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　select * from dba_tab_privs;</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　select * from all_tab_privs;</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　select * from user_tab_privs;</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　4、查看所有角色</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　select * from dba_roles;</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　5、查看用户所拥有的角色</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　select * from dba_role_privs;</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　select * from user_role_privs;</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　6、查看当前用户的缺省表空间</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　select username,default_tablespace from user_users;</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　7、查看某个角色的具体权限</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　如grant connect,resource,create session,create view to TEST;</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">　　8、查看RESOURCE具有那些权限</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">用SELECT * FROM DBA_SYS_PRIVS WHERE GRANTEE='RESOURCE</span><br style="color:rgb(69,69,69);line-height:24px;font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;" /><p><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;">"</span></p>
+<p><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;"><br /></span></p>
+<p><span style="font-family:arial, '宋体', sans-serif, tahoma, 'Microsoft YaHei';font-size:14px;color:#454545;line-height:24px;"></span></p>
+<p style="line-height:25.2px;font-family:Helvetica, Tahoma, Arial, sans-serif;font-size:14px;">
+1.查看所有用户：<br />
+  select * from dba_users;<br />
+  select * from all_users;<br />
+  select * from user_users;</p>
+<p style="line-height:25.2px;font-family:Helvetica, Tahoma, Arial, sans-serif;font-size:14px;">
+<br />
+2.查看用户或角色系统权限<span style="font-size:9pt;"><span style="font-family:'Times New Roman';">(</span></span>直接赋值给用户或角色的系统权限<span style="font-size:9pt;"><span style="font-family:'Times New Roman';">)</span></span>：<br />
+  select * from dba_sys_privs;<br />
+  select * from user_sys_privs;</p>
+<p style="line-height:25.2px;font-family:Helvetica, Tahoma, Arial, sans-serif;font-size:14px;">
+ </p>
+<p style="line-height:25.2px;font-family:Helvetica, Tahoma, Arial, sans-serif;font-size:14px;">
+3.查看角色(只能查看登陆用户拥有的角色)所包含的权限</p>
+<p style="line-height:25.2px;font-family:Helvetica, Tahoma, Arial, sans-serif;font-size:14px;">
+sql&gt;select * from role_sys_privs;</p>
+<p style="line-height:25.2px;font-family:Helvetica, Tahoma, Arial, sans-serif;font-size:14px;">
+<br />
+4.查看用户对象权限：<br />
+  select * from dba_tab_privs;<br />
+  select * from all_tab_privs;<br />
+  select * from user_tab_privs;</p>
+<p style="line-height:25.2px;font-family:Helvetica, Tahoma, Arial, sans-serif;font-size:14px;">
+<br />
+5.查看所有角色：<br />
+  select * from dba_roles;</p>
+<p style="line-height:25.2px;font-family:Helvetica, Tahoma, Arial, sans-serif;font-size:14px;">
+<br />
+6.查看用户或角色所拥有的角色：<br />
+  select * from dba_role_privs;<br />
+  select * from user_role_privs;</p>
+<p style="line-height:25.2px;font-family:Helvetica, Tahoma, Arial, sans-serif;font-size:14px;">
+ </p>
+<p style="line-height:25.2px;font-family:Helvetica, Tahoma, Arial, sans-serif;font-size:14px;">
+7.查看哪些用户有sysdba或sysoper系统权限(查询时需要相应权限)</p>
+<p style="line-height:25.2px;font-family:Helvetica, Tahoma, Arial, sans-serif;font-size:14px;">
+select * from V$PWFILE_USERS</p>
+<p style="line-height:25.2px;font-family:Helvetica, Tahoma, Arial, sans-serif;font-size:14px;">
+ </p>
+<p style="line-height:25.2px;font-family:Helvetica, Tahoma, Arial, sans-serif;font-size:14px;">
+ </p>
+<p style="line-height:25.2px;font-family:Helvetica, Tahoma, Arial, sans-serif;font-size:14px;">
+<span>注意：</span></p>
+<p style="line-height:25.2px;font-family:Helvetica, Tahoma, Arial, sans-serif;font-size:14px;">
+<span>1、以下语句可以查看Oracle提供的系统权限</span></p>
+<p style="line-height:25.2px;font-family:Helvetica, Tahoma, Arial, sans-serif;font-size:14px;">
+<span>select name from sys.system_privilege_map</span></p>
+<p style="line-height:25.2px;font-family:Helvetica, Tahoma, Arial, sans-serif;font-size:14px;">
+ </p>
+<p style="line-height:25.2px;font-family:Helvetica, Tahoma, Arial, sans-serif;font-size:14px;">
+<span>2、查看一个用户的所有系统权限(包含角色的系统权限)</span></p>
+<div class="dp-highlighter">
+<div class="bar">
+<div class="tools" style="font-weight:bold;">Sql代码  <a title="收藏这段代码" style="color:rgb(16,138,198);text-decoration:underline;"><img class="star" alt="收藏代码" src="http://dbajun.iteye.com/images/icon_star.png" style="border:0px;" /></a></div>
+</div>
+<ol class="dp-sql" start="1" style="border:1px solid rgb(209,215,220);color:rgb(43,145,175);line-height:1.4em;font-size:1em;"><li style="line-height:18px;font-size:1em;border-left-color:rgb(209,215,220);border-left-width:1px;border-left-style:solid;background-color:rgb(250,250,250);">
+<span style="color:#000000;"><span class="keyword" style="font-weight:bold;">select</span> privilege <span class="keyword" style="font-weight:bold;">from</span> dba_sys_privs <span class="keyword" style="font-weight:bold;">where</span> grantee=<span class="string" style="color:#0000FF;">'DATAUSER'</span>  </span></li><li style="line-height:18px;font-size:1em;border-left-color:rgb(209,215,220);border-left-width:1px;border-left-style:solid;background-color:rgb(250,250,250);">
+<span style="color:#000000;"><span class="keyword" style="font-weight:bold;">union</span>  </span></li><li style="line-height:18px;font-size:1em;border-left-color:rgb(209,215,220);border-left-width:1px;border-left-style:solid;background-color:rgb(250,250,250);">
+<span style="color:#000000;"><span class="keyword" style="font-weight:bold;">select</span> privilege <span class="keyword" style="font-weight:bold;">from</span> dba_sys_privs <span class="keyword" style="font-weight:bold;">where</span> grantee <span class="op" style="color:#808080;">in</span> (<span class="keyword" style="font-weight:bold;">select</span> granted_role <span class="keyword" style="font-weight:bold;">from</span> dba_role_privs <span class="keyword" style="font-weight:bold;">where</span> grantee=<span class="string" style="color:#0000FF;">'DATAUSER'</span> );
+   </span></li></ol></div>
+<br />            </div>
+                </div>
+					</article>
+	
+</div>
+<script>
+		$(".MathJax").remove();
+		if($('div.markdown_views pre.prettyprint code.hljs').length > 0 ){
+				$('div.markdown_views')[0].className = 'markdown_views';
+		}
+</script>
+                <a id="commentBox"></a>
+<div class="comment-box">
+	  	<div class="comment-edit-box d-flex">
+		<a id="commentsedit"></a>
+		<div class="user-img">
+			<img src="https://avatar.csdn.net/0/6/0/3_xasjiyuan.jpg">
+		</div>
+		<form id="commentform">
+			<input type="hidden" id="comment_replyId">
+			<textarea class="comment-content" name="comment_content" id="comment_content" placeholder="想对作者说点什么"></textarea>
+			<div class="opt-box"> <!-- d-flex -->
+				<div id="ubbtools" class="add_code">
+					<a href="#insertcode" code="code" target="_self"><i class="icon iconfont icon-daima"></i></a>
+				</div>
+				<input type="hidden" id="comment_replyId" name="comment_replyId">
+				<input type="hidden" id="comment_userId" name="comment_userId" value="">
+				<input type="hidden" id="commentId" name="commentId" value="">
+				<div style="display: none;" class="csdn-tracking-statistics tracking-click" data-mod="popu_384"><a href="#" target="_blank" class="comment_area_btn">发表评论</a></div>
+				<div class="dropdown" id="myDrap">
+					<a class="dropdown-face d-flex align-items-center" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					<div class="txt-selected text-truncate">添加代码片</div>
+					<svg class="icon d-block" aria-hidden="true">
+						<use xlink:href="#csdnc-triangledown"></use>
+					</svg>
+					</a>
+					<ul class="dropdown-menu" id="commentCode" aria-labelledby="drop4">
+						<li><a data-code="html">HTML/XML</a></li>
+						<li><a data-code="objc">objective-c</a></li>
+						<li><a data-code="ruby">Ruby</a></li>
+						<li><a data-code="php">PHP</a></li>
+						<li><a data-code="csharp">C</a></li>
+						<li><a data-code="cpp">C++</a></li>
+						<li><a data-code="javascript">JavaScript</a></li>
+						<li><a data-code="python">Python</a></li>
+						<li><a data-code="java">Java</a></li>
+						<li><a data-code="css">CSS</a></li>
+						<li><a data-code="sql">SQL</a></li>
+						<li><a data-code="plain">其它</a></li>
+					</ul>
+				</div>  
+				<div class="right-box">
+					<span id="tip_comment" class="tip">还能输入<em>1000</em>个字符</span>
+					<input type="submit" class="btn btn-sm btn-red btn-comment" value="发表评论">
+				</div>
+			</div>
+		</form>
+	</div>
+			<div class="comment-list-container">
+		<a id="comments"></a>
+		<div class="comment-list-box">
+		</div>
+		<div id="commentPage" class="pagination-box d-none"></div>
+		<div class="opt-box text-center">
+			<button class="btn btn-sm btn-link-blue" id="btnMoreComment"></button>
+		</div>
+	</div>
+</div>
+        <div class="recommend-box">
+            		<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/fengdl123/article/details/52124457,BlogCommendFromBaidu_0"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/fengdl123/article/details/52124457,BlogCommendFromBaidu_0"}'>
+		<a href="https://blog.csdn.net/fengdl123/article/details/52124457" target="_blank" title="Oracle中常用的三种数据字典表">
+			<div class="content">
+				<h4 class="text-truncate oneline">
+						<em>Oracle</em>中常用的三种<em>数据字典</em>表				</h4>
+				<div class="info-box d-flex align-content-center">
+					<p class="avatar">
+							<img src="https://avatar.csdn.net/7/4/B/3_fengdl123.jpg" alt="fengdl123" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">fengdl123</span>
+								<span class="triangle"></span>
+							</span>
+					</p>
+					<p class="date-and-readNum">
+						<span class="date hover-show">08-04</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							255</span>
+						</p>
+					</div>
+					<p class="content oneline">
+							1.user_tables
+   表的字典表,查看命令：
+desc user_tables;
+select * from user_tables;
+2.user_views
+  视图的字典表...					</p>
+			</div>
+					</a>
+	</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/wz125/article/details/1788248,BlogCommendFromBaidu_1"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/wz125/article/details/1788248,BlogCommendFromBaidu_1"}'>
+		<a href="https://blog.csdn.net/wz125/article/details/1788248" target="_blank" title="ORACLE 数据字典　之　基本使用">
+			<div class="content">
+				<h4 class="text-truncate oneline">
+						<em>ORACLE</em> <em>数据字典</em>　之　基本使用				</h4>
+				<div class="info-box d-flex align-content-center">
+					<p class="avatar">
+							<img src="https://avatar.csdn.net/7/4/F/3_wz125.jpg" alt="wz125" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">wz125</span>
+								<span class="triangle"></span>
+							</span>
+					</p>
+					<p class="date-and-readNum">
+						<span class="date hover-show">09-17</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							437</span>
+						</p>
+					</div>
+					<p class="content oneline">
+							     dictionary　　　全部数据字典表的名称和解释，它有一个同义词dict    dict_column　　 全部数据字典表里字段名称和解释       查询跟索引有关的数据字典时，可以用...					</p>
+			</div>
+					</a>
+	</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/jc_benben/article/details/9790567,BlogCommendFromBaidu_2"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/jc_benben/article/details/9790567,BlogCommendFromBaidu_2"}'>
+		<a href="https://blog.csdn.net/jc_benben/article/details/9790567" target="_blank" title="oracle数据字典等常用查询操作">
+			<div class="content">
+				<h4 class="text-truncate oneline">
+						<em>oracle</em><em>数据字典</em>等常用查询操作				</h4>
+				<div class="info-box d-flex align-content-center">
+					<p class="avatar">
+							<img src="https://avatar.csdn.net/B/A/9/3_jc_benben.jpg" alt="jc_benben" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">jc_benben</span>
+								<span class="triangle"></span>
+							</span>
+					</p>
+					<p class="date-and-readNum">
+						<span class="date hover-show">03-01</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							2512</span>
+						</p>
+					</div>
+					<p class="content oneline">
+							1、查询表操作
+
+各个权限的表：
+其中表有三个权限的视图，
+select count(*) from dba_tables;
+select count(*) from dba_objects wher...					</p>
+			</div>
+					</a>
+	</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/robinson_0612/article/details/72833564,searchFromBaidu_3"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/robinson_0612/article/details/72833564,searchFromBaidu_3"}'>
+		<a href="https://blog.csdn.net/robinson_0612/article/details/72833564" target="_blank" title="Oracle 12c CDB数据库中数据字典架构">
+			<div class="content">
+				<h4 class="text-truncate oneline">
+						<em>Oracle</em> 12c CDB数据库中<em>数据字典</em>架构				</h4>
+				<div class="info-box d-flex align-content-center">
+					<p class="avatar">
+							<img src="https://avatar.csdn.net/D/F/C/3_robinson_0612.jpg" alt="robinson_0612" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">robinson_0612</span>
+								<span class="triangle"></span>
+							</span>
+					</p>
+					<p class="date-and-readNum">
+						<span class="date hover-show">06-01</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							1561</span>
+						</p>
+					</div>
+					<p class="content oneline">
+							数据字典就是元数据的集合，比如创建的表，列，约束，触发器等等这些都是元数据，需要保存到数据库中。除此之外，Oracle自身的一些数据库对象，如目录，PL/SQL代码等等这些都是元数据，都需要存放在数据...					</p>
+			</div>
+					</a>
+	</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/iteye_9077/article/details/82609841,searchFromBaidu_4"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/iteye_9077/article/details/82609841,searchFromBaidu_4"}'>
+		<a href="https://blog.csdn.net/iteye_9077/article/details/82609841" target="_blank" title="[Oracle] DBA_USERS数据字典">
+			<div class="content">
+				<h4 class="text-truncate oneline">
+						[<em>Oracle</em>] DBA_<em>USER</em>S<em>数据字典</em>				</h4>
+				<div class="info-box d-flex align-content-center">
+					<p class="avatar">
+							<img src="https://avatar.csdn.net/5/1/4/3_iteye_9077.jpg" alt="iteye_9077" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">iteye_9077</span>
+								<span class="triangle"></span>
+							</span>
+					</p>
+					<p class="date-and-readNum">
+						<span class="date hover-show">11-23</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							12</span>
+						</p>
+					</div>
+					<p class="content oneline">
+							
+    SELECT *
+      FROM DBA_USERS;
+  
+					</p>
+			</div>
+					</a>
+	</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/cteng/article/details/40379229,searchFromBaidu_5"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/cteng/article/details/40379229,searchFromBaidu_5"}'>
+		<a href="https://blog.csdn.net/cteng/article/details/40379229" target="_blank" title="深入理解Oracle 12c数据库管理 笔记">
+			<div class="content">
+				<h4 class="text-truncate oneline">
+						深入理解<em>Oracle</em> 12c数据库管理 笔记				</h4>
+				<div class="info-box d-flex align-content-center">
+					<p class="avatar">
+							<img src="https://avatar.csdn.net/5/4/0/3_cteng.jpg" alt="cteng" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">cteng</span>
+								<span class="triangle"></span>
+							</span>
+					</p>
+					<p class="date-and-readNum">
+						<span class="date hover-show">10-22</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							2560</span>
+						</p>
+					</div>
+					<p class="content oneline">
+							深入理解Oracle 12c数据库管理
+
+
+跳转至： 
+导航、 
+搜索
+
+
+
+
+
+
+目录
+
+
+1
+安装Oracle2
+实现数据库3
+配置高效环境4
+表空间和数据文...					</p>
+			</div>
+					</a>
+	</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/liuzhongyu469535724/article/details/51548965,searchFromBaidu_6"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/liuzhongyu469535724/article/details/51548965,searchFromBaidu_6"}'>
+		<a href="https://blog.csdn.net/liuzhongyu469535724/article/details/51548965" target="_blank" title="DBA学习笔记 - chapter 4 数据字典和控制文件（1）">
+			<div class="content">
+				<h4 class="text-truncate oneline">
+						DBA学习笔记 - chapter 4 <em>数据字典</em>和控制文件（1）				</h4>
+				<div class="info-box d-flex align-content-center">
+					<p class="avatar">
+							<img src="https://avatar.csdn.net/E/0/4/3_liuzhongyu469535724.jpg" alt="liuzhongyu469535724" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">liuzhongyu469535724</span>
+								<span class="triangle"></span>
+							</span>
+					</p>
+					<p class="date-and-readNum">
+						<span class="date hover-show">05-31</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							170</span>
+						</p>
+					</div>
+					<p class="content oneline">
+							摘自 Oracle DBA 入门与实战经典 数据字典 简介					</p>
+			</div>
+					</a>
+	</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/qq_32575047/article/details/78087331,searchFromBaidu_7"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/qq_32575047/article/details/78087331,searchFromBaidu_7"}'>
+		<a href="https://blog.csdn.net/qq_32575047/article/details/78087331" target="_blank" title="oracle中的数据字典">
+			<div class="content">
+				<h4 class="text-truncate oneline">
+						<em>oracle</em>中的<em>数据字典</em>				</h4>
+				<div class="info-box d-flex align-content-center">
+					<p class="avatar">
+							<img src="https://avatar.csdn.net/3/7/D/3_qq_32575047.jpg" alt="qq_32575047" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">qq_32575047</span>
+								<span class="triangle"></span>
+							</span>
+					</p>
+					<p class="date-and-readNum">
+						<span class="date hover-show">09-25</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							314</span>
+						</p>
+					</div>
+					<p class="content oneline">
+							数据字典
+ 
+定义：数据字典是oracle数据库中最重要的组成部分，记录了数据库的系统
+信息，它是只读表和视图的集合，数据字典的所有者为sys用户；
+用户只能在数据字典上执行查询操作,而其维护...					</p>
+			</div>
+					</a>
+	</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/u013412772/article/details/52733050,BlogCommendFromGuangxin_8"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/u013412772/article/details/52733050,BlogCommendFromGuangxin_8"}'>
+		<a href="https://blog.csdn.net/u013412772/article/details/52733050" target="_blank" title="Oracle数据库（权限、用户、角色、基本知识介绍）">
+			<div class="content">
+				<h4 class="text-truncate oneline">
+						<em>Oracle</em>数据库（权限、用户、角色、基本知识介绍）				</h4>
+				<div class="info-box d-flex align-content-center">
+					<p class="avatar">
+							<img src="https://avatar.csdn.net/A/F/8/3_u013412772.jpg" alt="u013412772" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">u013412772</span>
+								<span class="triangle"></span>
+							</span>
+					</p>
+					<p class="date-and-readNum">
+						<span class="date hover-show">10-04</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							1.7万</span>
+						</p>
+					</div>
+					<p class="content oneline">
+							oracle(权限/用户/角色)					</p>
+			</div>
+					</a>
+	</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/yangyuge1987/article/details/62440955,BlogCommendFromGuangxin_9"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/yangyuge1987/article/details/62440955,BlogCommendFromGuangxin_9"}'>
+		<a href="https://blog.csdn.net/yangyuge1987/article/details/62440955" target="_blank" title="oracle 权限管理、角色管理详解">
+			<div class="content">
+				<h4 class="text-truncate oneline">
+						<em>oracle</em> 权限管理、角色管理详解				</h4>
+				<div class="info-box d-flex align-content-center">
+					<p class="avatar">
+							<img src="https://avatar.csdn.net/F/0/9/3_yangyuge1987.jpg" alt="yangyuge1987" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">yangyuge1987</span>
+								<span class="triangle"></span>
+							</span>
+					</p>
+					<p class="date-and-readNum">
+						<span class="date hover-show">03-16</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							511</span>
+						</p>
+					</div>
+					<p class="content oneline">
+							oracle权限分为两种：
+系统权限：系统规定用户使用数据库的权限，允许用户执行特定的数据库动作，如创建表、创建索引、连接实例等。
+对象权限：某种权限可以让用户对其它用户的的表或视图等对象进行特定操作...					</p>
+			</div>
+					</a>
+	</div>
+						<div class="recommend-item-box type_hot_word">
+									<div class="content clearfix oneline">
+				<h5 class="float-left">相关热词</h5>
+				<div class="float-left">
+									<span>
+						<a href="https://blog.csdn.net/guoxilen/article/details/78625987" target="_blank">
+						oracle和</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/studyvcmfc/article/details/7055258" target="_blank">
+						oracle与</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/dbeautifullife/article/details/70144503" target="_blank">
+						oracle上午</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/ziwen00/article/details/11672233" target="_blank">
+						oracle伪劣</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/u010689306/article/details/51524693" target="_blank">
+						oracle空串</a>
+					</span>
+								</div>
+			</div>
+					</div>
+		<div class="recommend-item-box blog-expert-recommend-box">
+			<h4 class="text-truncate">博主推荐
+			</h4>
+			<div class="blog-expert-recommend">
+				<div class="blog-expert-load-new" data-index="3">
+					<svg version="1.1" viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+					<path d="M142.5,57.5c-1.3-1.2-2.1-3.3-2.1-5.4c0-4.2,3.3-7.5,7.5-7.5h19.6c4.2,0,7.5,3.3,7.5,7.5s-3.3,7.5-7.5,7.5h-4.2
+					 C170.8,71.2,175,85,175,100c0,41.7-33.8,75-75,75c-4.2,0-7.5-3.3-7.5-7.5c0-4.2,3.3-7.5,7.5-7.5c33.3,0,60-27.1,60-60
+					 C160,83.7,153.8,68.7,142.5,57.5L142.5,57.5z M57.5,142.5c1.2,1.2,2.1,3.3,2.1,5.4c0,4.2-3.3,7.5-7.5,7.5H32.5
+					 c-4.2,0-7.5-3.3-7.5-7.5c0-4.2,3.3-7.5,7.5-7.5h4.2C29.2,128.8,25,115,25,100c0-41.7,33.7-75,75-75c4.2,0,7.5,3.3,7.5,7.5
+					 S104.2,40,100,40c-33.3,0-60,27.1-60,60C40,116.2,46.2,131.2,57.5,142.5z"/>
+					</svg>
+					<span>换一批</span>
+				</div>
+				<div class="blog-expert">
+				</div>
+			</div>
+		</div>
+
+
+            <div class="recommend-loading-box">
+                <img src='https://csdnimg.cn/release/phoenix/images/feedLoading.gif'>
+            </div>
+            <div class="recommend-end-box">
+                <p class="text-center">没有更多推荐了，<a href="https://blog.csdn.net/" class="c-blue c-blue-hover c-blue-focus">返回首页</a></p>
+            </div>
+        </div>
+    </main>
+
+    <aside>
+		    <div id="asideProfile" class="aside-box">
+    <!-- <h3 class="aside-title">个人资料</h3> -->
+    <div class="profile-intro d-flex">
+        <div class="avatar-box d-flex justify-content-center flex-column">
+            <a href="https://blog.csdn.net/pzasdq">
+                <img src="https://avatar.csdn.net/D/6/1/3_pzasdq.jpg" class="avatar_pic">
+            </a>
+        </div>
+        <div class="user-info d-flex justify-content-center flex-column">
+            <p class="name csdn-tracking-statistics tracking-click" data-mod="popu_379">
+                <a href="https://blog.csdn.net/pzasdq" target="_blank" class="" id="uid">KSCL</a>
+            </p>
+                    </div>
+                <div class="opt-box d-flex justify-content-center flex-column">
+            <span  class="csdn-tracking-statistics tracking-click" data-mod="popu_379">
+                <a class="btn btn-sm btn-red-hollow" id="btnAttent">关注</a>
+            </span>
+                    </div>
+            </div>
+    <div class="data-info d-flex item-tiling">
+                <dl class="text-center" title="8">
+                        <dt><a href="https://blog.csdn.net/pzasdq?t=1">原创</a></dt>
+            <dd><a href="https://blog.csdn.net/pzasdq?t=1"><span class="count">8</span></a></dd>
+                    </dl>
+        <dl class="text-center" id="fanBox" title="20">
+            <dt>粉丝</dt>
+            <dd><span class="count" id="fan">20</span></dd>
+        </dl>
+        <dl class="text-center" title="23">
+            <dt>喜欢</dt>
+            <dd><span class="count">23</span></dd>
+        </dl>
+        <dl class="text-center" title="22">
+            <dt>评论</dt>
+            <dd><span class="count">22</span></dd>
+        </dl>
+    </div>
+    <div class="grade-box clearfix">
+        <dl>
+            <dt>等级：</dt>
+            <dd>
+                <a href="https://blog.csdn.net/home/help.html#level" title="6级,点击查看等级说明" target="_blank">
+                    <svg class="icon icon-level" aria-hidden="true">
+                        <use xlink:href="#csdnc-bloglevel-6"></use>
+                    </svg>
+                </a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>访问：</dt>
+            <dd title="475004">
+                47万+            </dd>
+        </dl>
+        <dl>
+            <dt>积分：</dt>
+            <dd title="5424">
+                5424            </dd>
+        </dl>
+        <dl title="7146">
+            <dt>排名：</dt>
+            <dd>7146</dd>
+        </dl>
+    </div>
+    </div>
+		    		    <div id="asideNewArticle" class="aside-box">
+    <h3 class="aside-title">最新文章</h3>
+    <div class="aside-content">
+        <ul class="inf_list clearfix csdn-tracking-statistics tracking-click" data-mod="popu_382">
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/pzasdq/article/details/71169472" target="_blank">Java内部类的作用</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/pzasdq/article/details/71156242" target="_blank">每天进步一点点——五分钟理解一致性哈希算法(consistent hashing)</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/pzasdq/article/details/71152814" target="_blank">Spring 编码过滤 -- 解析Filter实现原理</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/pzasdq/article/details/71152643" target="_blank">怎样理解阻塞非阻塞与同步异步的区别？</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/pzasdq/article/details/71111881" target="_blank">java异常处理的throw和throws的区别</a>
+            </li>
+                    </ul>
+    </div>
+</div>
+		    <div id="asideArchive" class="aside-box flexible-box">
+    <h3 class="aside-title">归档</h3>
+    <div class="aside-content">
+        <ul class="archive-list">
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/pzasdq/article/month/2017/05">
+                    2017年5月                    <span class="count float-right">5篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/pzasdq/article/month/2017/04">
+                    2017年4月                    <span class="count float-right">13篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/pzasdq/article/month/2017/03">
+                    2017年3月                    <span class="count float-right">45篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/pzasdq/article/month/2017/02">
+                    2017年2月                    <span class="count float-right">12篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/pzasdq/article/month/2017/01">
+                    2017年1月                    <span class="count float-right">25篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/pzasdq/article/month/2016/12">
+                    2016年12月                    <span class="count float-right">10篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/pzasdq/article/month/2016/11">
+                    2016年11月                    <span class="count float-right">57篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/pzasdq/article/month/2016/10">
+                    2016年10月                    <span class="count float-right">52篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/pzasdq/article/month/2016/09">
+                    2016年9月                    <span class="count float-right">137篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/pzasdq/article/month/2016/08">
+                    2016年8月                    <span class="count float-right">32篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/pzasdq/article/month/2016/07">
+                    2016年7月                    <span class="count float-right">3篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/pzasdq/article/month/2016/06">
+                    2016年6月                    <span class="count float-right">13篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/pzasdq/article/month/2016/05">
+                    2016年5月                    <span class="count float-right">14篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/pzasdq/article/month/2016/04">
+                    2016年4月                    <span class="count float-right">43篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/pzasdq/article/month/2016/03">
+                    2016年3月                    <span class="count float-right">8篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/pzasdq/article/month/2016/02">
+                    2016年2月                    <span class="count float-right">33篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/pzasdq/article/month/2016/01">
+                    2016年1月                    <span class="count float-right">88篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/pzasdq/article/month/2015/12">
+                    2015年12月                    <span class="count float-right">24篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/pzasdq/article/month/2015/11">
+                    2015年11月                    <span class="count float-right">12篇</span>
+                </a>
+            </li>
+                    </ul>
+    </div>
+        <p class="text-center">
+        <a class="btn btn-link-blue flexible-btn" data-fbox="aside-archive">展开</a>
+    </p>
+    </div>
+		    <div id="asideHotArticle" class="aside-box">
+	<h3 class="aside-title">热门文章</h3>
+	<div class="aside-content">
+		<ul class="hotArticle-list csdn-tracking-statistics tracking-click" data-mod="popu_521">
+							<li>
+					<a href="https://blog.csdn.net/pzasdq/article/details/51096681">MySQL 字符串 转 int/double CAST与CONVERT 函数的用法</a>
+					<p class="read">阅读量：<span>27221</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/pzasdq/article/details/52537337">IntelliJ IDEA启动Tomcat后，却无法访问Tomcat主页</a>
+					<p class="read">阅读量：<span>22950</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/pzasdq/article/details/51171348">搭建邮件服务器时设置A/MX记录方法详解</a>
+					<p class="read">阅读量：<span>17499</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/pzasdq/article/details/52754906">java从文本文件中一次读入一行数据进行处理</a>
+					<p class="read">阅读量：<span>14297</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/pzasdq/article/details/51725179">SQL的WHERE子句中包含多个AND和OR</a>
+					<p class="read">阅读量：<span>11688</span></p>
+				</li>
+					</ul>
+	</div>
+</div>
+		    <div id="asideNewComments" class="aside-box">
+    <h3 class="aside-title">最新评论</h3>
+    <div class="aside-content">
+        <ul class="newcomment-list">
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/pzasdq/article/details/50510229#comments">wmsys.wm_concat结果...</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/ycyyoulove" class="user-name" target="_blank">ycyyoulove</a>：依然报 ORA-06502: PL/SQL: 数字或值错误                </p>
+            </li>
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/pzasdq/article/details/52592819#comments">Xmlns与targetNames...</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/tmsc123" class="user-name" target="_blank">tmsc123</a>：简单易懂，强！                </p>
+            </li>
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/pzasdq/article/details/52537337#comments">IntelliJ IDEA启动To...</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/JYL15732624861" class="user-name" target="_blank">JYL15732624861</a>：感谢分享                </p>
+            </li>
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/pzasdq/article/details/60956526#comments">如何使用sourcetree 或 ...</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/mingyundezuoan" class="user-name" target="_blank">mingyundezuoan</a>：ctrl + k 不是 shift + k                </p>
+            </li>
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/pzasdq/article/details/53128331#comments">Java中常用的锁分析总结</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/qq779446849" class="user-name" target="_blank">qq779446849</a>：ThreadName:get Thread-read0lock...
+
+读写锁跑过吗？貌似不行哎。...                </p>
+            </li>
+                    </ul>
+    </div>
+</div>
+		<div id="asideFooter">
+				<div class="aside-box">
+			<div class="persion_article">
+			</div>
+		</div>
+	</div>
+</aside>
+<script src="https://csdnimg.cn/pubfooter/js/publib_footer-1.0.3.js" data-isfootertrack="false" type="text/javascript"></script>
+<script>
+	$("a.flexible-btn").click(function(){
+		$(this).parents('div.aside-box').removeClass('flexible-box');
+		$(this).remove();
+	})
+</script>
+</div>
+<div class="mask-dark"></div>
+<div class="tool-box">
+	<ul class="meau-list">
+		<li class="btn-like-box ">
+			<button class=" low-height hover-box btn-like " title="点赞">
+				<svg class="icon active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup-ok"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup"></use>
+				</svg>
+				<span class="hover-show text-box text">
+					<span class="no-active">点赞</span>
+					<span class="active">取消点赞</span>
+				</span>
+				<p>0</p>
+			</button>
+		</li>
+		<li class="">
+						<a class="btn-comments low-height hover-box" title="写评论" href="#commentBox">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-comments"></use>
+				</svg>
+				<span class="hover-show text">评论</span>
+				<p class="">
+										</p>
+			</a>
+		</li>
+		<li class="toc-container-box" id="liTocBox">
+			<button class="btn-toc low-height hover-box" title="目录">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-contents"></use>
+				</svg>
+				<span class="hover-show text">目录</span>
+			</button>
+			<div class="toc-container">
+				<div class="pos-box">
+					<div class="icon-arrow"></div>
+					<div class="scroll-box">
+						<div class="toc-box"></div>
+					</div>
+				</div>
+				<div class="opt-box">
+					<button class="btn-opt prev nomore" title="向上">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevronup"></use>
+						</svg>
+					</button>
+					<button class="btn-opt next">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevrondown"></use>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</li>
+		<li>
+			<button class="btn-bookmark low-height hover-box" title="收藏">
+				<svg class="icon active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-bookmark-ok"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-bookmark"></use>
+				</svg>
+					<span class="hover-show text">收藏</span>
+				<!-- <span class="hover-show text-box text">
+					<span class="no-active">收藏</span>
+					<span class="active">取消收藏</span>
+				</span> -->
+			</button>
+		</li>
+				<li class="bdsharebuttonbox">
+			<button class="btn-comments low-height hover-box" >
+				<a href="#" class="bds_weixin clear-share-style" data-cmd="weixin" title="手机看"></a>
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-wechat"></use>
+				</svg>
+				<span class="hover-show text text3">
+					手机看
+				</span>
+			</button>
+		</li>
+							<li class="widescreen-hide">
+				<a class="btn-comments low-height hover-box" href="https://blog.csdn.net/pzasdq/article/details/49882763" title="update 多列更新">
+					<svg class="icon hover-hide" aria-hidden="true">
+						<use xlink:href="#csdnc-shangyiye"></use>
+					</svg>
+					<span class="hover-show text text3">上一篇</span>
+				</a>
+			</li>
+								<li class="widescreen-hide">
+			<a class="btn-comments hover-box low-height" href="https://blog.csdn.net/pzasdq/article/details/49923291" title="Merge_into的使用详解">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-xiayiye"></use>
+				</svg>
+				<span class="hover-show text text3">下一篇</span>
+			</a>
+		</li>
+				
+		<!-- 宽屏更多按钮 -->
+		<li class="widescreen-more">
+			<a class="btn-comments chat-ask-button low-height hover-box" title="快问" href="#chatqa">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-more"></use>
+				</svg>
+				<span class="hover-show text">更多</span>
+				
+			</a>
+			<ul class="widescreen-more-box">
+													<li class="widescreen-more">
+						<a class="btn-comments low-height hover-box" href="https://blog.csdn.net/pzasdq/article/details/49882763" title="update 多列更新">
+							<svg class="icon hover-hide" aria-hidden="true">
+								<use xlink:href="#csdnc-shangyiye"></use>
+							</svg>
+							<span class="hover-show text text3">上一篇</span>
+						</a>
+					</li>
+																<li class="widescreen-more">
+					<a class="btn-comments hover-box low-height" href="https://blog.csdn.net/pzasdq/article/details/49923291" title="Merge_into的使用详解">
+						<svg class="icon hover-hide" aria-hidden="true">
+							<use xlink:href="#csdnc-xiayiye"></use>
+						</svg>
+						<span class="hover-show text text3">下一篇</span>
+					</a>
+				</li>
+							</ul>
+		</li>
+	</ul>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'https://csdnimg.cn/static/api/js/share.js?v=89860594'];</script>
+<script>
+    var recommendCount = 10;
+    recommendCount = recommendCount > 1 ? (recommendCount + (recommendCount>6 ? 2 : 1)) : recommendCount;
+    var articleTit = "&quot;ORACLE数据字典视图的种类分别为：USER,ALL 和 DBA.";
+    var ChannelId = 6;
+    var articleId = "49893065";
+    var commentscount = 0;
+    var islock = false;
+    var curentUrl = "https://blog.csdn.net/pzasdq/article/details/49893065";
+    var myUrl = "https://my.csdn.net/";
+    //1禁止评论，2正常
+    var commentAuth = 2;
+    //百度搜索
+    var baiduKey = "%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E8%A7%86%E5%9B%BE%E5%88%86%E6%88%903%E7%B1%BB%3Adba%E3%80%81";
+    var needInsertBaidu = false;
+    // 代码段样式
+    var codeStyle = '';
+		var highlight = ["oracle","\u6570\u636e\u5b57\u5178","\u89c6\u56fe","\u79cd\u7c7b","\u5206\u522b\u4e3a","user","all","dba."];//高亮数组
+		// 相关推荐博主数据
+    var RecommendBlogExpertList = [{"user_name":"wonder4","nick_name":"wonder4","avatar":"https:\/\/avatar.csdn.net\/2\/6\/0\/3_wonder4.jpg","is_expert":true,"article_count":639},{"user_name":"robinson_0612","nick_name":"robinson_0612","avatar":"https:\/\/avatar.csdn.net\/D\/F\/C\/3_robinson_0612.jpg","is_expert":true,"article_count":680},{"user_name":"toto1297488504","nick_name":"toto1297488504","avatar":"https:\/\/avatar.csdn.net\/3\/F\/F\/3_toto1297488504.jpg","is_expert":true,"article_count":1584},{"user_name":"jason5186","nick_name":"jason5186","avatar":"https:\/\/avatar.csdn.net\/C\/4\/5\/3_jason5186.jpg","is_expert":false,"article_count":135},{"user_name":"qq_33879355","nick_name":"qq_33879355","avatar":"https:\/\/avatar.csdn.net\/2\/8\/8\/3_qq_33879355.jpg","is_expert":false,"article_count":162},{"user_name":"notbaron","nick_name":"notbaron","avatar":"https:\/\/avatar.csdn.net\/A\/8\/1\/3_notbaron.jpg","is_expert":false,"article_count":1533},{"user_name":"edcvf3","nick_name":"edcvf3","avatar":"https:\/\/avatar.csdn.net\/6\/7\/A\/3_edcvf3.jpg","is_expert":false,"article_count":177},{"user_name":"S630730701","nick_name":"S630730701","avatar":"https:\/\/avatar.csdn.net\/6\/6\/6\/3_s630730701.jpg","is_expert":false,"article_count":111},{"user_name":"HowCanYouDoIt","nick_name":"HowCanYouDoIt","avatar":"https:\/\/avatar.csdn.net\/E\/F\/5\/3_howcanyoudoit.jpg","is_expert":false,"article_count":27},{"user_name":"u013412772","nick_name":"u013412772","avatar":"https:\/\/avatar.csdn.net\/A\/F\/8\/3_u013412772.jpg","is_expert":false,"article_count":193}];
+		
+		var articleType = 2;
+		var CopyrightContent = '本文为博主原创文章，未经博主允许不得转载。';
+</script>
+<script src="https://csdnimg.cn/public/sandalstrap/1.4/js/sandalstrap.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.js"></script>
+<script src='https://csdnimg.cn/public/common/gotop/js/goTop-v1.0.min.js?v201803151422'></script>
+<script>
+    GoTop({
+        right: 8,
+        hasReport: true,
+        reportFun: function() {
+            showReport(false,"&quot;ORACLE数据字典视图的种类分别为：USER,ALL 和 DBA.");
+        }
+    })
+</script>
+<script src="https://g.csdnimg.cn/login-box/1.0.1/login-box.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/common-ff25a7a98a.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/detail-a341548e20.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/themes/skin3-template/skin3-template-9376486353.min.js"></script>
+<script src="https://csdnimg.cn/search/baidu_search-1.1.2.js?v=201802071056&autorun=true&install=true&keyword=%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E8%A7%86%E5%9B%BE%E5%88%86%E6%88%903%E7%B1%BB%3Adba%E3%80%81"  type="text/javascript"></script>
+</body>
+<!-- 第四范式SDK -->
+
+<!-- 高亮未与 markdown兼容  -->
+	<link rel="stylesheet" href="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/chart.css" />
+	<script type="text/javascript" src="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/lib/chart.min.js"></script>
+	<script type="text/javascript" src="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/widget2chart.js"></script>
+	<link rel="stylesheet" href="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/codesnippet/lib/highlight/styles/atom-one-dark.css">
+	<script type="text/javascript" src="https://csdnimg.cn/release/phoenix/production/pc_wap_common-676a063698.js" /></script>
+
+	<script type="text/javascript">
+	$(function(){
+		var allEscRegex = /&(lt|gt|amp|quot|nbsp|shy|#\d{1,5});/g,
+		    namedEntities = {
+					lt: '<',
+					gt: '>',
+					amp: '&',
+					quot: '"',
+					nbsp: '\u00a0',
+					shy: '\u00ad'
+				}
+		var allEscDecode = function( match, code ) {
+				return namedEntities[ code ];
+		};
+		htmlDecodeAttr = function( text ) {
+				return text.replace( allEscRegex, allEscDecode );
+		}
+	  hljs.initHighlightingOnLoad();
+	  hljs.initCopyButtonOnLoad();
+	  hljs.initLineNumbersOnLoad();
+		if($('pre .language-plain').length>0){
+			$('pre .language-plain').each(function(i,e){
+				var highlightRe = hljs.highlightAuto(htmlDecodeAttr(e.innerHTML))
+				e.innerHTML = highlightRe.value;
+				e.className = 'language-'+highlightRe.language;
+			});
+		}
+	})
+	</script>
+<script type="text/javascript" src="https://static-blog.csdn.net/mdeditor/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            "HTML-CSS": {
+                    linebreaks: { automatic: true, width: "94%container" },
+                    imageFont: null
+            },
+            tex2jax: {
+                preview: "none"
+            },
+            mml2jax: {
+                preview: 'none'
+            }
+    });
+</script>
+</html>
