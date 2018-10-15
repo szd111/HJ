@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="dm1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/resources/dm/Dm7JdbcDriver15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/dm/Dm7Dialect15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/dm/dmgeo_1.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/dm/Dm7Dialect16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/dm/Dm7JdbcDriver14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/dm/Dm7Dialect14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/dm/Dm7JdbcDriver16.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
