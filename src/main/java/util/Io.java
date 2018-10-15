@@ -1,7 +1,6 @@
 package util;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.Enumeration;
 import java.util.Properties;
 
@@ -15,7 +14,6 @@ public class Io {
     static Properties pps;
 
     /**
-
      * @描述 根据配置文件的路径 和配置参数 读取相应的配置值
      * @参数 path 文件路径，name 参数值
      * @返回值 null
@@ -53,6 +51,86 @@ public class Io {
         return names;
 
 
+    }
+
+
+    /**
+     * @描述 向文件路径path中写入txt内容
+     * @参数
+     * @返回值
+     * @创建人 szd
+     * @创建时间 2018/10/15
+     * @修改人和其它信息
+     */
+    public static void writeToTxt(String path, String txt) {
+
+
+        File f2 = new File(path);//src下fout.txt文件
+
+        try {
+
+            FileWriter fw = new FileWriter(f2, true);
+
+
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            String temp;
+
+            bw.newLine();
+            bw.write(txt);
+
+            bw.flush();//把缓冲区内容写到文件
+
+            bw.close();
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+
+    /**
+     * @描述 从文件路径path中读取内容
+     * @参数
+     * @返回值
+     * @创建人 szd
+     * @创建时间 2018/10/15
+     * @修改人和其它信息
+     */
+    public static String readFromTxt(String path) {
+
+        File file = new File(path);
+        String contents = "";
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(file));
+            String text = null;
+// repeat until all lines is read
+            while ((text = reader.readLine()) != null) {
+                contents += text + " ";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
+        return contents;
+    }
+
+
+    public static void main(String args[]) {
+
+
+        Io io=new Io();
+        io.writeToTxt("C:\\Users\\admin\\Desktop\\github\\HJ-master\\src\\main\\resources\\szd","sssss");
+        io.writeToTxt("C:\\Users\\admin\\Desktop\\github\\HJ-master\\src\\main\\resources\\szd","sssswws");
+        io.writeToTxt("C:\\Users\\admin\\Desktop\\github\\HJ-master\\src\\main\\resources\\szd","sssswwws");
+
+
+        String xx=io.readFromTxt("C:\\Users\\admin\\Desktop\\github\\HJ-master\\src\\main\\resources\\szd");
+        System.out.println("===xx=="+xx);
     }
 
 }

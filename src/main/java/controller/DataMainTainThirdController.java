@@ -139,19 +139,7 @@ public class DataMainTainThirdController {
 
                             if(e.getClickCount()==1) {
 
-                                //得到选中的行列的索引值
 
-                                int r = w.jTable.getSelectedRow();
-
-                                int c = w.jTable.getSelectedColumn();
-
-                                //得到选中的单元格的值，表格中都是字符串
-
-                                Object value = w.jTable.getValueAt(r, c);
-
-                                String info = r + "行" + c + "列值 : " + value.toString();
-
-                                System.out.println("==info==" + info);
                                 // javax.swing.JOptionPane.showMessageDialog(null,info);
                             }
                         }
@@ -175,10 +163,24 @@ public class DataMainTainThirdController {
                         @Override
                         public void keyPressed(KeyEvent e) {
 
+                            //得到选中的行列的索引值
+
+                            int r = w.jTable.getSelectedRow();
+
+                            int c = w.jTable.getSelectedColumn();
+
+                            //得到选中的单元格的值，表格中都是字符串
+
+                            Object value = w.jTable.getValueAt(r, c);
+
+                            String info = r + "行" + c + "列值 : " + value.toString();
+
+                            System.out.println("==info==" + info);
                             if(RegExpValidatorUtils.IsIntNumber(e.getKeyChar()+"")){
 
                                 w.ok=true;
                                 System.out.println(e.getKeyChar());
+
                                 w.jTable.repaint();
 
                             }
