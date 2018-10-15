@@ -27,17 +27,20 @@ public class UserLogin extends JDialog implements ActionListener{
 	/**
 	 * @param args
 	 */
+
 	JLabel jl1,jl2,jl3,jl4,jl5;
 	JTextField jname;
 	JPasswordField jpass;
 	JButton jconfirm,jcancel;
 	JCheckBox checkBox1,checkBox2;
+
 	//Font f1=new Font("宋体", Font.PLAIN, 16);
 	//Font f2=new Font("黑体", Font.ITALIC, 12);
 	public static void main(String[] args) {
 		// TODO 自动生成的方法存根
 
 		EventQueue.invokeLater(new Runnable() {
+
 
 			public void run() {
 
@@ -46,6 +49,7 @@ public class UserLogin extends JDialog implements ActionListener{
 				try {
 
 					UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
+
 				} catch (ClassNotFoundException e) {
 					e.printStackTrace();
 				} catch (InstantiationException e) {
@@ -137,6 +141,7 @@ public class UserLogin extends JDialog implements ActionListener{
 		int height=Toolkit.getDefaultToolkit().getScreenSize().height;
 		this.setSize(width - 850, height - 440);
 		bi.setBounds(0,0,this.getWidth(), this.getHeight());
+
 		this.setLocation(width/2-200, height/2-200);
 		this.setVisible(true);
 
@@ -148,6 +153,7 @@ public class UserLogin extends JDialog implements ActionListener{
 		{
 			try {
 				img=ImageIO.read(new File("src/main/resources/image/background02.jpg"));
+
 			} catch (IOException e) {
 				// TODO 自动生成的 catch 块
 				e.printStackTrace();
@@ -156,6 +162,7 @@ public class UserLogin extends JDialog implements ActionListener{
 		public void paintComponent(Graphics g)
 		{
 			g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(),this);
+
 		}
 	}
 	//响应登录请求
@@ -163,6 +170,7 @@ public class UserLogin extends JDialog implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO 自动生成的方法存根
 		ControllerFactory cf=new ControllerFactory();
+
 		LoginController lc=new LoginController();
 		if(e.getSource()==jconfirm)
 		{
@@ -170,11 +178,13 @@ public class UserLogin extends JDialog implements ActionListener{
 			if(uid==null){
 
 			}
+
 			String p=new String(this.jpass.getPassword());
 			User u=new User();
 			u.setName(uid);
 			u.setPassword(p);
 //			System.out.println(u);
+
 			if(checkBox1.isSelected()){
 				String check=jl4.getText();
 				lc.checkAut(check);
@@ -182,6 +192,7 @@ public class UserLogin extends JDialog implements ActionListener{
 				String noCheck=jl5.getText();
 				lc.checkAut(noCheck);
 			}
+
 			String zhiwei=uid;
 
 			LoginController lg= (LoginController) cf.getConTrollers("Login");

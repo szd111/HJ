@@ -46,8 +46,10 @@ public class LoginImp implements Login {
         return flag;
     }
 
+
     public void checkAut(String check){
         System.out.println("aaa"+check);
     }
+
 
 }
