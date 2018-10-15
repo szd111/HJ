@@ -28,9 +28,7 @@ import java.util.Calendar;
 /**
  * @创建人 shizhendong
  * @创建时间 2018.9.25
-
  * @描述 主窗体界面包括数据维护和字典维护我军装备
-
  */
 
 
@@ -62,7 +60,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
     public static String flagObject = "";//指定数据库的操作对象
     Timer t;//可定时触发Action事件
     ControllerFactory cft;//工厂控制器
-public static boolean ok=false;//单元格是否可编辑
+    public static boolean ok = false;//单元格是否可编辑
 
     public static void main(String[] args) {
         // TODO 自动生成的方法存根
