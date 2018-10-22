@@ -1,0 +1,1372 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0055)https://blog.csdn.net/demonson/article/details/53189513 -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-CN"><HEAD><META content="IE=11.0000" 
+http-equiv="X-UA-Compatible">
+     
+<META charset="UTF-8">     <LINK href="https://blog.csdn.net/demonson/article/details/53189513" 
+rel="canonical">          
+<META name="renderer" content="webkit">     
+<META name="force-rendering" content="webkit">     
+<META http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">     
+<META name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+    
+<META name="apple-mobile-web-app-status-bar-style" content="black">     
+<META name="referrer" content="always">     
+<META name="description" content="查看表：user_tables、all_tables、dba_tables&#10;&#10;查看表字段：user_tab_columns、all_ tab_columns、dba_tab_columns&#10;&#10;查看表注释：user_ tab_comments 、all_tab_comments、dba_tab_comments&#10;&#10;查看字段注释：user_col_comments、all_col_comm"> 
+    
+<META name="keywords" content="Oracle">     
+<META http-equiv="Cache-Control" content="no-siteapp"><LINK href="#" rel="alternate" 
+media="handheld">     
+<META name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848"> 
+    
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/tingyun-rum-blog.js"></SCRIPT>
+     <LINK href="https://csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON">     
+<TITLE>Oracle常用系统数据字典表、系统包功能分类 - demonson的专栏 - CSDN博客</TITLE>             <LINK 
+href="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/detail-a9047c3caf.min.css" 
+rel="stylesheet">         <LINK href="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/skin3-template-9b39979775.min.css" 
+rel="stylesheet">     
+<SCRIPT type="text/javascript">
+        var username = "demonson";
+        var blog_address = "https://blog.csdn.net/demonson";
+        var static_host = "https://csdnimg.cn/release/phoenix/";
+        var currentUserName = "";
+        var isShowAds = true;
+        var isOwner = false;
+        var loginUrl = "http://passport.csdn.net/account/login?from=https://blog.csdn.net/demonson/article/details/53189513"
+        var blogUrl = "https://blog.csdn.net/";
+        //页面皮肤样式
+        var curSkin = "skin3-template";
+        // 第四范式所需数据
+        var articleTitles = "Oracle常用系统数据字典表、系统包功能分类 - demonson的专栏";
+        var articleID = "53189513";
+
+        var nickName = "Demonson";
+    </SCRIPT>
+     
+<SCRIPT type="text/javascript">
+        // Traffic Stats of the entire Web site By baidu
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6bcd52f51e9b3dce32bec4a3997715ac";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+        // Traffic Stats of the entire Web site By baidu end
+    </SCRIPT>
+     
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/jquery-1.9.1.min.js" type="text/javascript"></SCRIPT>
+     
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/main-1.0.6.js"></SCRIPT>
+     <!-- 新版上报 -->     
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/track.js" type="text/javascript"></SCRIPT>
+     <!-- 新版上报end -->             <LINK href="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/sandalstrap.min.css" 
+rel="stylesheet">     
+<STYLE>
+        .MathJax, .MathJax_Message, .MathJax_Preview{
+            display: none
+        }
+    </STYLE>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.10570.1001"></HEAD> <!-- nodata 第三栏接口无数据时样式不变 --> 
+<BODY class="nodata"><LINK href="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/content_toolbar.css" 
+rel="stylesheet">     
+<SCRIPT id="toolbar-tpl-scriptId" src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/content_toolbar.js" type="text/javascript" domain="https://blog.csdn.net/"></SCRIPT>
+ <LINK href="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/blog_code-c3a0c33d5c.css" 
+rel="stylesheet"> <LINK href="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/paging.css" 
+rel="stylesheet"> 
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/mvf_news_feed.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/copyright.js" type="text/javascript"></SCRIPT>
+ 
+<DIV style="display: none;"><IMG onerror='setTimeout(function(){if(!/(csdn.net|iteye.com|baiducontent.com|googleusercontent.com|360webcache.com|sogoucdn.com|bingj.com|baidu.com)$/.test(window.location.hostname)){window.location.href="\x68\x74\x74\x70\x73\x3a\x2f\x2f\x77\x77\x77\x2e\x63\x73\x64\x6e\x2e\x6e\x65\x74"}},3000);' 
+src=""> </DIV><LINK href="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/chart-3456820cac.css" 
+rel="stylesheet"> 
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/ds.js"></SCRIPT>
+ 
+<DIV class="container clearfix" id="mainBox"><!-- <div id="breadcrumbs">
+			<span><a href="https://blog.csdn.net/">博客首页</a></span>
+			<i>></i>
+			<span><a href="https://blog.csdn.net/demonson">demonson的专栏...</a></span>
+			<i>></i>
+			<span>Oracle常用系统数据字典表、系统包功能分类...</span>
+		</div> -->
+		 
+<DIV class="recommend-right">
+<UL class="recommend-fixed-box"></UL></DIV><main>
+<DIV class="blog-content-box">
+<DIV class="article-header-box">
+<DIV class="article-header">
+<DIV class="article-title-box"><SPAN 
+class="article-type type-2 float-left">转</SPAN>				
+<H1 class="title-article">Oracle常用系统数据字典表、系统包功能分类</H1></DIV>
+<DIV class="article-info-box">
+<DIV class="article-bar-top"><SPAN class="time">2016年11月16日 18:10:03</SPAN>
+					 <A class="follow-nickName" href="https://me.csdn.net/demonson" target="_blank">Demonson</A>
+						 <SPAN class="read-count">阅读数：1874</SPAN>																				 <SPAN class="tags-box artic-tag-box"><SPAN 
+class="label">标签：</SPAN>																 <A class="tag-link" href="http://so.csdn.net/so/search/s.do?q=Oracle&amp;t=blog" 
+target="_blank" data-track-view='{"mod":"popu_626","con":"Oracle"}' 
+data-track-click='{"mod":"popu_626","con":"Oracle"}'>Oracle																</A>
+							 </SPAN>																					 
+<DIV class="tags-box space"><SPAN class="label">个人分类：</SPAN>																 <A 
+class="tag-link" href="https://blog.csdn.net/demonson/article/category/1696813" 
+target="_blank">Oracle数据库																</A>							 </DIV></DIV>
+<DIV class="operating"></DIV></DIV></DIV></DIV><ARTICLE>
+<DIV class="article_content clearfix csdn-tracking-statistics" id="article_content" 
+data-dsm="post" data-mod="popu_307" data-pid="blog"><LINK href="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/ck_htmledit_views-e4c7a3727d.css" 
+rel="stylesheet">						 
+<DIV class="htmledit_views">
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看表：user_tables、all_tables、dba_tables</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看表字段：user_tab_columns、all_ 
+tab_columns、dba_tab_columns</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看表注释：user_ 
+tab_comments 、all_tab_comments、dba_tab_comments</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看字段注释：user_col_comments、all_col_comments、dba_col_comments</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看索引信息：user_indexes、all_indexes、dba_indexes</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看索引所在字段：user_ind_columns、all_ind_columns、dba_ind_columns</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看约束信息：user_constraints、all_constraints、dba_constraints</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看约束所在字段：user_cons_columns、all_cons_columns、dba_cons_columns</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看触发器信息：user_triggers、all_triggers、all_triggers</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看序列信息：user_sequences、all_sequences、dba_sequences</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看视图信息：user_views、all_views、dba_views</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看同义词信息：user_synonyms、all_synonyms、dba_synonyms</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看DBLINK信息：user_db_links、all_db_links、dba_db_links</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看JOB信息：user_jobs、all_jobs、dba_jobs</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看所有对象信息（过程PROCEDURE、函数FUNCTION、包和包体、JOB和LOB大字段、表、视图、索引、序列、触发器）：user_objects、all_objects、dba_objects</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看过程、函数、触发器、包和包体内容：user_source、all_source、dba_source</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>【举例】</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--查看用户下所有的表</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+* FROM user_tables;</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--查看某表的创建时间</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+object_name, created</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+FROM user_objects</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+WHERE object_name = upper('&amp;table_name');</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--看索引所在字段</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+* FROM user_ind_columns WHERE index_name = upper('&amp;index_name');</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--查看序列号，last_number是当前值</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+* FROM user_sequences;</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--查看视图及其SELECT语句</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+* FROM user_views;</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--查看某表的约束条件</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+* FROM user_constraints WHERE table_name = upper('&amp;table_name');</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--查看过程状态</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+* FROM user_objects WHERE object_type = 'PROCEDURE';</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--查看过程源代码</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+* FROM user_source WHERE NAME = upper('&amp;procedure_name');</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--查看名称包含log字符的表</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+object_name, object_id</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+FROM user_objects</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+WHERE instr(object_name, 'LOG') &gt; 0;</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--查看建表语句</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+DBMS_METADATA.GET_DDL('PROCEDURE', 'PROCEDURE_NAME', 'USER_NAME') FROM dual;</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--查看远程数据库对象的定义</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+DBMS_LOB.SUBSTR@dblinkname(DBMS_METADATA.GET_DDL@dblinkname('TABLE', 
+'TABLENAME', 'USERNAME')) FROM DUAL@dblinkname;</P>
+<H2 id="title-1" style='border: 0px currentColor; border-image: none; line-height: 29.6px; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 16px;'>【表空间与数据文件信息】</H2>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+查看用户默认表空间和临时表空间：user_users、all_users、dba_users</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看表空间信息：user_tablespaces、all_tablespaces、dba_tablespaces</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看表空间空余空间：dba_free_space</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看表空间数据文件及使用情况：dba_data_files</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看数据文件详细信息：v$datafile</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看数据段基本信息：user_segments、all_segments、dba_segments</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看数据区基本信息：user_extents、all_extents、dba_extents</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看临时表空间信息：dba_temp_files</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>回滚段信息：dba_rollback_segs</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>【举例】</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--查看用户默认表空间和临时表空间</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+* FROM user_users;</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--查看用户有权操作的表空间基本情况</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+* FROM user_tablespaces;</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--查看表空间剩余空间</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+tablespace_name, SUM(bytes), SUM(blocks)</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+FROM dba_free_space</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+GROUP BY tablespace_name;</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--查看表空间数据文件及其位置</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>select 
+* from dba_data_files;</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--查看数据文件详细信息</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+* FROM v$datafile</P>
+<H2 id="title-2" style='border: 0px currentColor; border-image: none; line-height: 29.6px; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 16px;'>【用户、角色与权限信息】</H2>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+查看所有角色：dba_roles</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看用户角色：user_role_privs、dba_role_privs</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看用户权限：user_sys_privs、dba_sys_privs</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看角色权限：role_sys_privs</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看用户操作表权限：user_tab_privs、all_tab_privs、dba_tab_privs</P>
+<H2 id="title-3" style='border: 0px currentColor; border-image: none; line-height: 29.6px; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 16px;'>【数据库信息】</H2>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+查看控制文件信息：v$controlfile</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看系统参数信息：v$parameter</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>数据库系统运行信息：v$datafile</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看当前实例基本信息：v$instance</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>实例当前有效的参数信息：v$system_parameter</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看日志文件位置：v$logfile</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看日志文件信息：v$log</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看日志线程信息：v$thread</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看归档日志位置：v$archived_dest</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看归档日志信息：v$archived_log</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>日志历史切换信息：v$loghist</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>查看数据允许的连接数：show 
+parameter processes</P>
+<H2 id="title-4" style='border: 0px currentColor; border-image: none; line-height: 29.6px; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 16px;'>【内存与进程信息】</H2>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SGA区的基本信息：v$sga</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+SGA区的详细信息：v$sgastat</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>共享SQL区SQL详细信息（SQL文本是CLOB，每条SQL仅记录一次）：v$sql</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>共享SQL区SQL详细信息（SQL文本是CLOB，不同用户执行相同SQL多次记录）：v$sqlarea</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>共享SQL区SQL的文本信息（仅记录文本且拆分成多行）：v$sqltext</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>库缓存性能的统计数据：v$librarycache</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>联机的回滚段的名字：v$rollstat</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>后台进程信息：v$bgprocess</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>会话信息：v$session</P>
+<H2 id="title-5" style='border: 0px currentColor; border-image: none; line-height: 29.6px; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 16px;'>【性能信息】</H2>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+文件IO信息：v$filestat</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>锁存器的统计数据：v$latch</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>块竞争统计数据：v$waitstat</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>事件的总计等待时间：v$system_event</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>事件等待信息：v$session_wait</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>排序操作信息：v$sort_usage</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>被锁定对象信息：v$locked_object</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>会话的IO信息：v$sess_io</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>会话的等待信息：v$session_wait</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>【举例】</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--查看当前会话的SID</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+select userenv('sid') from dual;</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--查看当前被锁的对象信息</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+o.object_name,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+s.sid,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+s.serial#,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+s.username,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+s.osuser,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+s.machine,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+s.terminal</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+FROM v$locked_object l, dba_objects o, v$session s</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+WHERE l.object_id = o.object_id</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+AND l.session_id = s.sid;</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--杀掉系统对象锁定的进程</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>ALTER 
+system KILL session 'SID,serial#';</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--如何监控事例的等待？</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+event,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+SUM(decode(wait_Time, 0, 0, 1)) "Prev",</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+SUM(decode(wait_Time, 0, 1, 0)) "Curr",</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+COUNT(*) "Tot"</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+FROM v$session_wait</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+GROUP BY event</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+ORDER BY 4;</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--如何查询做比较大的排序的进程？</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+b.tablespace,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+b.segfile#,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+b.segblk#,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+b.blocks,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+a.sid,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+a.serial#,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+a.username,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+a.osuser,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+a.status</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+FROM v$session a, v$sort_usage b</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+WHERE a.saddr = b.session_addr</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+ORDER BY b.tablespace, b.segfile#, b.segblk#, b.blocks;</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--如何查看回滚段的争用情况？</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+NAME, waits, gets, waits / gets "Ratio"</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+FROM v$rollstat C, v$rollname D</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+WHERE C.usn = D.usn;</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--如何监控表空间的 
+I/O 比例？</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+B.tablespace_name NAME,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+B.file_name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "file",</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+A.phyrds&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pyr,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+A.phyblkrd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pbr,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+A.phywrts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pyw,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+A.phyblkwrt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pbw</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+FROM v$filestat A, dba_data_files B</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+WHERE A.file# = B.file_id</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+ORDER BY B.tablespace_name;</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--如何监控文件系统的 
+I/O 比例？</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+substr(C.file#, 1, 2) "#",</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+substr(C.name, 1, 30) "Name",</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+C.status,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+C.bytes,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+D.phyrds,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+D.phywrts</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+FROM v$datafile C, v$filestat D</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+WHERE C.file# = D.file#;</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--如何监控 
+SGA 的命中率？</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+a.value + b.value "logical_reads",</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+c.value "phys_reads",</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+round(100 * ((a.value + b.value) - c.value) / (a.value + b.value)) "BUFFER HIT 
+RATIO"</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+FROM v$sysstat a, v$sysstat b, v$sysstat c</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+WHERE a.statistic# = 38</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+AND b.statistic# = 39</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+AND c.statistic# = 40;</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--如何监控 
+SGA 中字典缓冲区的命中率？</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>SELECT 
+parameter,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+gets,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+Getmisses,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+getmisses / (gets + getmisses) * 100 "miss ratio",</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+(1 - (SUM(getmisses) / (SUM(gets) + SUM(getmisses)))) * 100 "Hit ratio"</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+FROM v$rowcache</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+WHERE gets + getmisses &lt;&gt; 0</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+GROUP BY parameter, gets, getmisses;</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--如何监控 
+SGA 中共享缓存区的命中率，应该小于1%</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+SELECT SUM(pins) "Total Pins",</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+SUM(reloads) "Total Reloads",</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+SUM(reloads) / SUM(pins) * 100 libcache</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+FROM v$librarycache;</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+SELECT SUM(pinhits - reloads) / SUM(pins) "hit radio",</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+SUM(reloads) / SUM(pins) "reload percent"</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+FROM v$librarycache;</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>--如何知道使用CPU多的用户session?</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+SELECT a.sid,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+spid,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+status,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+substr(a.program, 1, 40) prog,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+a.terminal,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+osuser,</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+VALUE / 60 / 100 VALUE</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+FROM v$session a, v$process b, v$sesstat c</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+WHERE c.statistic# = 11</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+AND c.sid = a.sid</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+AND a.paddr = b.addr</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+ORDER BY VALUE DESC;</P>
+<H2 id="title-6" style='border: 0px currentColor; border-image: none; line-height: 29.6px; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 16px;'>【常用系统包】</H2>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'><STRONG>dbms_output</STRONG>用于输入和输出信息</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>put()：在当前行输出</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>put_line()：在当前行结尾处换行并在新行输出</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>newline：换行</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>getline：取得缓冲区的单行信息</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>getlines：取得缓冲区的多行信息</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'><STRONG>dbms_job</STRONG>用于安排和管理作业队列</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>submit()：新建作业</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>remove()：移除作业</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>change()：修改作业</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>what()、next_date()、interval()：更改作业任务、下次执行时间、时间间隔</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>broken()、run()：暂停作业、运行作业</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'><STRONG>dbms_lob</STRONG>使用和维护LOB字段</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>write：向LOB中写入数据</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>read：从LOB中读取数据</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>instr：从LOB中查字符位置</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>substr：从LOB中取字符</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>getlength：返回LOB长度</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'><STRONG>dbms_metadata.get_ddl</STRONG>：生成数据库对象的ddl信息</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'><STRONG>dbms_random</STRONG>：快速生成随机数</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>initialize：初始化dbms_random包，必须提供随机数种子</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>seed：复位随机数种子</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>random：生产随机数</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'><STRONG>dbms_flashback</STRONG>：激活或禁止会话的flashback特征，普通用户使用需授权</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>enable_at_time：以时间方式激活会话的flashback</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+enable_at_system_change_number：以系统改变号（scn）方式激活会话的flashback</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>
+get_system_change_number：取得系统的当前scn值</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>disable：禁止会话的flashback模式</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'><STRONG>dbms_ddl</STRONG>：DDL信息管理</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>alter_compile：重新编译过程、函数和包</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>analyze_object：分析表、索引、簇并生成统计数据</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'><STRONG>dbms_stat：</STRONG>用于搜集,查看,修改数据库对象的优化统计信息</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>get_column_stats：取得列的统计信息</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>get_index_stats：取得索引的统计信息</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>get_system_stats：从统计表或数据字典中取得系统统计信息</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>get_table_stats：取得表的统计信息</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'><STRONG>dbms_session</STRONG></P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'><STRONG>dbms_rowid：</STRONG>取得行标识符(rowid)的信息并建立ROWID</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'><STRONG>dbms_shared_pool：</STRONG>操作共享池</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>sizes：显示在共享池中大于指定尺寸的对象</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>keep：用于将特定对象绑定到共享池中</P>
+<P style='border: 0px currentColor; border-image: none; line-height: 24.05px; text-indent: 2em; font-family: "Microsoft YaHei", "微软雅黑", Arial, "Lucida Grande", Tahoma, sans-serif; font-size: 13px;'>unkeep：清除被绑定到共享池中的对象</P></DIV></DIV>
+<DIV class="hide-article-box text-center"><A class="btn" id="btn-readmore" 
+data-track-view='{"mod":"popu_376","con":",https://blog.csdn.net/demonson/article/details/53189513,"}' 
+data-track-click='{"mod":"popu_376","con":",https://blog.csdn.net/demonson/article/details/53189513,"}'>阅读更多</A>
+					 </DIV>
+<SCRIPT>
+						(function(){
+							function setArticleH(btnReadmore,posi){
+								var winH = $(window).height();
+								var articleBox = $("div.article_content");
+								var artH = articleBox.height();
+								if(artH > winH*posi){
+									articleBox.css({
+										'height':winH*posi+'px',
+										'overflow':'hidden'
+									})
+									btnReadmore.click(function(){
+										articleBox.removeAttr("style");
+										$(this).parent().remove();
+									})
+								}else{
+									btnReadmore.parent().remove();
+								}
+							}
+							var btnReadmore = $("#btn-readmore");
+							if(btnReadmore.length>0){
+								if(currentUserName){
+									setArticleH(btnReadmore,3);
+								}else{
+									setArticleH(btnReadmore,1.2);
+								}
+							}
+						})()
+					</SCRIPT>
+					 </ARTICLE></DIV>
+<SCRIPT>
+		$(".MathJax").remove();
+		if($('div.markdown_views pre.prettyprint code.hljs').length > 0 ){
+				$('div.markdown_views')[0].className = 'markdown_views';
+		}
+</SCRIPT>
+         
+<DIV class="p4course_target"></DIV>
+<SCRIPT>window.p4sdk_enable_courseBox=true</SCRIPT>
+        <A id="commentBox"></A> 
+<DIV class="comment-box">
+<DIV class="unlogin-box text-center">想对作者说点什么？		 <!-- $curl 当前地址 -->		 <BUTTON 
+class="btn btn-sm btn-red" id="btnCommentUnlogin">我来说一句</BUTTON>	 </DIV>
+<DIV class="comment-list-container"><A id="comments"></A>		 
+<DIV class="comment-list-box"></DIV>
+<DIV class="pagination-box d-none" id="commentPage"></DIV>
+<DIV class="opt-box text-center"><BUTTON class="btn btn-sm btn-link-blue" id="btnMoreComment"></BUTTON>
+		 </DIV></DIV></DIV>
+<DIV class="recommend-box">
+<DIV class="recommend-item-box recommend-box-ident type_blog clearfix" 
+data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/qq_30974367/article/details/79388218,BlogCommendFromBaidu_0"}' 
+data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/qq_30974367/article/details/79388218,BlogCommendFromBaidu_0"}'><A 
+title="Oracle系统表大全" href="https://blog.csdn.net/qq_30974367/article/details/79388218" 
+target="_blank">
+<DIV class="content">
+<H4 class="text-truncate oneline"><EM>Oracle</EM><EM>系统</EM>表大全				</H4>
+<DIV class="info-box d-flex align-content-center">
+<P class="avatar"><IMG class="avatar-pic" alt="qq_30974367" src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/3_qq_30974367.png">
+							 <SPAN class="namebox"><SPAN class="name">qq_30974367</SPAN>
+								 <SPAN class="triangle"></SPAN>							 </SPAN>					 </P>
+<P class="date-and-readNum"><SPAN class="date hover-show">02-27</SPAN>
+						 <SPAN class="read-num hover-hide"><svg xmlns="http://www.w3.org/2000/svg" 
+class="icon csdnc-yuedushu" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+xlink:href="#csdnc-yuedushu" />							 </svg>							62</SPAN>						 </P></DIV>
+<P class="content oneline">数据字典dict总是属于Oracle用户sys的。　　1、用户： 　　　select username 
+from dba_users; 　　改口令 　　　alter user spgroup iden...					</P></DIV></A>	 </DIV>
+<DIV class="recommend-item-box recommend-box-ident type_blog clearfix" 
+data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/hj419460467/article/details/51578341,BlogCommendFromBaidu_1"}' 
+data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/hj419460467/article/details/51578341,BlogCommendFromBaidu_1"}'><A 
+title="ORACLE系统表大全" href="https://blog.csdn.net/hj419460467/article/details/51578341" 
+target="_blank">
+<DIV class="content">
+<H4 class="text-truncate oneline"><EM>ORACLE</EM><EM>系统</EM>表大全				</H4>
+<DIV class="info-box d-flex align-content-center">
+<P class="avatar"><IMG class="avatar-pic" alt="hj419460467" src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/3_hj419460467.gif">
+							 <SPAN class="namebox"><SPAN class="name">hj419460467</SPAN>
+								 <SPAN class="triangle"></SPAN>							 </SPAN>					 </P>
+<P class="date-and-readNum"><SPAN class="date hover-show">06-03</SPAN>
+						 <SPAN class="read-num hover-hide"><svg xmlns="http://www.w3.org/2000/svg" 
+class="icon csdnc-yuedushu" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+xlink:href="#csdnc-yuedushu" />							 </svg>							1199</SPAN>						 </P></DIV>
+<P class="content oneline">							ORACLE系统表大全					</P></DIV></A>	 </DIV>
+<DIV class="recommend-item-box recommend-ad-box clearfix">
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/pc3553.js" type="text/javascript"></SCRIPT>
+				 </DIV>
+<DIV class="recommend-item-box recommend-box-ident type_blog clearfix" 
+data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/jc_benben/article/details/9790567,BlogCommendFromBaidu_2"}' 
+data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/jc_benben/article/details/9790567,BlogCommendFromBaidu_2"}'><A 
+title="oracle数据字典等常用查询操作" href="https://blog.csdn.net/jc_benben/article/details/9790567" 
+target="_blank">
+<DIV class="content">
+<H4 
+class="text-truncate oneline"><EM>oracle</EM><EM>数据字典</EM>等<EM>常用</EM>查询操作				</H4>
+<DIV class="info-box d-flex align-content-center">
+<P class="avatar"><IMG class="avatar-pic" alt="jc_benben" src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/3_jc_benben.gif">
+							 <SPAN class="namebox"><SPAN class="name">jc_benben</SPAN>								 <SPAN 
+class="triangle"></SPAN>							 </SPAN>					 </P>
+<P class="date-and-readNum"><SPAN class="date hover-show">03-01</SPAN>
+						 <SPAN class="read-num hover-hide"><svg xmlns="http://www.w3.org/2000/svg" 
+class="icon csdnc-yuedushu" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+xlink:href="#csdnc-yuedushu" />							 </svg>							2547</SPAN>						 </P></DIV>
+<P class="content oneline">							1、查询表操作 各个权限的表： 其中表有三个权限的视图， select count(*) 
+from dba_tables; select count(*) from dba_objects wher...					</P></DIV></A>
+	 </DIV>
+<DIV class="recommend-item-box recommend-box-ident recommend-download-box clearfix" 
+data-track-view='{"mod":"popu_387","con":",https://download.csdn.net/download/stolid/2576304,BlogCommendFromBaidu_3"}' 
+data-track-click='{"mod":"popu_387","con":",https://download.csdn.net/download/stolid/2576304,BlogCommendFromBaidu_3"}'><A 
+href="https://download.csdn.net/download/stolid/2576304" target="_blank">
+<DIV class="content">
+<DIV><SPAN class="type">下载</SPAN>						 
+<H4 class="text-truncate oneline clearfix">
+							从<EM>oracle</EM>生成表的<EM>数据字典</EM>方法						</H4><SPAN class="data float-right">07-27</SPAN>
+					 </DIV>
+<DIV 
+class="desc oneline">从oracle数据库中的中comment生成excel格式的数据字典					</DIV></DIV></A></DIV>
+<DIV class="recommend-item-box recommend-box-ident type_blog clearfix" 
+data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/wengyupeng/article/details/4335953,BlogCommendFromBaidu_4"}' 
+data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/wengyupeng/article/details/4335953,BlogCommendFromBaidu_4"}'><A 
+title="Oracle数据字典表查询 " href="https://blog.csdn.net/wengyupeng/article/details/4335953" 
+target="_blank">
+<DIV class="content">
+<H4 class="text-truncate oneline"><EM>Oracle</EM><EM>数据字典</EM>表查询 				</H4>
+<DIV class="info-box d-flex align-content-center">
+<P class="avatar"><IMG class="avatar-pic" alt="wengyupeng" src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/3_wengyupeng.png">
+							 <SPAN class="namebox"><SPAN class="name">wengyupeng</SPAN>								 <SPAN 
+class="triangle"></SPAN>							 </SPAN>					 </P>
+<P class="date-and-readNum"><SPAN class="date hover-show">07-09</SPAN>
+						 <SPAN class="read-num hover-hide"><svg xmlns="http://www.w3.org/2000/svg" 
+class="icon csdnc-yuedushu" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+xlink:href="#csdnc-yuedushu" />							 </svg>							2450</SPAN>						 </P></DIV>
+<P class="content oneline">							/*显示当前用户*/show user在sql plus中可用，在pl 
+sql中不可用/*查看所有用户名*/　select&nbsp;username,user_id,created&nbsp;from&nbsp;all_user...					</P></DIV></A>
+	 </DIV>
+<DIV class="recommend-item-box recommend-box-ident type_blog clearfix" 
+data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/u014057054/article/details/52242948,BlogCommendFromBaidu_5"}' 
+data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/u014057054/article/details/52242948,BlogCommendFromBaidu_5"}'><A 
+title="oracle常用数据字典和SQL语句总结" href="https://blog.csdn.net/u014057054/article/details/52242948" 
+target="_blank">
+<DIV class="content">
+<H4 
+class="text-truncate oneline"><EM>oracle</EM><EM>常用</EM><EM>数据字典</EM>和SQL语句总结				</H4>
+<DIV class="info-box d-flex align-content-center">
+<P class="avatar"><IMG class="avatar-pic" alt="u014057054" src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/3_u014057054.png">
+							 <SPAN class="namebox"><SPAN class="name">u014057054</SPAN>								 <SPAN 
+class="triangle"></SPAN>							 </SPAN>					 </P>
+<P class="date-and-readNum"><SPAN class="date hover-show">08-18</SPAN>
+						 <SPAN class="read-num hover-hide"><svg xmlns="http://www.w3.org/2000/svg" 
+class="icon csdnc-yuedushu" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+xlink:href="#csdnc-yuedushu" />							 </svg>							1.7万</SPAN>						 </P></DIV>
+<P class="content oneline">							一、Oracle数据字典
+ 　　数据字典是Oracle存放有关数据库信息的地方，其用途是用来描述数据的。比如一个表的创建者信息，创建时间信息，所属表空间信息，用户访问权限信息等。当用户在对数据库中...					</P></DIV></A>
+	 </DIV>
+<DIV class="recommend-item-box recommend-ad-box" id="a_d_feed_0"></DIV>
+<SCRIPT>
+				var width = $("div.recommend-box").outerWidth() - 48;
+				NEWS_FEED({
+					w: width,
+					h: 60,
+					showid: 'Afihld',
+					placeholderId: 'a_d_feed_0',
+					inject: 'define',
+					define: {
+						imagePosition: 'left',
+						imageBorderRadius: 0,
+						imageWidth: 90,
+						imageHeight: 60,
+						imageFill: 'clip',
+						displayImage: true,
+						displayTitle: true,
+						titleFontSize: 20,
+						titleFontColor: '#333',
+						titleFontFamily: 'Microsoft Yahei',
+						titleFontWeight: 'bold',
+						titlePaddingTop: 0,
+						titlePaddingRight: 0,
+						titlePaddingBottom: 10,
+						titlePaddingLeft: 8,
+						displayDesc: true,
+						descFontSize: 14,
+						descPaddingLeft: 14,
+						descFontColor: '#6b6b6b',
+						descFontFamily: 'Microsoft Yahei',
+						paddingTop: 0,
+						paddingRight: 0,
+						paddingBottom: 0,
+						paddingLeft: 0,
+						backgroundColor: '#fff',
+						hoverColor: '#ca0c16'
+					}
+				})
+			</SCRIPT>
+						 
+<DIV class="recommend-item-box recommend-box-ident type_blog clearfix" 
+data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/fengdl123/article/details/52124457,BlogCommendFromBaidu_6"}' 
+data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/fengdl123/article/details/52124457,BlogCommendFromBaidu_6"}'><A 
+title="Oracle中常用的三种数据字典表" href="https://blog.csdn.net/fengdl123/article/details/52124457" 
+target="_blank">
+<DIV class="content">
+<H4 
+class="text-truncate oneline"><EM>Oracle</EM>中<EM>常用</EM>的三种<EM>数据字典</EM>表				</H4>
+<DIV class="info-box d-flex align-content-center">
+<P class="avatar"><IMG class="avatar-pic" alt="fengdl123" src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/3_fengdl123.png">
+							 <SPAN class="namebox"><SPAN class="name">fengdl123</SPAN>								 <SPAN 
+class="triangle"></SPAN>							 </SPAN>					 </P>
+<P class="date-and-readNum"><SPAN class="date hover-show">08-04</SPAN>
+						 <SPAN class="read-num hover-hide"><svg xmlns="http://www.w3.org/2000/svg" 
+class="icon csdnc-yuedushu" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+xlink:href="#csdnc-yuedushu" />							 </svg>							260</SPAN>						 </P></DIV>
+<P class="content oneline">							1.user_tables&nbsp; &nbsp; 表的字典表,查看命令： desc 
+user_tables; select * from user_tables; 2.user_views&nbsp;  
+视图的字典表...					</P></DIV></A>	 </DIV>
+<DIV class="recommend-item-box recommend-box-ident type_blog clearfix" 
+data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/sureSand/article/details/78723508,BlogCommendFromBaidu_7"}' 
+data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/sureSand/article/details/78723508,BlogCommendFromBaidu_7"}'><A 
+title="Oracle表空间和数据字典基本概念和常用sql" href="https://blog.csdn.net/sureSand/article/details/78723508" 
+target="_blank">
+<DIV class="content">
+<H4 
+class="text-truncate oneline"><EM>Oracle</EM>表空间和<EM>数据字典</EM>基本概念和<EM>常用</EM>sql				</H4>
+<DIV class="info-box d-flex align-content-center">
+<P class="avatar"><IMG class="avatar-pic" alt="sureSand" src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/3_suresand.png">
+							 <SPAN class="namebox"><SPAN class="name">sureSand</SPAN>								 <SPAN 
+class="triangle"></SPAN>							 </SPAN>					 </P>
+<P class="date-and-readNum"><SPAN class="date hover-show">12-05</SPAN>
+						 <SPAN class="read-num hover-hide"><svg xmlns="http://www.w3.org/2000/svg" 
+class="icon csdnc-yuedushu" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+xlink:href="#csdnc-yuedushu" />							 </svg>							223</SPAN>						 </P></DIV>
+<P class="content oneline">							oarcle					</P></DIV></A>	 </DIV>
+<DIV class="recommend-item-box recommend-box-ident type_blog clearfix" 
+data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/Zha_PenFee/article/details/47780071,BlogCommendFromBaidu_8"}' 
+data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/Zha_PenFee/article/details/47780071,BlogCommendFromBaidu_8"}'><A 
+title="Oracle数据字典详解" href="https://blog.csdn.net/Zha_PenFee/article/details/47780071" 
+target="_blank">
+<DIV class="content">
+<H4 class="text-truncate oneline"><EM>Oracle</EM><EM>数据字典</EM>详解				</H4>
+<DIV class="info-box d-flex align-content-center">
+<P class="avatar"><IMG class="avatar-pic" alt="Zha_PenFee" src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/3_zha_penfee.png">
+							 <SPAN class="namebox"><SPAN class="name">Zha_PenFee</SPAN>								 <SPAN 
+class="triangle"></SPAN>							 </SPAN>					 </P>
+<P class="date-and-readNum"><SPAN class="date hover-show">08-19</SPAN>
+						 <SPAN class="read-num hover-hide"><svg xmlns="http://www.w3.org/2000/svg" 
+class="icon csdnc-yuedushu" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+xlink:href="#csdnc-yuedushu" />							 </svg>							601</SPAN>						 </P></DIV>
+<P class="content oneline">							1.数据字典表 2.动态性能视图					</P></DIV></A>	 </DIV>
+<DIV class="recommend-item-box recommend-box-ident type_blog clearfix" 
+data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/u011687186/article/details/53899920,BlogCommendFromBaidu_9"}' 
+data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/u011687186/article/details/53899920,BlogCommendFromBaidu_9"}'><A 
+title="Oracle 常用系统字典表" href="https://blog.csdn.net/u011687186/article/details/53899920" 
+target="_blank">
+<DIV class="content">
+<H4 class="text-truncate oneline"><EM>Oracle</EM> 
+<EM>常用</EM><EM>系统</EM>字典表				</H4>
+<DIV class="info-box d-flex align-content-center">
+<P class="avatar"><IMG class="avatar-pic" alt="u011687186" src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/3_u011687186.png">
+							 <SPAN class="namebox"><SPAN class="name">u011687186</SPAN>								 <SPAN 
+class="triangle"></SPAN>							 </SPAN>					 </P>
+<P class="date-and-readNum"><SPAN class="date hover-show">12-27</SPAN>
+						 <SPAN class="read-num hover-hide"><svg xmlns="http://www.w3.org/2000/svg" 
+class="icon csdnc-yuedushu" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+xlink:href="#csdnc-yuedushu" />							 </svg>							2660</SPAN>						 </P></DIV>
+<P 
+class="content oneline">本文转载至&nbsp;http://www.ecdoer.com/post/oracle-dictionary-table-sql.html
+ Oracle常用数据字典表（系统表或系统视图）及查询SQL ...					</P></DIV></A>	 </DIV>
+<DIV class="recommend-item-box type_hot_word">
+<DIV class="content clearfix oneline">
+<H5 class="float-left">文章热词</H5>
+<DIV class="word float-left"><SPAN><A href="https://www.csdn.net/gather_2b/MtTaMgzsODg4My1ibG9n.html" 
+target="_blank">oracle数据库删除表空间					</A></SPAN>																	 <SPAN><A href="https://www.csdn.net/gather_2e/MtTaMgzsOTM2My1ibG9n.html" 
+target="_blank">oracle sid 更改					</A></SPAN>																	 <SPAN><A href="https://www.csdn.net/gather_2a/MtTaMgzsOTQwNy1ibG9n.html" 
+target="_blank">oracle 启用流复制					</A></SPAN>																	 <SPAN><A href="https://www.csdn.net/gather_22/MtTaMgzsOTU2Mi1ibG9n.html" 
+target="_blank">oracle定时一小时					</A></SPAN>																	 <SPAN><A href="https://www.csdn.net/gather_24/MtTaMgzsOTY5My1ibG9n.html" 
+target="_blank">oracle所有语句					</A></SPAN>
+																																																				 </DIV></DIV>
+<DIV class="content clearfix oneline">
+<H5 class="float-left">相关热词</H5>
+<DIV class="float-left"><SPAN><A href="https://blog.csdn.net/guoxilen/article/details/78625987" 
+target="_blank">oracle和</A>					 </SPAN>									 <SPAN><A href="https://blog.csdn.net/studyvcmfc/article/details/7055258" 
+target="_blank">oracle与</A>					 </SPAN>									 <SPAN><A href="https://blog.csdn.net/dbeautifullife/article/details/70144503" 
+target="_blank">oracle上午</A>					 </SPAN>									 <SPAN><A href="https://blog.csdn.net/ziwen00/article/details/11672233" 
+target="_blank">oracle伪劣</A>					 </SPAN>									 <SPAN><A href="https://blog.csdn.net/u010689306/article/details/51524693" 
+target="_blank">oracle空串</A>					 </SPAN>								 </DIV></DIV></DIV>
+<DIV class="recommend-item-box blog-expert-recommend-box">
+<H4 class="text-truncate">博主推荐			 </H4>
+<DIV class="blog-expert-recommend">
+<DIV class="blog-expert-load-new" data-index="3"><svg xmlns="http://www.w3.org/2000/svg" 
+style="" viewBox="0 0 200 200" xmlns:xml="http://www.w3.org/XML/1998/namespace" 
+xml:space="preserve" version="1.1"><path d="M 142.5 57.5 c -1.3 -1.2 -2.1 -3.3 -2.1 -5.4 c 0 -4.2 3.3 -7.5 7.5 -7.5 h 19.6 c 4.2 0 7.5 3.3 7.5 7.5 s -3.3 7.5 -7.5 7.5 h -4.2 C 170.8 71.2 175 85 175 100 c 0 41.7 -33.8 75 -75 75 c -4.2 0 -7.5 -3.3 -7.5 -7.5 c 0 -4.2 3.3 -7.5 7.5 -7.5 c 33.3 0 60 -27.1 60 -60 C 160 83.7 153.8 68.7 142.5 57.5 L 142.5 57.5 Z M 57.5 142.5 c 1.2 1.2 2.1 3.3 2.1 5.4 c 0 4.2 -3.3 7.5 -7.5 7.5 H 32.5 c -4.2 0 -7.5 -3.3 -7.5 -7.5 c 0 -4.2 3.3 -7.5 7.5 -7.5 h 4.2 C 29.2 128.8 25 115 25 100 c 0 -41.7 33.7 -75 75 -75 c 4.2 0 7.5 3.3 7.5 7.5 S 104.2 40 100 40 c -33.3 0 -60 27.1 -60 60 C 40 116.2 46.2 131.2 57.5 142.5 Z" 
+/>					 </svg>					 <SPAN>换一批</SPAN>				 </DIV>
+<DIV class="blog-expert"></DIV></DIV></DIV>
+<DIV class="recommend-loading-box"><IMG src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/feedLoading.gif"> 
+            </DIV>
+<DIV class="recommend-end-box">
+<P class="text-center">没有更多推荐了，<A class="c-blue c-blue-hover c-blue-focus" href="https://blog.csdn.net/">返回首页</A></P></DIV></DIV></main><ASIDE>
+<DIV class="aside-box" id="asideProfile"><!-- <h3 class="aside-title">个人资料</h3> --> 
+    
+<DIV class="profile-intro d-flex">
+<DIV class="avatar-box d-flex justify-content-center flex-column"><A href="https://blog.csdn.net/demonson"><IMG 
+class="avatar_pic" src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/3_demonson.jpg"></A> 
+        </DIV>
+<DIV class="user-info d-flex justify-content-center flex-column">
+<P class="name csdn-tracking-statistics tracking-click" data-mod="popu_379"><A 
+id="uid" href="https://blog.csdn.net/demonson" target="_blank">Demonson</A>      
+       </P></DIV>
+<DIV class="opt-box d-flex justify-content-center flex-column"><SPAN class="csdn-tracking-statistics tracking-click" 
+data-mod="popu_379"><A class="btn btn-sm btn-red-hollow" id="btnAttent">关注</A>   
+          </SPAN>                     </DIV></DIV>
+<DIV class="data-info d-flex item-tiling">
+<DL title="181" class="text-center">
+  <DT><A href="https://blog.csdn.net/demonson?t=1">原创</A></DT>
+  <DD><A href="https://blog.csdn.net/demonson?t=1"><SPAN 
+  class="count">181</SPAN></A></DD></DL>
+<DL title="19" class="text-center" id="fanBox">
+  <DT>粉丝</DT>
+  <DD><SPAN class="count" id="fan">19</SPAN></DD></DL>
+<DL title="65" class="text-center">
+  <DT>喜欢</DT>
+  <DD><SPAN class="count">65</SPAN></DD></DL>
+<DL title="29" class="text-center">
+  <DT>评论</DT>
+  <DD><SPAN class="count">29</SPAN></DD></DL></DIV>
+<DIV class="grade-box clearfix">
+<DL>
+  <DT>等级：</DT>             
+  <DD><A title="5级,点击查看等级说明" href="https://blog.csdn.net/home/help.html#level" 
+  target="_blank"><svg xmlns="http://www.w3.org/2000/svg" 
+  class="icon icon-level" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xlink:href="#csdnc-bloglevel-5" />                     </svg>                 
+  </A>             </DD>         </DL>
+<DL>
+  <DT>访问：</DT>             
+  <DD title="169550">16万+            </DD>         </DL>
+<DL>
+  <DT>积分：</DT>             
+  <DD title="3781">3781            </DD>         </DL>
+<DL title="12208">
+  <DT>排名：</DT>             
+  <DD>1万+</DD>         </DL></DIV></DIV>
+<DIV class="csdn-tracking-statistics mb8 box-shadow" style="height: 250px;" 
+data-mod="popu_4" data-pid="blog">
+<DIV class="aside-content text-center" id="cpro_u2734133"><!-- 广告位：PC-博客内页-百度联盟-300x250 -->
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/ymebi.js" type="text/javascript"></SCRIPT>
+    </DIV></DIV>
+<DIV class="aside-box" id="asideNewArticle">
+<H3 class="aside-title">最新文章</H3>
+<DIV class="aside-content">
+<UL class="inf_list clearfix csdn-tracking-statistics tracking-click" data-mod="popu_382">
+  <LI class="clearfix"><A href="https://blog.csdn.net/demonson/article/details/82963864" 
+  target="_blank">ORACLE分区窗口按月按天自动分区</A></LI>
+  <LI class="clearfix"><A href="https://blog.csdn.net/demonson/article/details/82664421" 
+  target="_blank">Linx卷管理详解 VG LV PV</A></LI>
+  <LI class="clearfix"><A href="https://blog.csdn.net/demonson/article/details/82559502" 
+  target="_blank">Oracle物化视图失效的几种情况及测试</A></LI>
+  <LI class="clearfix"><A href="https://blog.csdn.net/demonson/article/details/82350317" 
+  target="_blank">Centos7 下cobbler安装及配置</A></LI>
+  <LI class="clearfix"><A href="https://blog.csdn.net/demonson/article/details/82350257" 
+  target="_blank">nmap命令-----基础用法(系统漏洞扫描之王-nmap)</A></LI></UL></DIV></DIV>
+<DIV class="aside-box flexible-box" id="asideCategory">
+<H3 class="aside-title">个人分类</H3>
+<DIV class="aside-content">
+<UL>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/1696813"><SPAN 
+  class="title oneline">Oracle数据库</SPAN>                     <SPAN class="count float-right">125篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/2576341"><SPAN 
+  class="title oneline">管理用户、权限及安全</SPAN>                     <SPAN class="count float-right">8篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/2576353"><SPAN 
+  class="title oneline">主动维护与性能管理</SPAN>                     <SPAN class="count float-right">25篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/2576331"><SPAN 
+  class="title oneline">数据库安装与创建</SPAN>                     <SPAN class="count float-right">6篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/2576329"><SPAN 
+  class="title oneline">Oracle体系结构</SPAN>                     <SPAN class="count float-right">23篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/2576335"><SPAN 
+  class="title oneline">管理Oracle实例</SPAN>                     <SPAN class="count float-right">5篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/2576349"><SPAN 
+  class="title oneline">Oracle网络环境</SPAN>                     <SPAN class="count float-right">21篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/2576345"><SPAN 
+  class="title oneline">管理方案对象</SPAN>                     <SPAN class="count float-right">11篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/2576339"><SPAN 
+  class="title oneline">Oracle存储</SPAN>                     <SPAN class="count float-right">15篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/2576391"><SPAN 
+  class="title oneline">redo数据</SPAN>                     <SPAN class="count float-right">2篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/2576325"><SPAN 
+  class="title oneline">数据迁移</SPAN>                     <SPAN class="count float-right">28篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/2576355"><SPAN 
+  class="title oneline">备份恢复</SPAN>                     <SPAN class="count float-right">48篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/2576327"><SPAN 
+  class="title oneline">SQL基础</SPAN>                     <SPAN class="count float-right">5篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/2596287"><SPAN 
+  class="title oneline">MySQL</SPAN>                     <SPAN class="count float-right">32篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/2576395"><SPAN 
+  class="title oneline">RAC</SPAN>                     <SPAN class="count float-right">19篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/2576397"><SPAN 
+  class="title oneline">DG</SPAN>                     <SPAN class="count float-right">19篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/2576361"><SPAN 
+  class="title oneline">运维</SPAN>                     <SPAN class="count float-right">103篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/1698311"><SPAN 
+  class="title oneline">Linux</SPAN>                     <SPAN class="count float-right">39篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/1698313"><SPAN 
+  class="title oneline">生活</SPAN>                     <SPAN class="count float-right">5篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/1698317"><SPAN 
+  class="title oneline">网络</SPAN>                     <SPAN class="count float-right">15篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/6512931"><SPAN 
+  class="title oneline">科技前沿</SPAN>                     <SPAN class="count float-right">1篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7450379"><SPAN 
+  class="title oneline">MySQL 基础</SPAN>                     <SPAN class="count float-right">52篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7450381"><SPAN 
+  class="title oneline">MySQL 架构</SPAN>                     <SPAN class="count float-right">63篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7450384"><SPAN 
+  class="title oneline">MySQL 优化</SPAN>                     <SPAN class="count float-right">45篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7450388"><SPAN 
+  class="title oneline">MySQL 备份恢复</SPAN>                     <SPAN class="count float-right">28篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7483453"><SPAN 
+  class="title oneline">其他数据库</SPAN>                     <SPAN class="count float-right">1篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7484761"><SPAN 
+  class="title oneline">ORA-</SPAN>                     <SPAN class="count float-right">15篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7489166"><SPAN 
+  class="title oneline">OGG</SPAN>                     <SPAN class="count float-right">2篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7489239"><SPAN 
+  class="title oneline">ASM</SPAN>                     <SPAN class="count float-right">2篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7489365"><SPAN 
+  class="title oneline">Oracle 优化</SPAN>                     <SPAN class="count float-right">28篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7489427"><SPAN 
+  class="title oneline">面试</SPAN>                     <SPAN class="count float-right">1篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7512811"><SPAN 
+  class="title oneline">底层数据库架构</SPAN>                     <SPAN class="count float-right">2篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7512865"><SPAN 
+  class="title oneline">数据安全</SPAN>                     <SPAN class="count float-right">1篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7513835"><SPAN 
+  class="title oneline">redis</SPAN>                     <SPAN class="count float-right">3篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7525900"><SPAN 
+  class="title oneline">ETL</SPAN>                     <SPAN class="count float-right">7篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7529067"><SPAN 
+  class="title oneline">数据库开发</SPAN>                     <SPAN class="count float-right">8篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7538408"><SPAN 
+  class="title oneline">javaweb</SPAN>                     <SPAN class="count float-right">1篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7541178"><SPAN 
+  class="title oneline">Stream&nbsp;Replication</SPAN>                     <SPAN 
+  class="count float-right">1篇</SPAN>                 </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7547765"><SPAN 
+  class="title oneline">SQL优化</SPAN>                     <SPAN class="count float-right">13篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7678797"><SPAN 
+  class="title oneline">MySQL ERROR</SPAN>                     <SPAN class="count float-right">2篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7771407"><SPAN 
+  class="title oneline">虚拟化软件</SPAN>                     <SPAN class="count float-right">8篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7940488"><SPAN 
+  class="title oneline">windows架构</SPAN>                     <SPAN class="count float-right">13篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7940559"><SPAN 
+  class="title oneline">Hyper-v</SPAN>                     <SPAN class="count float-right">2篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7941887"><SPAN 
+  class="title oneline">powershell</SPAN>                     <SPAN class="count float-right">1篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7945310"><SPAN 
+  class="title oneline">Hyper-v</SPAN>                     <SPAN class="count float-right">3篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7957465"><SPAN 
+  class="title oneline">oracle</SPAN>                     <SPAN class="count float-right">2篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7962341"><SPAN 
+  class="title oneline">git</SPAN>                     <SPAN class="count float-right">1篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7964309"><SPAN 
+  class="title oneline">vnc</SPAN>                     <SPAN class="count float-right">1篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7966422"><SPAN 
+  class="title oneline">zabbix</SPAN>                     <SPAN class="count float-right">3篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7966433"><SPAN 
+  class="title oneline">lamp</SPAN>                     <SPAN class="count float-right">3篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7979694"><SPAN 
+  class="title oneline">LVM+VG扩容</SPAN>                     <SPAN class="count float-right">2篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7984801"><SPAN 
+  class="title oneline">mantis</SPAN>                     <SPAN class="count float-right">2篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/7984802"><SPAN 
+  class="title oneline">php</SPAN>                     <SPAN class="count float-right">2篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/8002742"><SPAN 
+  class="title oneline">PXE+Kickstart</SPAN>                     <SPAN class="count float-right">2篇</SPAN> 
+                  </A></LI>
+  <LI><A class="clearfix" href="https://blog.csdn.net/demonson/article/category/8003593"><SPAN 
+  class="title oneline">cobbler</SPAN>                     <SPAN class="count float-right">1篇</SPAN> 
+                  </A></LI></UL></DIV>
+<P class="text-center"><A class="btn btn-link-blue flexible-btn" data-fbox="aside-archive">展开</A> 
+    </P></DIV>
+<DIV class="aside-box flexible-box" id="asideArchive">
+<H3 class="aside-title">归档</H3>
+<DIV class="aside-content">
+<UL class="archive-list"><!--归档统计-->             
+  <LI><A href="https://blog.csdn.net/demonson/article/month/2018/10">2018年10月    
+                  <SPAN class="count float-right">1篇</SPAN>                 
+  </A></LI><!--归档统计-->             
+  <LI><A href="https://blog.csdn.net/demonson/article/month/2018/09">2018年9月     
+                 <SPAN class="count float-right">7篇</SPAN>                 
+  </A></LI><!--归档统计-->             
+  <LI><A href="https://blog.csdn.net/demonson/article/month/2018/08">2018年8月     
+                 <SPAN class="count float-right">35篇</SPAN>                 
+  </A></LI><!--归档统计-->             
+  <LI><A href="https://blog.csdn.net/demonson/article/month/2018/07">2018年7月     
+                 <SPAN class="count float-right">7篇</SPAN>                 
+  </A></LI><!--归档统计-->             
+  <LI><A href="https://blog.csdn.net/demonson/article/month/2018/06">2018年6月     
+                 <SPAN class="count float-right">34篇</SPAN>                 
+  </A></LI><!--归档统计-->             
+  <LI><A href="https://blog.csdn.net/demonson/article/month/2018/05">2018年5月     
+                 <SPAN class="count float-right">36篇</SPAN>                 
+  </A></LI><!--归档统计-->             
+  <LI><A href="https://blog.csdn.net/demonson/article/month/2018/04">2018年4月     
+                 <SPAN class="count float-right">41篇</SPAN>                 
+  </A></LI><!--归档统计-->             
+  <LI><A href="https://blog.csdn.net/demonson/article/month/2018/03">2018年3月     
+                 <SPAN class="count float-right">72篇</SPAN>                 
+  </A></LI><!--归档统计-->             
+  <LI><A href="https://blog.csdn.net/demonson/article/month/2018/02">2018年2月     
+                 <SPAN class="count float-right">36篇</SPAN>                 
+  </A></LI><!--归档统计-->             
+  <LI><A href="https://blog.csdn.net/demonson/article/month/2016/12">2016年12月    
+                  <SPAN class="count float-right">1篇</SPAN>                 
+  </A></LI><!--归档统计-->             
+  <LI><A href="https://blog.csdn.net/demonson/article/month/2016/11">2016年11月    
+                  <SPAN class="count float-right">4篇</SPAN>                 
+  </A></LI><!--归档统计-->             
+  <LI><A href="https://blog.csdn.net/demonson/article/month/2016/03">2016年3月     
+                 <SPAN class="count float-right">1篇</SPAN>                 
+  </A></LI><!--归档统计-->             
+  <LI><A href="https://blog.csdn.net/demonson/article/month/2016/02">2016年2月     
+                 <SPAN class="count float-right">1篇</SPAN>                 
+  </A></LI><!--归档统计-->             
+  <LI><A href="https://blog.csdn.net/demonson/article/month/2014/10">2014年10月    
+                  <SPAN class="count float-right">23篇</SPAN>                 
+  </A></LI><!--归档统计-->             
+  <LI><A href="https://blog.csdn.net/demonson/article/month/2014/09">2014年9月     
+                 <SPAN class="count float-right">46篇</SPAN>                 
+  </A></LI><!--归档统计-->             
+  <LI><A href="https://blog.csdn.net/demonson/article/month/2014/01">2014年1月     
+                 <SPAN class="count float-right">3篇</SPAN>                 
+  </A></LI><!--归档统计-->             
+  <LI><A href="https://blog.csdn.net/demonson/article/month/2013/12">2013年12月    
+                  <SPAN class="count float-right">2篇</SPAN>                 
+  </A></LI><!--归档统计-->             
+  <LI><A href="https://blog.csdn.net/demonson/article/month/2013/11">2013年11月    
+                  <SPAN class="count float-right">8篇</SPAN>                 
+  </A></LI><!--归档统计-->             
+  <LI><A href="https://blog.csdn.net/demonson/article/month/2013/10">2013年10月    
+                  <SPAN class="count float-right">7篇</SPAN>                 
+  </A></LI></UL></DIV>
+<P class="text-center"><A class="btn btn-link-blue flexible-btn" data-fbox="aside-archive">展开</A> 
+    </P></DIV>
+<DIV class="aside-box" id="asideHotArticle">
+<H3 class="aside-title">热门文章</H3>
+<DIV class="aside-content">
+<UL class="hotArticle-list csdn-tracking-statistics tracking-click" data-mod="popu_521">
+  <LI><A href="https://blog.csdn.net/demonson/article/details/39399257">Oracle 
+  中deferred_segment_creation 的用法以及exp时解决办法</A>
+  <P class="read">阅读量：<SPAN>7421</SPAN></P></LI>
+  <LI><A 
+  href="https://blog.csdn.net/demonson/article/details/39504443">Oracle备份类型level0、level1，增量、差异备份</A>
+  <P class="read">阅读量：<SPAN>4723</SPAN></P></LI>
+  <LI><A href="https://blog.csdn.net/demonson/article/details/79474133">Oracle 
+  AWR报告详细分析</A>
+  <P class="read">阅读量：<SPAN>4262</SPAN></P></LI>
+  <LI><A 
+  href="https://blog.csdn.net/demonson/article/details/39582107">美团的笔试经历（为啥是笔试经历不是面试经历的，笔试没通过……）</A>
+  <P class="read">阅读量：<SPAN>4197</SPAN></P></LI>
+  <LI><A href="https://blog.csdn.net/demonson/article/details/40107631">Oracle 
+  数据块损坏与恢复详解</A>
+  <P class="read">阅读量：<SPAN>3646</SPAN></P></LI></UL></DIV></DIV>
+<DIV class="aside-box" id="asideNewComments">
+<H3 class="aside-title">最新评论</H3>
+<DIV class="aside-content">
+<UL class="newcomment-list">
+  <LI><A class="title text-truncate" href="https://blog.csdn.net/demonson/article/details/81912623#comments" 
+  target="_blank">Linux Centos 7.x ...</A>                 
+  <P class="comment"><A class="user-name" href="https://my.csdn.net/shuai00" 
+  target="_blank">shuai00</A>：您好，我在无网络的环境下怎么安装依赖包？                </P></LI>
+  <LI><A class="title text-truncate" href="https://blog.csdn.net/demonson/article/details/79869083#comments" 
+  target="_blank">imp-00003 遇到oracl...</A>                 
+  <P class="comment"><A class="user-name" href="https://my.csdn.net/love_gzd" 
+  target="_blank">love_gzd</A>：clob字段有数据的话，这种方式可以导进去吗？                </P></LI>
+  <LI><A class="title text-truncate" href="https://blog.csdn.net/demonson/article/details/40107631#comments" 
+  target="_blank">Oracle 数据块损坏与恢复详解</A>                 
+  <P class="comment"><A class="user-name" href="https://my.csdn.net/tomcoding" 
+  target="_blank">tomcoding</A>：了解Oracle数据块的内部格式，百度tomcoding                
+  </P></LI>
+  <LI><A class="title text-truncate" href="https://blog.csdn.net/demonson/article/details/39324277#comments" 
+  target="_blank">数据库性能优化、统计信息与对象统计...</A>                 
+  <P class="comment"><A class="user-name" href="https://my.csdn.net/demonson" 
+  target="_blank">demonson</A>：[reply]a743044559[/reply] 
+  很早之前的文章，好像是当时培训ocp时整理的笔...                </P></LI>
+  <LI><A class="title text-truncate" href="https://blog.csdn.net/demonson/article/details/39324277#comments" 
+  target="_blank">数据库性能优化、统计信息与对象统计...</A>                 
+  <P class="comment"><A class="user-name" href="https://my.csdn.net/a743044559" 
+  target="_blank">a743044559</A>：楼主，你这个是OCM的大纲吧                
+</P></LI></UL></DIV></DIV>
+<DIV id="asideFooter">
+<DIV class="aside-box">
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/yn6yz.js" type="text/javascript"></SCRIPT>
+					 </DIV>
+<DIV class="aside-box">
+<DIV class="persion_article"></DIV></DIV></DIV></ASIDE>
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/publib_footer-1.0.3.js" type="text/javascript" data-isfootertrack="false"></SCRIPT>
+ 
+<SCRIPT>
+	$("a.flexible-btn").click(function(){
+		$(this).parents('div.aside-box').removeClass('flexible-box');
+		$(this).remove();
+	})
+</SCRIPT>
+ </DIV>
+<DIV class="mask-dark"></DIV>
+<DIV class="pulllog-box" style="display: block;">
+<DIV class="pulllog clearfix"><SPAN class="text float-left">
+<DIV id="dmp_ad_69">
+<DIV id="kp_box_75" data-track-view='{"mod":"kp_popu_75","con":",,"}'>
+<DIV style="padding: 2px 5px 0px; border: 1px solid rgb(241, 61, 61); border-image: none; margin-right: 5px; float: left;"><A 
+style="color: rgb(241, 61, 61); font-weight: bold; text-decoration: none;" href="https://www.csdn.net/2018dev/?utm_source=blogtextlink" 
+target="_blank">开发者调查</A> </DIV>
+<DIV style="background: rgb(0, 0, 0); padding: 2px 5px 0px; border: 1px solid rgb(0, 0, 0); border-image: none; margin-right: 5px; float: left;"><A 
+style="color: rgb(255, 255, 255); font-weight: bold; text-decoration: none;" 
+href="http://ai2018.csdn.net/?utm_source=bkxxl" target="_blank">AI开发者大会日程曝光</A> 
+</DIV>
+<DIV style="padding: 2px 5px 0px; border: 1px solid rgb(241, 61, 61); border-image: none; margin-right: 5px; float: left;"><A 
+style="color: rgb(241, 61, 61); font-weight: bold; text-decoration: none;" href="https://gitchat.csdn.net/?utm_source=wzl" 
+target="_blank">告别知识焦虑，即刻启程</A> </DIV>
+<DIV style="float: left;">
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/ndr3h.js" type="text/javascript"></SCRIPT>
+ </DIV></DIV>
+<SCRIPT>$(function(){csdn.track.viewCheck($("#kp_box_75"));});</SCRIPT>
+</DIV></SPAN>		 
+<DIV class="pulllog-btn float-right clearfix">
+<DIV class="float-left csdn-tracking-statistics tracking-click" data-mod="popu_557"><A 
+class="pulllog-login">登录</A></DIV>
+<DIV class="pulllog-sigin float-left csdn-tracking-statistics tracking-click" 
+data-mod="popu_558"><A href="https://passport.csdn.net/account/mobileregister" 
+target="_blank">注册</A></DIV><BUTTON class="btn-close"><svg xmlns="http://www.w3.org/2000/svg" 
+class="icon" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+xlink:href="#csdnc-times" />                 </svg>             </BUTTON>
+		 </DIV></DIV></DIV>
+<DIV id="loginWrap" style="display: none;"></DIV>
+<DIV class="tool-box">
+<UL class="meau-list">
+  <LI class="btn-like-box long-width"><BUTTON title="点赞" class=" long-height hover-box btn-like "><svg 
+  xmlns="http://www.w3.org/2000/svg" class="icon active hover-hide" 
+  aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xlink:href="#csdnc-thumbsup-ok" />				 </svg>				 <svg xmlns="http://www.w3.org/2000/svg" 
+  class="icon no-active hover-hide" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xlink:href="#csdnc-thumbsup" />				 </svg>				 <SPAN class="hover-show text-box text"><SPAN 
+  class="no-active">点赞</SPAN>					 <SPAN class="active">取消点赞</SPAN>				 </SPAN>
+  				 
+  <P>1</P></BUTTON>		 </LI>
+  <LI><A title="写评论" class="btn-comments low-height hover-box" href="https://blog.csdn.net/demonson/article/details/53189513#commentBox"><svg 
+  xmlns="http://www.w3.org/2000/svg" class="icon hover-hide" 
+  aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xlink:href="#csdnc-comments" />				 </svg>				 <SPAN 
+  class="hover-show text">评论</SPAN>				 
+  <P></P></A></LI>
+  <LI class="toc-container-box" id="liTocBox"><BUTTON title="目录" class="btn-toc low-height hover-box"><svg 
+  xmlns="http://www.w3.org/2000/svg" class="icon hover-hide" 
+  aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xlink:href="#csdnc-contents" />				 </svg>				 <SPAN 
+  class="hover-show text">目录</SPAN>			 </BUTTON>			 
+  <DIV class="toc-container">
+  <DIV class="pos-box">
+  <DIV class="icon-arrow"></DIV>
+  <DIV class="scroll-box">
+  <DIV class="toc-box"></DIV></DIV></DIV>
+  <DIV class="opt-box"><BUTTON title="向上" class="btn-opt prev nomore"><svg 
+  xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true"><use 
+  xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#csdnc-chevronup" />
+  						 </svg>					 </BUTTON>					 <BUTTON class="btn-opt next"><svg xmlns="http://www.w3.org/2000/svg" 
+  class="icon" aria-hidden="true"><use 
+  xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#csdnc-chevrondown" />
+  						 </svg>					 </BUTTON>				 </DIV></DIV></LI>
+  <LI><BUTTON title="收藏" class="btn-bookmark low-height hover-box"><svg xmlns="http://www.w3.org/2000/svg" 
+  class="icon active hover-hide" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xlink:href="#csdnc-bookmark-ok" />				 </svg>				 <svg xmlns="http://www.w3.org/2000/svg" 
+  class="icon no-active hover-hide" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xlink:href="#csdnc-bookmark" />				 </svg>					 <SPAN 
+  class="hover-show text">收藏</SPAN>				 <!-- <span class="hover-show text-box text">
+					<span class="no-active">收藏</span>
+					<span class="active">取消收藏</span>
+				</span> -->
+  			 </BUTTON>		 </LI>
+  <LI class="bdsharebuttonbox"><BUTTON 
+  class="btn-comments low-height hover-box"><A title="手机看" class="bds_weixin clear-share-style" 
+  href="https://blog.csdn.net/demonson/article/details/53189513#" data-cmd="weixin"></A>
+  				 <svg xmlns="http://www.w3.org/2000/svg" class="icon hover-hide" 
+  aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xlink:href="#csdnc-wechat" />				 </svg>				 <SPAN class="hover-show text text3">手机看
+  				 </SPAN>			 </BUTTON>		 </LI>
+  <LI class="widescreen-hide"><A title="SMP、NUMA、MPP体系结构介绍" class="btn-comments low-height hover-box" 
+  href="https://blog.csdn.net/demonson/article/details/53162942"><svg xmlns="http://www.w3.org/2000/svg" 
+  class="icon hover-hide" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xlink:href="#csdnc-shangyiye" />					 </svg>					 <SPAN class="hover-show text text3">上一篇</SPAN>
+  				 </A></LI>
+  <LI class="widescreen-hide"><A title="java-servlet" class="btn-comments hover-box low-height" 
+  href="https://blog.csdn.net/demonson/article/details/53453919"><svg xmlns="http://www.w3.org/2000/svg" 
+  class="icon hover-hide" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xlink:href="#csdnc-xiayiye" />				 </svg>				 <SPAN class="hover-show text text3">下一篇</SPAN>
+  			 </A></LI>
+  <LI class="bdsharebuttonbox _360_interactive" style="margin-top: 8px;">
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/interactive_plugin.js" type="text/javascript"></SCRIPT>
+   			
+<STYLE>
+				#_360_interactive > *{
+					 margin-left: -8px;
+				}
+			</STYLE>
+  			 
+  <DIV id="_360_interactive">
+<SCRIPT> INTERACTIVE_PLUGIN.render({ showid : 'N0ufqn', w: 60, h: 60, type: 'click', placeholderId: '_360_interactive' }); </SCRIPT>
+   			</DIV><IMG style="margin: 0px auto; display: block;" alt="" src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/201608021757063065.png"></LI><!-- 宽屏更多按钮 -->
+  		 
+  <LI class="widescreen-more"><A title="快问" class="btn-comments chat-ask-button low-height hover-box" 
+  href="https://blog.csdn.net/demonson/article/details/53189513#chatqa"><svg 
+  xmlns="http://www.w3.org/2000/svg" class="icon hover-hide" 
+  aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xlink:href="#csdnc-more" />				 </svg>				 <SPAN 
+  class="hover-show text">更多</SPAN>							 </A>
+  <UL class="widescreen-more-box">
+    <LI class="widescreen-more"><A title="SMP、NUMA、MPP体系结构介绍" class="btn-comments low-height hover-box" 
+    href="https://blog.csdn.net/demonson/article/details/53162942"><svg xmlns="http://www.w3.org/2000/svg" 
+    class="icon hover-hide" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+    xlink:href="#csdnc-shangyiye" />							 </svg>							 <SPAN class="hover-show text text3">上一篇</SPAN>
+    						 </A></LI>
+    <LI class="widescreen-more"><A title="java-servlet" class="btn-comments hover-box low-height" 
+    href="https://blog.csdn.net/demonson/article/details/53453919"><svg xmlns="http://www.w3.org/2000/svg" 
+    class="icon hover-hide" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" 
+    xlink:href="#csdnc-xiayiye" />						 </svg>						 <SPAN class="hover-show text text3">下一篇</SPAN>
+    					 </A></LI></UL></LI></UL></DIV>
+<SCRIPT>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'https://csdnimg.cn/static/api/js/share.js?v=89860594'];</SCRIPT>
+ 
+<SCRIPT>
+    var recommendCount = 10;
+    recommendCount = recommendCount > 1 ? (recommendCount + (recommendCount>6 ? 2 : 1)) : recommendCount;
+    var articleTit = "Oracle常用系统数据字典表、系统包功能分类";
+    var ChannelId = 6;
+    var articleId = "53189513";
+    var commentscount = 0;
+    var islock = false;
+    var curentUrl = "https://blog.csdn.net/demonson/article/details/53189513";
+    var myUrl = "https://my.csdn.net/";
+    //1禁止评论，2正常
+    var commentAuth = 2;
+    //百度搜索
+    var baiduKey = "oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E8%A1%A8%E7%9A%84%E5%88%9B%E5%BB%BA";
+    var needInsertBaidu = false;
+    // 代码段样式
+    var codeStyle = 'atom-one-dark';
+		var highlight = ["oracle","\u5e38\u7528","\u7cfb\u7edf","\u6570\u636e\u5b57\u5178","\u7edf\u5305","\u529f\u80fd","\u5206\u7c7b"];//高亮数组
+		// 相关推荐博主数据
+    var RecommendBlogExpertList = [{"user_name":"robinson_0612","nick_name":"Leshami","avatar":"https:\/\/avatar.csdn.net\/D\/F\/C\/3_robinson_0612.jpg","is_expert":true,"article_count":680},{"user_name":"sonbai","nick_name":"fulinux","avatar":"https:\/\/avatar.csdn.net\/1\/D\/F\/3_sonbai.jpg","is_expert":true,"article_count":340},{"user_name":"suixufeng","nick_name":"david-sui","avatar":"https:\/\/avatar.csdn.net\/C\/7\/8\/3_suixufeng.jpg","is_expert":false,"article_count":171},{"user_name":"HowCanYouDoIt","nick_name":"\u5de6\u5317\u53f3\u897f","avatar":"https:\/\/avatar.csdn.net\/E\/F\/5\/3_howcanyoudoit.jpg","is_expert":false,"article_count":27},{"user_name":"hanchi8008","nick_name":"hanchi8008","avatar":"https:\/\/avatar.csdn.net\/9\/6\/F\/3_hanchi8008.jpg","is_expert":false,"article_count":64},{"user_name":"xqy1522","nick_name":"xqy1522","avatar":"https:\/\/avatar.csdn.net\/3\/A\/A\/3_xqy1522.jpg","is_expert":false,"article_count":84},{"user_name":"hgg923","nick_name":"\u591a\u6765\u54c8\u7c73","avatar":"https:\/\/avatar.csdn.net\/3\/B\/B\/3_hgg923.jpg","is_expert":false,"article_count":220},{"user_name":"u012871207","nick_name":"\u6653\u6ce2\u54e5","avatar":"https:\/\/avatar.csdn.net\/7\/1\/C\/3_u012871207.jpg","is_expert":false,"article_count":73},{"user_name":"kpchen_0508","nick_name":"\u65f6\u95f4\u8f9c\u8d1f\u4e86\u8c01","avatar":"https:\/\/avatar.csdn.net\/8\/7\/B\/3_kpchen_0508.jpg","is_expert":false,"article_count":180},{"user_name":"zhanzhib","nick_name":"zhanzhib","avatar":"https:\/\/avatar.csdn.net\/5\/F\/B\/3_zhanzhib.jpg","is_expert":false,"article_count":259}];
+		
+		var articleType = 2;
+		var CopyrightContent = '';
+</SCRIPT>
+ 
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/sandalstrap.min.js"></SCRIPT>
+ 
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/paging.js"></SCRIPT>
+ 
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/goTop-v1.0.min.js"></SCRIPT>
+ 
+<SCRIPT>
+    GoTop({
+        right: 8,
+        hasReport: true,
+        reportFun: function() {
+            showReport(false,"Oracle常用系统数据字典表、系统包功能分类");
+        }
+    })
+</SCRIPT>
+ 
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/login-box.js"></SCRIPT>
+ 
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/common-ff25a7a98a.min.js"></SCRIPT>
+ 
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/detail-e018839fe9.min.js"></SCRIPT>
+ 
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/skin3-template-9376486353.min.js"></SCRIPT>
+ 
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/baidu_search-1.1.2.js" type="text/javascript"></SCRIPT>
+	 <LINK href="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/chart.css" 
+rel="stylesheet">	 
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/chart.min.js" type="text/javascript"></SCRIPT>
+	 
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/widget2chart.js" type="text/javascript"></SCRIPT>
+	 <LINK href="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/atom-one-dark.css" 
+rel="stylesheet">	 
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/pc_wap_common-676a063698.js" type="text/javascript"></SCRIPT>
+	 
+<SCRIPT type="text/javascript">
+	$(function(){
+		var allEscRegex = /&(lt|gt|amp|quot|nbsp|shy|#\d{1,5});/g,
+		    namedEntities = {
+					lt: '<',
+					gt: '>',
+					amp: '&',
+					quot: '"',
+					nbsp: '\u00a0',
+					shy: '\u00ad'
+				}
+		var allEscDecode = function( match, code ) {
+				return namedEntities[ code ];
+		};
+		htmlDecodeAttr = function( text ) {
+				return text.replace( allEscRegex, allEscDecode );
+		}
+	  hljs.initHighlightingOnLoad();
+	  hljs.initCopyButtonOnLoad();
+	  hljs.initLineNumbersOnLoad();
+		if($('pre .language-plain').length>0){
+			$('pre .language-plain').each(function(i,e){
+				var highlightRe = hljs.highlightAuto(htmlDecodeAttr(e.innerHTML))
+				e.innerHTML = highlightRe.value;
+				e.className = 'language-'+highlightRe.language;
+			});
+		}
+	})
+	</SCRIPT>
+ 
+<SCRIPT src="Oracle常用系统数据字典表、系统包功能分类%20-%20demonson的专栏%20-%20CSDN博客_files/MathJax.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            "HTML-CSS": {
+                    linebreaks: { automatic: true, width: "94%container" },
+                    imageFont: null
+            },
+            tex2jax: {
+                preview: "none"
+            },
+            mml2jax: {
+                preview: 'none'
+            }
+    });
+</SCRIPT>
+ </BODY><!-- 第四范式SDK --><!-- 高亮未与 markdown兼容  --></HTML>
