@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="maven3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/resources/jar/maven/substance-7.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/jar/maven/trident-7.1-swing.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/jar/maven/laf-widget-7.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/jar/maven/laf-plugin-7.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/jar/maven/log4j-1.2.17.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

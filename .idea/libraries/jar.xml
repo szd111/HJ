@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/resources/jar/jtaso.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/jar/JTattoo.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

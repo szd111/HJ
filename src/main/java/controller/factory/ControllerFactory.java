@@ -1,18 +1,7 @@
 package controller.factory;
 
-<<<<<<< HEAD
+
 import controller.*;
-=======
-import controller.DataMainTainFirstController;
-
-import controller.DataMainTainSecondController;
-import controller.DataMainTainThirdController;
-import controller.DataMainTainFourthController;
-import controller.DictionaryMainTainController;
-
-
-import controller.LoginController;
->>>>>>> 41cd98c8cb3a434a3cf5e6fe3758b90cf74c38fd
 
 
 /**
@@ -51,8 +40,6 @@ public class ControllerFactory {
             return new LoginController();
         } else if (name.equals("DataMainTainSecond")) {
             return new DataMainTainSecondController();
-<<<<<<< HEAD
-
         } else if (name.equals("DataMainTainThird")) {
             return new DataMainTainThirdController();
 
@@ -67,13 +54,6 @@ public class ControllerFactory {
 
         } else if (name.equals("DictionaryMainTainTFourth")) {
             return new DictionaryMainTainFourthController();
-=======
-        } else if (name.equals("DataMainTainThird")) {
-            return new DataMainTainThirdController();
-        } else if (name.equals("DataMainTainFourth")) {
-            return new DataMainTainFourthController();
-
->>>>>>> 41cd98c8cb3a434a3cf5e6fe3758b90cf74c38fd
         }
 
         return null;

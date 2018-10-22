@@ -1,6 +1,5 @@
 package model.entity;
 
-<<<<<<< HEAD
 import model.database.DatabaseDaoImp;
 import util.CreateTree;
 import util.Io;
@@ -10,9 +9,6 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-=======
-import javax.swing.tree.DefaultMutableTreeNode;
->>>>>>> 41cd98c8cb3a434a3cf5e6fe3758b90cf74c38fd
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -26,24 +22,15 @@ import static java.lang.Integer.parseInt;
 public class TreeNode {
 
     public int flag = 0;
-<<<<<<< HEAD
     public String id = "";//树节点的名称
     public String name = "";//树节点的编号
-=======
-    public String name = "";
->>>>>>> 41cd98c8cb3a434a3cf5e6fe3758b90cf74c38fd
 
     public ArrayList<TreeNode> childs = new ArrayList<TreeNode>();
     public TreeNode parent = null;
 
-<<<<<<< HEAD
     public TreeNode(String id, String name) {
 
         this.id = id;
-=======
-    public TreeNode(String name) {
-
->>>>>>> 41cd98c8cb3a434a3cf5e6fe3758b90cf74c38fd
         this.name = name;
     }
 
@@ -109,7 +96,6 @@ public class TreeNode {
     }
 
     /**
-<<<<<<< HEAD
      * @描述 从本地对应的tree文件中加载树节点
      * @参数 path 路劲,  top_first 除去根节点以外的第一层节点的长度
      * @返回值
@@ -144,16 +130,12 @@ public class TreeNode {
     /**
      * @描述 通过数据库的表名称 基于相应的表 通过每棵树的父节点 根据前缀生成一颗树,并把生成的树以父子节点的形式存入本地对应的tree文件
      * @参数 tablename 表名,  top_first 除去根节点以外的第一层节点的长度, ids 对应的编号，names 对应的名称
-=======
-     * @描述 通过每棵树的父节点 根据前缀生成一颗树
-     * @参数
->>>>>>> 41cd98c8cb3a434a3cf5e6fe3758b90cf74c38fd
      * @返回值
      * @创建人 szd
      * @创建时间 2018/10/12
      * @修改人和其它信息
      */
-<<<<<<< HEAD
+
     public static ArrayList<TreeNode> createTree1(String tablename, int top_first, String ids, String names,String path) {
 
         // TreeNode tops = new TreeNode("HsJ");
@@ -177,18 +159,11 @@ public class TreeNode {
             e.printStackTrace();
         }
 
-=======
-    public static ArrayList<TreeNode> createTree1() {
-
-       // TreeNode tops = new TreeNode("HsJ");
-        String[] list = {"0", "1", "2", "3", "001", "002", "003", "00101", "00102", "100", "101", "10001", "10002"};
->>>>>>> 41cd98c8cb3a434a3cf5e6fe3758b90cf74c38fd
 
         ArrayList<TreeNode> al = new ArrayList<TreeNode>();
         ArrayList<TreeNode> als = new ArrayList<TreeNode>();
         ArrayList<String> alss = new ArrayList<String>();
 
-<<<<<<< HEAD
         for (int i = 0; i < list.size(); i++) {
 
 
@@ -196,21 +171,10 @@ public class TreeNode {
             al.add(node);
         }
 
-
-=======
-        for (int i = 0; i < list.length; i++) {
-
-
-            TreeNode node = new TreeNode(list[i] + "");
-            al.add(node);
-        }
-
->>>>>>> 41cd98c8cb3a434a3cf5e6fe3758b90cf74c38fd
         for (int i = 0; i < al.size(); i++) {
 
 
             TreeNode injectNode = al.get(i);
-<<<<<<< HEAD
             if (injectNode.flag != 11) {
 
 
@@ -297,71 +261,7 @@ public class TreeNode {
 
            }
        }
-=======
-            System.out.println(i + "====遍历===" + injectNode.name + "  " + injectNode.name.getBytes().length);
 
-            for (int j = 0; j < al.size(); j++) {
-
-                TreeNode treeNode = al.get(j);
-
-                if (treeNode.name.getBytes().length == 1) {
-
-                   // treeNode.parent = (TreeNode) tops;
-                    if (!alss.contains(treeNode.name)) {
-
-
-                        als.add(treeNode);
-                        alss.add(treeNode.name);
-                        treeNode.flag = 1;
-                    }
-
-                    //System.out.println("====top===" + " 父节点" + tops.name + "  子节点： " + treeNode.name);
-                }
-                if (injectNode.name.getBytes().length == 1) {
-
-                   // injectNode.parent = (TreeNode) tops;
-                    if (!alss.contains(injectNode.name)) {
-                        als.add(injectNode);
-                        alss.add(injectNode.name);
-                        injectNode.flag = 1;
-                    }
-
-                //    System.out.println("====top===" + " 父节点" + tops.name + "  子节点： " + injectNode.name);
-                }
-
-                //如果传入的节点值包含此时的树节点值，且长度值的差小于3 则证明该传入节点值是该树节点的父节点
-                if (!injectNode.name.equals(treeNode.name) && injectNode.name.startsWith(treeNode.name) && (injectNode.name.getBytes().length - treeNode.name.getBytes().length < 3)) {
-
-
-                    injectNode.parent = treeNode;
-
-                    if (!alss.contains(injectNode.name)) {
-                        als.add(injectNode);
-                        alss.add(injectNode.name);
-                        //treeNode.add(injectNode);
-                    }
-
-                    System.out.println("子节点" + injectNode.name + "  父节点: " + treeNode.name);
-
-                }
-                //与上面相反
-                else if (!injectNode.name.equals(treeNode.name) && treeNode.name.startsWith(injectNode.name) && (treeNode.name.getBytes().length - injectNode.name.getBytes().length < 3)) {
-
-
-                    treeNode.parent = injectNode;
-
-                    if (!alss.contains(treeNode.name)) {
-                        als.add(treeNode);
-                        alss.add(treeNode.name);
-                        // injectNode.add(treeNode);
-                    }
-
-                    System.out.println(" 子节点" + treeNode.name + "  父节点： " + injectNode.name);
-                }
-
-            }
-        }
->>>>>>> 41cd98c8cb3a434a3cf5e6fe3758b90cf74c38fd
 
         return als;
 
@@ -370,7 +270,6 @@ public class TreeNode {
     public static void main(String args[]) {
 
 
-<<<<<<< HEAD
         //生成树状结构
 
         long a=System.currentTimeMillis();
@@ -387,31 +286,7 @@ public class TreeNode {
         //
         System.out.println("===时间==="+(b-a));
 
-=======
-        // TreeNode.createTree1();
 
-
-//        TreeNode top = new TreeNode("human");
-//
-//        TreeNode t1 = new TreeNode("man");
-//        TreeNode t2 = new TreeNode("woman");
-//        TreeNode t3 = new TreeNode("boy");
-//
-//        top.addTreeNode(t1, top);
-//        top.addTreeNode(t2, top);
-//        top.addTreeNode(t3, top);
-//
-//        TreeNode t11 = new TreeNode("man1");
-//        TreeNode t22 = new TreeNode("woman1");
-//        TreeNode t23 = new TreeNode("woman2");
-//        TreeNode t24 = new TreeNode("woman3");
-//        top.addTreeNode(t11, t1);
-//        top.addTreeNode(t22, t2);
-//        top.addTreeNode(t23, t2);
-//        top.addTreeNode(t24, t2);
-//
-//        top.print(top);
->>>>>>> 41cd98c8cb3a434a3cf5e6fe3758b90cf74c38fd
     }
 
 
