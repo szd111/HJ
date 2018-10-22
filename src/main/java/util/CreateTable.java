@@ -31,6 +31,7 @@ public class CreateTable {
     public JTable createTable(String columns[], HashMap<Integer, String[]> hp, final Windows w) {
 
 
+
         //创建列名 并赋值
         Vector<String> columnNameV = new Vector<>();
 
@@ -42,24 +43,23 @@ public class CreateTable {
 
         Vector<Vector<String>> tableValueV = new Vector<>();
 
-        System.out.println("=====hp==="+hp.size());
-
         for (int i = 0; i < hp.size(); i++) {
 
             //获取每一行的数据
             String[] rows = hp.get(i);
-           // System.out.println(hp.get(i).length+"=====rowsss.length====");
 
             Vector<String> rowV = new Vector<>();
             //System.out.println("=====rows.length===="+rows.length);
+
             for (int j = 0; j < rows.length; j++) {
 
 
                 rowV.add(rows[j]);
-              //  System.out.print("==" + rows[j] + "  ");
+
+                System.out.print("==" + rows[j] + "  ");
 
             }
-
+            System.out.println("=========");
             tableValueV.add(rowV);
         }
 
@@ -79,12 +79,14 @@ public class CreateTable {
 
         CreateTree ct = new CreateTree();
 
+
      //   JTreeComboBox comboBox = new JTreeComboBox(ct.getJTree());
 
         //选中其中一列定义树形下拉框
       //  TableColumn column = new TableColumn();
       //  column = table.getColumnModel().getColumn(1);
      //   column.setCellEditor(new DefaultCellEditor(comboBox));
+
 
         return table;
     }

@@ -5,35 +5,20 @@ import util.Io;
 import java.sql.*;
 
 /**
- * @创建人 shizhendong
- * @创建时间 2018/9/27
+ * @创建人 rduan
+ * @创建时间 2018/10/10
  * @描述 对数据库底层操作的接口进行实现
  */
-public class DatabaseDaoImp implements DatabaseDao {
-
-    public String database="oracle";
-
+public class Databasezb implements DatabaseDao {
 
     String PATH = "src/main/resources/dm.sql.propertites";
-    String PATHS = "src/main/resources/oracle.sql.propertites";
 
     @Override
     public Connection getConnection() {
         Connection connection = null;
         try {
             try {
-
-                if(database.equals("dm")) {
-                    Class.forName(Io.readPropertites(PATH, "DRIVER_NAME"));
-                }
-                else if(database.equals("oracle")) {
-
-                    PATH=PATHS;
-
-                    Class.forName(Io.readPropertites(PATHS, "DRIVER_NAME"));
-                }{
-
-                }
+                Class.forName(Io.readPropertites(PATH, "DRIVER_NAME"));
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -85,7 +70,6 @@ public class DatabaseDaoImp implements DatabaseDao {
 
             for (int i = 0; i < params.length; i++) {
                 ps.setString(i + 1, params[i]);
-
             }
 
             resultSet = ps.executeQuery();
@@ -137,28 +121,5 @@ public class DatabaseDaoImp implements DatabaseDao {
     }
 
 
-    public static void main(String args[]) throws SQLException {
 
-        DatabaseDaoImp d = new DatabaseDaoImp();
-
-d.database="oracle";
-
-        Connection c = d.getConnection();
-
-        ResultSet r = d.executeQuery("select * from NSDB.性能_布扫雷器材车性能", c);
-
-
-
-        System.out.println(r);
-
-        while (r.next()) {
-
-            System.out.println(r.getString("配置要求"));
-            System.out.println(r.getDate("数据时间"));
-         //   System.out.println(r.getString("DATABASE_PASSWORD"));
-
-
-        }
-
-    }
 }

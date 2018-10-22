@@ -37,6 +37,7 @@ public class UserLogin extends JDialog implements ActionListener{
 	JCheckBox checkBox1,checkBox2;
 	JProgressBar JProgressBar;
 
+
 	//Font f1=new Font("ËÎÌå", Font.PLAIN, 16);
 	//Font f2=new Font("ºÚÌå", Font.ITALIC, 12);
 	public static void main(String[] args) {
@@ -145,6 +146,7 @@ public class UserLogin extends JDialog implements ActionListener{
 		ct.add(JProgressBar);
 		JProgressBar.setVisible(false);*/
 
+
 		//this.add(bi);
 		ct.add(bi);
 		this.setUndecorated(true);
@@ -187,8 +189,6 @@ public class UserLogin extends JDialog implements ActionListener{
 		LoginController lc=new LoginController();
 		if(e.getSource()==jconfirm)
 		{
-
-
 			String uid=this.jname.getText().trim();
 			if(uid==null){
 
@@ -222,6 +222,7 @@ public class UserLogin extends JDialog implements ActionListener{
 				this.hide();
 				//String welcome="»¶Ó­Äú--"+zhiwei;
 				//JOptionPane.showMessageDialog(this, welcome);
+
 				this.dispose();
 			}
 			else 

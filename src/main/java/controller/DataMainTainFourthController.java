@@ -2,7 +2,6 @@ package controller;
 
 import model.OperateLine;
 import model.OperateLineImp;
-
 import model.SelectTableImp;
 import model.database.DatabaseDaoImp;
 import model.entity.Columns;
@@ -13,7 +12,6 @@ import util.ImagePanel;
 import util.RegExpValidatorUtils;
 import view.UserLogin;
 import view.Windows;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.TreeSelectionEvent;
@@ -69,6 +67,7 @@ public class DataMainTainFourthController {
 
     public void armySituation(final Windows w) {
 
+
         //加载表格及相关类
         final CreateTable cb = new CreateTable();
         DatabaseDaoImp d = new DatabaseDaoImp();
@@ -89,6 +88,7 @@ public class DataMainTainFourthController {
         jt.addTreeSelectionListener(new TreeSelectionListener() {
             @Override
             public void valueChanged(TreeSelectionEvent e) {
+
                 System.out.println("=======数据维护===外军装备====");
                 d.database="oracle";
                 Connection c = d.getConnection();
@@ -282,7 +282,6 @@ public class DataMainTainFourthController {
 
 
             }
-            //    }
         });
 
 

@@ -51,6 +51,7 @@ public class JTreeComboBoxRenderer extends DefaultListCellRenderer {
      * ²âÊÔ
      */
     public static void main(String args[]) {
+
 //        JFrame frame = new JFrame("JTreeComboBox Àý×Ó");
 //        frame.setSize(400, 320);
 //        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
@@ -73,6 +74,7 @@ public class JTreeComboBoxRenderer extends DefaultListCellRenderer {
 //        });
 //        frame.getContentPane().add(btt);
 //        frame.setVisible(true);
+
     }
 
 }

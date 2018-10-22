@@ -23,7 +23,9 @@ public class CreateTree {
      * @创建时间 2018/9/26
      * @修改人和其它信息
      */
+
     private static void createNodes(DefaultMutableTreeNode top) {
+
         DefaultMutableTreeNode jingdian = null, jiaotong = null, zhusu = null, binguan = null, luying = null, jiesu = null, factor = null, class1 = null;
 
         String unicode = null;
@@ -91,7 +93,9 @@ public class CreateTree {
         int p = 0;
         for (int i = 0; i < als.size(); i++) {
 
+
             if (als.get(i).name.toString().trim().equals(ff.name.trim())) {
+
                 p = i;
                 break;
             }
@@ -115,7 +119,6 @@ public class CreateTree {
         ArrayList<DefaultMutableTreeNode> al = new ArrayList<DefaultMutableTreeNode>();
 
         for (int k = 0; k < als.size(); k++) {
-
 
             DefaultMutableTreeNode dn = new DefaultMutableTreeNode(als.get(k).id);
 
@@ -146,12 +149,14 @@ public class CreateTree {
                     al.get(CreateTree.getTreeNodeIndex(als.get(k).parent, als)).add(al.get(k));
 
                 }
+
             }
 
         }
 
 
     }
+
 
 
 
@@ -163,6 +168,7 @@ public class CreateTree {
      * @创建时间 2018/9/26
      * @修改人和其它信息
      */
+
     public JTree getJTree(ArrayList<TreeNode> als) {
 
         JTree jTree = null;
@@ -170,6 +176,7 @@ public class CreateTree {
         if (jTree == null) {
 
             DefaultMutableTreeNode top = new DefaultMutableTreeNode("HJ");
+
 
             System.out.println("======load=======");
 
@@ -182,6 +189,7 @@ public class CreateTree {
         }
         return jTree;
     }
+
 
 
 

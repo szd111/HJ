@@ -7,8 +7,9 @@ import controller.factory.ControllerFactory;
 
 import model.SelectTableImp;
 import model.database.DatabaseDaoImp;
-import model.entity.TreeNode;
-import util.*;
+import util.CreateTable;
+import util.FontTools;
+import util.ImagePanel;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -23,6 +24,7 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import java.util.Calendar;
 
 /**
@@ -61,8 +63,10 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
     Timer t;//可定时触发Action事件
     ControllerFactory cft;//工厂控制器
     public static boolean ok = false;//单元格是否可编辑
+
     public JTree jt, jt2, jt3, jt4;//字典维护 树形结构
     public JTree jt11, jt22, jt33, jt44;//数据维护 树形结构
+
 
     public static void main(String[] args) {
         // TODO 自动生成的方法存根
@@ -97,7 +101,8 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
 
                 JDialog.setDefaultLookAndFeelDecorated(true);
 
-                //Windows w = new Windows();
+
+               // Windows w = new Windows();
 
             }
         });
@@ -277,6 +282,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         }
         Cursor myCursor = new Cursor(HAND_CURSOR);
         p1_bgImage = new ImagePanel(p1_bg);
+
         p1_bgImage.setLayout(new GridLayout(8, 13));
 
         //将左边的树形结构面板截屏设置为可滚动
@@ -284,6 +290,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         jp1scrollPane.setViewportView(jp1);
 
         jp1scrollPane.add(p1_bgImage);
+
 
         //jp4,jp2,jp3,jp6
         myCard = new CardLayout();
@@ -316,8 +323,10 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
 
         jp4.add(jp2, "West");
         jp4.add(jp3, "Center");
+
         jsp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true, jp1scrollPane, jp4);
         jsp.setDividerLocation(300);
+
         jsp.setDividerSize(0);
 
 
@@ -344,6 +353,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
     }
 
     public Windows(JTree jt,JTree jt2,JTree jt3,JTree jt4) {
+
         try {
             titleIcon = ImageIO.read(new File("src/main/resources/image/title.gif"));
         } catch (IOException e) {
@@ -351,6 +361,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
             e.printStackTrace();
         }
         cft = new ControllerFactory();
+
 
         //树形结构
        this.initTree(jt,jt2,jt3,jt4);
@@ -400,7 +411,6 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         //部队情况 post get
         if (e.getActionCommand() == "部队情况") {
 
-
             DataMainTainFirstController c = (DataMainTainFirstController) cft.getConTrollers("DataMainTain");
             flagObject = "部队情况";
             c.armySituation(this);
@@ -448,16 +458,20 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
             // });
 
 
+
         }
         //战备工程维护
         if (e.getActionCommand() == "战备工程 ") {
+
             DictionaryMainTainFourthController c = (DictionaryMainTainFourthController) cft.getConTrollers("DictionaryMainTainTFourth");
             flagObject = "战备工程 ";
             c.armySituation(this);
 
+
         }
         //我军装备维护
         if (e.getActionCommand() == "我军装备 ") {
+
             DictionaryMainTainSecondController c = (DictionaryMainTainSecondController) cft.getConTrollers("DictionaryMainTainSecond");
             flagObject = "我军装备 ";
             c.armySituation(this);
@@ -465,9 +479,11 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         }
         //外军装备维护
         if (e.getActionCommand() == "外军装备 ") {
+
             DictionaryMainTainThirdController c = (DictionaryMainTainThirdController) cft.getConTrollers("DictionaryMainTainThird");
             flagObject = "外军装备 ";
             c.armySituation(this);
+
 
         }
 

@@ -13,7 +13,6 @@ import util.ImagePanel;
 import util.RegExpValidatorUtils;
 import view.UserLogin;
 import view.Windows;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.TreeSelectionEvent;
@@ -91,6 +90,7 @@ public class DataMainTainThirdController {
         jt.addTreeSelectionListener(new TreeSelectionListener() {
             @Override
             public void valueChanged(TreeSelectionEvent e) {
+
                 System.out.println("=======数据维护===我军装备====");
                 d.database = "oracle";
                 Connection c = d.getConnection();
@@ -286,6 +286,7 @@ public class DataMainTainThirdController {
 
             }
             //  }
+
         });
 
 
