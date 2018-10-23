@@ -21,7 +21,7 @@ public class DictionaryMainTainOperate1Imp implements DictionaryMainTainOperate 
     @Override
     public void updateTreeNode(String id, String tt) {
 
-        String sql = "update NSDB.字典_通用_部队番号 set 部队简称='" + tt + "' where 部队内码='" + id + "'";
+        String sql = "update scott.字典_通用_部队番号 set 部队简称='" + tt + "' where 部队内码='" + id + "'";
         Connection c = dm.getConnection();
         dm.executeUpdate(sql, c);
 

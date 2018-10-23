@@ -119,7 +119,7 @@ public class Io {
             }
 
             reader.close();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -138,15 +138,15 @@ public class Io {
         // io.writeToTxt("C:\\Users\\admin\\Desktop\\github\\HJ-master\\src\\main\\resources\\szd","sssswwws");
 
 
-        String xx[]=io.readFromTxt("src/main/resources/tree/tree1").split("\\$");
+        String xx[]=io.readFromTxt("src/main/resources/tree/tree4").split("\\$");
         DatabaseDaoImp dd=new DatabaseDaoImp();
         Connection c=dd.getConnection();
         for(int i=1;i<xx.length;i++){
             String id=xx[i].split("\\#")[1].split(" ")[1];
             String name=xx[i].split("\\#")[1].split(" ")[0];
 
-            String sql="insert into scott.字典_通用_部队番号(部队内码,部队序号,部队简称,部队番号)" +
-                    "values('"+id+"','"+id+"','"+id+"','"+name+"')";
+            String sql="insert into scott.字典_通用_战备工程(战备工程内码,战备工程序号,战备工程简称,战备工程名称)" +
+                    "values('"+i+"','"+id+"','"+id+"','"+name+"')";
             dd.executeQuery(sql,c);
 
 

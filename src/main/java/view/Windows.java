@@ -107,7 +107,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
 
 
     //加载属性结构从本地文件tree
-    public void initTree(JTree jt,JTree jt2,JTree jt3,JTree jt4) {
+    public void initTree(JTree jt,JTree jt2,JTree jt3,JTree jt4,JTree jt11) {
 
         //加载表格及相关类
         final CreateTable cb = new CreateTable();
@@ -115,7 +115,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         SelectTableImp sp = new SelectTableImp();
 
         this.jt=jt; this.jt2=jt2; this.jt3=jt3; this.jt4=jt4;
-
+        this.jt11=jt11;
         //第一次加载树节点tree1 从本地文件夹tree中
         /*jt = TreeNode.loadTreeNode("src/main/resources/tree/tree1");*/
     //    jt11 = TreeNode.loadTreeNode("src/main/resources/tree/tree1");
@@ -347,7 +347,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         jp5.add(ip1);
     }
 
-    public Windows(JTree jt,JTree jt2,JTree jt3,JTree jt4) {
+    public Windows(JTree jt,JTree jt2,JTree jt3,JTree jt4,JTree jt11) {
 
         try {
             titleIcon = ImageIO.read(new File("src/main/resources/image/title.gif"));
@@ -358,7 +358,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         cft = new ControllerFactory();
 
         //树形结构
-       this.initTree(jt,jt2,jt3,jt4);
+       this.initTree(jt,jt2,jt3,jt4,jt11);
 
         //菜单
         this.initMenu();

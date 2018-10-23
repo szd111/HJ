@@ -12,6 +12,8 @@ import java.sql.*;
 public class DatabaseDaoImp implements DatabaseDao {
 
     public String database="oracle";
+    Statement statement = null;
+    PreparedStatement ps = null;
 
 
     String PATH = "src/main/resources/dm.sql.propertites";
@@ -53,6 +55,17 @@ public class DatabaseDaoImp implements DatabaseDao {
     public void destroy(Connection connection) {
         try {
             connection.close();
+
+            if(ps!=null){
+
+                ps.close();
+            }
+
+            if(statement!=null){
+
+                statement.close();
+            }
+
         } catch (SQLException e) {
             System.out.println("不能关闭数据库连接: " + e.getMessage());
         }
@@ -60,15 +73,21 @@ public class DatabaseDaoImp implements DatabaseDao {
 
     @Override
     public ResultSet executeQuery(String sql, Connection connection) {
-        Statement statement;
+
         ResultSet resultSet = null;
         try {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(sql);
 
+
+
         } catch (SQLException e) {// TODO Auto-generated catch block
 
             e.printStackTrace();
+
+        }
+        finally{
+
 
         }
         return resultSet;
@@ -78,7 +97,7 @@ public class DatabaseDaoImp implements DatabaseDao {
 
     @Override
     public ResultSet executeQuerys(String sql, String[] params, Connection connection) {
-        PreparedStatement ps = null;
+
         ResultSet resultSet = null;
         try {
             ps = connection.prepareStatement(sql);
@@ -89,6 +108,8 @@ public class DatabaseDaoImp implements DatabaseDao {
             }
 
             resultSet = ps.executeQuery();
+
+            ps.close();
         } catch (Exception e) {
             e.printStackTrace();
             // TODO: handle exception
@@ -100,12 +121,11 @@ public class DatabaseDaoImp implements DatabaseDao {
     @Override
     public int executeUpdate(String sql, Connection connection) {
 
-        Statement statement;
         int count = 0;
         try {
             statement = connection.createStatement();
             count = statement.executeUpdate(sql);
-            //statement.close();
+            statement.close();
         } catch (SQLException e) {// TODO Auto-generated catch block
             e.printStackTrace();
         }
@@ -116,7 +136,7 @@ public class DatabaseDaoImp implements DatabaseDao {
     @Override
     public int executeUpdates(String sql, String[] params, Connection connection) {
         int b = 1;
-        PreparedStatement ps = null;
+
 
         try {
             ps = connection.prepareStatement(sql);
@@ -128,6 +148,8 @@ public class DatabaseDaoImp implements DatabaseDao {
             if (ps.executeUpdate() != 1) {
                 b = 0;
             }
+
+
         } catch (Exception e) {
 
             e.printStackTrace();
@@ -141,7 +163,7 @@ public class DatabaseDaoImp implements DatabaseDao {
 
         DatabaseDaoImp d = new DatabaseDaoImp();
 
-d.database="oracle";
+       d.database="oracle";
 
         Connection c = d.getConnection();
 

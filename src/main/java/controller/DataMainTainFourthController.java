@@ -91,7 +91,7 @@ public class DataMainTainFourthController {
                 System.out.println("=======数据维护===外军装备====");
                 d.database="oracle";
                 Connection c = d.getConnection();
-                ResultSet r = d.executeQuery("select * from NSDB.性能_布扫雷器材车性能", c);
+                ResultSet r = d.executeQuery("select * from scott.字典_通用_外军装备", c);
                 DefaultMutableTreeNode node = (DefaultMutableTreeNode) jt.getLastSelectedPathComponent();
                 if (node == null)
                     return;
@@ -105,7 +105,7 @@ public class DataMainTainFourthController {
                 w.flagObject = object.toString();
 
                 //从数据库中根据表名动态获取字段及类型
-                ArrayList<Columns> columnsArrayList=sp.getColumnName("性能_布扫雷器材车性能");
+                ArrayList<Columns> columnsArrayList=sp.getColumnName("字典_通用_外军装备");
                 String column[] =new String[columnsArrayList.size()];
                 for(int i=0;i<columnsArrayList.size();i++){
                     column[i]=columnsArrayList.get(i).getName();

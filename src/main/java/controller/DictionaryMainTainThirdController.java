@@ -99,7 +99,7 @@ public class DictionaryMainTainThirdController {
                 System.out.println("You have chosen:" + object.toString());
                 d.database = "oracle";
                 Connection c = d.getConnection();
-                ResultSet r = d.executeQuery("select * from NSDB.字典_通用_外军装备 where 装备名称='" + object.toString() + "'", c);
+                ResultSet r = d.executeQuery("select * from scott.字典_通用_外军装备 where 装备名称='" + object.toString() + "'", c);
                 try {
                     r.next();
                     // System.out.println("=ssss===" + r.getObject("部队番号"));
@@ -360,9 +360,8 @@ public class DictionaryMainTainThirdController {
 
                 try {
                     //关闭数据库连接
-                    c.close();
-                    r.close();
-                } catch (SQLException e1) {
+                    d.destroy(c);
+                } catch (Exception e1) {
                     e1.printStackTrace();
                 }
 

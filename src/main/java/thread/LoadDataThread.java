@@ -31,7 +31,7 @@ public class LoadDataThread extends Thread{
             public void run() {
                 if (result == 1) {
                     progress.setVisible(false);
-                    new Windows(jTree,jTree1,jTree2,jTree3);
+                    new Windows(jTree,jTree1,jTree2,jTree3,jTree);
                 }else {
                     System.out.println("yichang!!!");
                 }

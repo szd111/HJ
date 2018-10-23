@@ -98,7 +98,7 @@ public class DataMainTainFirstController {
 
                  d.database="oracle";
                  Connection c = d.getConnection();
-                 ResultSet r = d.executeQuery("select * from NSDB.字典_通用_战备工程", c);
+                 ResultSet r = d.executeQuery("select * from scott.字典_通用_部队番号", c);
                 DefaultMutableTreeNode node = (DefaultMutableTreeNode) jt.getLastSelectedPathComponent();
                 if (node == null)
                     return;
@@ -112,7 +112,7 @@ public class DataMainTainFirstController {
                 w.flagObject = object.toString();
 
                 //从数据库中根据表名动态获取字段及类型
-                ArrayList<Columns> columnsArrayList=sp.getColumnName("字典_通用_战备工程");
+                ArrayList<Columns> columnsArrayList=sp.getColumnName("字典_通用_部队番号");
                 String column[] =new String[columnsArrayList.size()];
                 for(int i=0;i<columnsArrayList.size();i++){
                     column[i]=columnsArrayList.get(i).getName();
