@@ -24,6 +24,7 @@ public class CreateTree {
      * @修改人和其它信息
      */
     private static void createNodes(DefaultMutableTreeNode top) {
+
         DefaultMutableTreeNode jingdian = null, jiaotong = null, zhusu = null, binguan = null, luying = null, jiesu = null, factor = null, class1 = null;
 
         String unicode = null;
@@ -91,7 +92,9 @@ public class CreateTree {
         int p = 0;
         for (int i = 0; i < als.size(); i++) {
 
+
             if (als.get(i).name.toString().trim().equals(ff.name.trim())) {
+
                 p = i;
                 break;
             }
@@ -146,13 +149,13 @@ public class CreateTree {
                     al.get(CreateTree.getTreeNodeIndex(als.get(k).parent, als)).add(al.get(k));
 
                 }
+
             }
 
         }
 
 
     }
-
 
 
     /**
@@ -170,7 +173,6 @@ public class CreateTree {
         if (jTree == null) {
 
             DefaultMutableTreeNode top = new DefaultMutableTreeNode("HJ");
-
             System.out.println("======load=======");
 
             createDynamicNode(top, als);
@@ -182,9 +184,6 @@ public class CreateTree {
         }
         return jTree;
     }
-
-
-
 
     /**
      * @描述 根据创立的节点构建一棵静态树

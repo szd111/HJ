@@ -28,7 +28,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 /**
  * @创建人 shizhendong
  * @创建时间 2018/9/26
@@ -39,6 +38,7 @@ public class DataMainTainFirstController {
   //  public JPanel jp6;
     OperateLine oc = null;
     public JButton jb11, jb22, jb33, jb44;//数据维护界面 对应的增删改查;
+
 
     /**
      * @描述 退出界面操作 通过鼠标点击退出键进行退出
@@ -121,7 +121,6 @@ public class DataMainTainFirstController {
 
                 HashMap<Integer, String[]> rows = new HashMap<Integer, String[]>();
 
-
                     int i=0;
                     try {
                         while(r.next()){
@@ -137,13 +136,13 @@ public class DataMainTainFirstController {
                             }
                             System.out.println();
                             rows.put(i,row);
+
                             i++;
 
                         }
                     } catch (SQLException e1) {
                         e1.printStackTrace();
                     }
-
 
                 w.jTable = (JTable) cb.createTable(column, rows, w);
 
@@ -268,7 +267,6 @@ public class DataMainTainFirstController {
 
             }
 
-            //    }
 
         });
 

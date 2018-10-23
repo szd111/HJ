@@ -2,7 +2,6 @@ package controller;
 
 import model.OperateLine;
 import model.OperateLineImp;
-
 import model.SelectTableImp;
 import model.database.DatabaseDaoImp;
 import model.entity.Columns;
@@ -13,7 +12,6 @@ import util.ImagePanel;
 import util.RegExpValidatorUtils;
 import view.UserLogin;
 import view.Windows;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.TreeSelectionEvent;
@@ -29,7 +27,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 
 /**
  * @¥¥Ω®»À rduan

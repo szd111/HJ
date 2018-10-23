@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class SelectTableImp implements SelectTable {
 
     DatabaseDaoImp di = null;
+
     Columns cl = null;
 
     @Override
@@ -24,8 +25,10 @@ public class SelectTableImp implements SelectTable {
 
         ArrayList<Columns> als = new ArrayList<Columns>();
         di = new DatabaseDaoImp();
+
        // di.databacse="oracle";
         String sql = "select COLUMN_NAME, DATA_TYPE, DATA_LENGTH from ALL_tab_cols where TABLE_NAME='"+name+"'";
+
 
         Connection cn = di.getConnection();
         ResultSet rs = di.executeQuery(sql, cn);

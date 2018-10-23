@@ -145,6 +145,7 @@ public class UserLogin extends JDialog implements ActionListener{
 		ct.add(JProgressBar);
 		JProgressBar.setVisible(false);*/
 
+
 		//this.add(bi);
 		ct.add(bi);
 		this.setUndecorated(true);
@@ -188,7 +189,6 @@ public class UserLogin extends JDialog implements ActionListener{
 		if(e.getSource()==jconfirm)
 		{
 
-
 			String uid=this.jname.getText().trim();
 			if(uid==null){
 
@@ -222,6 +222,7 @@ public class UserLogin extends JDialog implements ActionListener{
 				this.hide();
 				//String welcome="»¶Ó­Äú--"+zhiwei;
 				//JOptionPane.showMessageDialog(this, welcome);
+
 				this.dispose();
 			}
 			else 

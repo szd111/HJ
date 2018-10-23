@@ -38,7 +38,7 @@ public class Io {
             String strValue = pps.getProperty(strKey);
 
             if (strKey.equals(name)) {
-                //System.out.println(strKey + "=" + strValue);
+
 
                 names = strValue;
 
@@ -127,13 +127,7 @@ public class Io {
 
 
         Io io=new Io();
-       // io.writeToTxt("C:\\Users\\admin\\Desktop\\github\\HJ-master\\src\\main\\resources\\szd","sssss");
-       // io.writeToTxt("C:\\Users\\admin\\Desktop\\github\\HJ-master\\src\\main\\resources\\szd","sssswws");
-       // io.writeToTxt("C:\\Users\\admin\\Desktop\\github\\HJ-master\\src\\main\\resources\\szd","sssswwws");
 
-
-        String xx=io.readFromTxt("src/main/resources/tree/tree1");
-        System.out.println("===xx=="+xx);
     }
 
 }
