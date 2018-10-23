@@ -4,8 +4,10 @@ package view;
 
 import controller.LoginController;
 import controller.factory.ControllerFactory;
+import model.MyProgressBar;
 import model.entity.User;
 
+import thread.LoadDataThread;
 import util.FontTools;
 
 import javax.imageio.ImageIO;
@@ -33,6 +35,7 @@ public class UserLogin extends JDialog implements ActionListener{
 	JPasswordField jpass;
 	JButton jconfirm,jcancel;
 	JCheckBox checkBox1,checkBox2;
+	JProgressBar JProgressBar;
 
 	//Font f1=new Font("宋体", Font.PLAIN, 16);
 	//Font f2=new Font("黑体", Font.ITALIC, 12);
@@ -133,6 +136,15 @@ public class UserLogin extends JDialog implements ActionListener{
 		jcancel.setBounds(850, 450, 70, 30);
 		ct.add(jcancel);
 		BackImage bi=new BackImage();
+
+		/*JProgressBar = new JProgressBar();
+		JProgressBar.setIndeterminate(true); // 不确定的进度条
+		JProgressBar.setString("正在加载数据...");
+		JProgressBar.setBounds(730,500,140,30);
+
+		ct.add(JProgressBar);
+		JProgressBar.setVisible(false);*/
+
 		//this.add(bi);
 		ct.add(bi);
 		this.setUndecorated(true);
@@ -168,12 +180,15 @@ public class UserLogin extends JDialog implements ActionListener{
 	//响应登录请求
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
 		// TODO 自动生成的方法存根
 		ControllerFactory cf=new ControllerFactory();
 
 		LoginController lc=new LoginController();
 		if(e.getSource()==jconfirm)
 		{
+
+
 			String uid=this.jname.getText().trim();
 			if(uid==null){
 
@@ -202,11 +217,11 @@ public class UserLogin extends JDialog implements ActionListener{
 			if(flag==1)
 			{
 
-				new Windows();
-				
+				/*new Windows();*/
+				new MyProgressBar();
 				this.hide();
-				String welcome="欢迎您--"+zhiwei;
-				JOptionPane.showMessageDialog(this, welcome);
+				//String welcome="欢迎您--"+zhiwei;
+				//JOptionPane.showMessageDialog(this, welcome);
 				this.dispose();
 			}
 			else 

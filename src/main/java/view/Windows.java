@@ -97,7 +97,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
 
                 JDialog.setDefaultLookAndFeelDecorated(true);
 
-                Windows w = new Windows();
+                //Windows w = new Windows();
 
             }
         });
@@ -107,26 +107,28 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
 
 
     //加载属性结构从本地文件tree
-    public void initTree() {
+    public void initTree(JTree jt,JTree jt2,JTree jt3,JTree jt4) {
 
         //加载表格及相关类
         final CreateTable cb = new CreateTable();
         DatabaseDaoImp d = new DatabaseDaoImp();
         SelectTableImp sp = new SelectTableImp();
 
+        this.jt=jt; this.jt2=jt2; this.jt3=jt3; this.jt4=jt4;
+
         //第一次加载树节点tree1 从本地文件夹tree中
-        jt = TreeNode.loadTreeNode("src/main/resources/tree/tree1");
-        jt11 = TreeNode.loadTreeNode("src/main/resources/tree/tree1");
+        /*jt = TreeNode.loadTreeNode("src/main/resources/tree/tree1");*/
+    //    jt11 = TreeNode.loadTreeNode("src/main/resources/tree/tree1");
 
         //第一次加载树节点tree2 从本地文件夹tree中
-        jt2 = TreeNode.loadTreeNode("src/main/resources/tree/test");
-        jt22 = TreeNode.loadTreeNode("src/main/resources/tree/tree2");
+   //     jt2 = TreeNode.loadTreeNode("src/main/resources/tree/test");
+      //  jt22 = TreeNode.loadTreeNode("src/main/resources/tree/tree2");
         //第一次加载树节点tree3 从本地文件夹tree中
-        jt3 = TreeNode.loadTreeNode("src/main/resources/tree/tree3");
-        jt33 =TreeNode.loadTreeNode("src/main/resources/tree/tree3");
+   //     jt3 = TreeNode.loadTreeNode("src/main/resources/tree/tree3");
+      //  jt33 =TreeNode.loadTreeNode("src/main/resources/tree/tree3");
         //第一次加载树节点tree4 从本地文件夹tree中
-        jt4 = TreeNode.loadTreeNode("src/main/resources/tree/tree4");
-        jt44 = TreeNode.loadTreeNode("src/main/resources/tree/tree4");
+    //    jt4 = TreeNode.loadTreeNode("src/main/resources/tree/tree4");
+      //  jt44 = TreeNode.loadTreeNode("src/main/resources/tree/tree4");
 
     }
 
@@ -341,7 +343,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         jp5.add(ip1);
     }
 
-    public Windows() {
+    public Windows(JTree jt,JTree jt2,JTree jt3,JTree jt4) {
         try {
             titleIcon = ImageIO.read(new File("src/main/resources/image/title.gif"));
         } catch (IOException e) {
@@ -351,7 +353,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         cft = new ControllerFactory();
 
         //树形结构
-        this.initTree();
+       this.initTree(jt,jt2,jt3,jt4);
 
         //菜单
         this.initMenu();
