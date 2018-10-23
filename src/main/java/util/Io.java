@@ -1,6 +1,9 @@
 package util;
 
+import model.database.DatabaseDaoImp;
+
 import java.io.*;
+import java.sql.Connection;
 import java.util.Enumeration;
 import java.util.Properties;
 
@@ -114,6 +117,9 @@ public class Io {
                // System.out.println(i+"　　　"+text);
                 i++;
             }
+
+            reader.close();
+            
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -125,8 +131,35 @@ public class Io {
 
     public static void main(String args[]) {
 
-
         Io io=new Io();
+
+        // io.writeToTxt("C:\\Users\\admin\\Desktop\\github\\HJ-master\\src\\main\\resources\\szd","sssss");
+        // io.writeToTxt("C:\\Users\\admin\\Desktop\\github\\HJ-master\\src\\main\\resources\\szd","sssswws");
+        // io.writeToTxt("C:\\Users\\admin\\Desktop\\github\\HJ-master\\src\\main\\resources\\szd","sssswwws");
+
+
+        String xx[]=io.readFromTxt("src/main/resources/tree/tree1").split("\\$");
+        DatabaseDaoImp dd=new DatabaseDaoImp();
+        Connection c=dd.getConnection();
+        for(int i=1;i<xx.length;i++){
+            String id=xx[i].split("\\#")[1].split(" ")[1];
+            String name=xx[i].split("\\#")[1].split(" ")[0];
+
+            String sql="insert into scott.字典_通用_部队番号(部队内码,部队序号,部队简称,部队番号)" +
+                    "values('"+id+"','"+id+"','"+id+"','"+name+"')";
+            dd.executeQuery(sql,c);
+
+
+
+
+            System.out.println("===xx=="+id +"  "+name);
+        }
+
+
+        dd.destroy(c);
+
+
+
 
     }
 
