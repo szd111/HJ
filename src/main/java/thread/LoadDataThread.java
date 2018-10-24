@@ -21,10 +21,10 @@ public class LoadDataThread extends Thread{
 
     public void run(){
 
-        JTree jTree = TreeNode.loadTreeNode("src/main/resources/tree/tree1");
-        JTree jTree1 = TreeNode.loadTreeNode("src/main/resources/tree/test");
-        JTree jTree2 = TreeNode.loadTreeNode("src/main/resources/tree/tree3");
-        JTree jTree3 = TreeNode.loadTreeNode("src/main/resources/tree/tree4");
+        JTree jTree = TreeNode.loadTreeNode("src/main/resources/tree/tree11");
+        JTree jTree1 = TreeNode.loadTreeNode("src/main/resources/tree/tree22");
+        JTree jTree2 = TreeNode.loadTreeNode("src/main/resources/tree/tree33");
+        JTree jTree3 = TreeNode.loadTreeNode("src/main/resources/tree/tree44");
         result = 1;
 
         SwingUtilities.invokeLater(new Runnable() {

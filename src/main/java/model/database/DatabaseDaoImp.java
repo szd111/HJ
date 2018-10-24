@@ -11,10 +11,9 @@ import java.sql.*;
  */
 public class DatabaseDaoImp implements DatabaseDao {
 
-    public String database="oracle";
+    public String database = "dm";
     Statement statement = null;
     PreparedStatement ps = null;
-
 
     String PATH = "src/main/resources/dm.sql.propertites";
     String PATHS = "src/main/resources/oracle.sql.propertites";
@@ -25,15 +24,15 @@ public class DatabaseDaoImp implements DatabaseDao {
         try {
             try {
 
-                if(database.equals("dm")) {
+                if (database.equals("dm")) {
                     Class.forName(Io.readPropertites(PATH, "DRIVER_NAME"));
-                }
-                else if(database.equals("oracle")) {
+                } else if (database.equals("oracle")) {
 
-                    PATH=PATHS;
+                    PATH = PATHS;
 
                     Class.forName(Io.readPropertites(PATHS, "DRIVER_NAME"));
-                }{
+                }
+                {
 
                 }
             } catch (ClassNotFoundException e) {
@@ -56,12 +55,12 @@ public class DatabaseDaoImp implements DatabaseDao {
         try {
             connection.close();
 
-            if(ps!=null){
+            if (ps != null) {
 
                 ps.close();
             }
 
-            if(statement!=null){
+            if (statement != null) {
 
                 statement.close();
             }
@@ -79,14 +78,11 @@ public class DatabaseDaoImp implements DatabaseDao {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(sql);
 
-
-
         } catch (SQLException e) {// TODO Auto-generated catch block
 
             e.printStackTrace();
 
-        }
-        finally{
+        } finally {
 
 
         }
@@ -163,20 +159,20 @@ public class DatabaseDaoImp implements DatabaseDao {
 
         DatabaseDaoImp d = new DatabaseDaoImp();
 
-       d.database="oracle";
+       // d.database = "oracle";
 
         Connection c = d.getConnection();
 
-        ResultSet r = d.executeQuery("select * from NSDB.性能_布扫雷器材车性能", c);
+        ResultSet r = d.executeQuery("select * from DR.字典_通用_部队番号", c);
 
 
         System.out.println(r);
 
         while (r.next()) {
 
-            System.out.println(r.getString("配置要求"));
-            System.out.println(r.getDate("数据时间"));
-         //   System.out.println(r.getString("DATABASE_PASSWORD"));
+            System.out.println(r.getString("部队番号"));
+            //   System.out.println(r.getDate("数据时间"));
+            //   System.out.println(r.getString("DATABASE_PASSWORD"));
 
 
         }

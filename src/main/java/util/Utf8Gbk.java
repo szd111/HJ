@@ -38,7 +38,7 @@ public class Utf8Gbk {
      * @¥¥Ω®»À szd
      */
 
-    public String Utf8TogGbk(String txt) {
+    public static  String Utf8TogGbk(String txt) {
 
         String name = "";
 

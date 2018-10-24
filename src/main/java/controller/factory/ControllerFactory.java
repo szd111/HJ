@@ -10,7 +10,6 @@ import controller.*;
  */
 public class ControllerFactory {
 
-
     /**
      * @描述 获取controller下面的实体类的方法 根据实体名称
      * @参数 name 实体名称
