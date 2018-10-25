@@ -23,7 +23,7 @@ public class JTreeThread extends JTree implements Runnable{
     @Override
     public void run() {
         System.out.println("====start==="+flag);
-        jTree = TreeNode.loadTreeNode(path);
+        jTree = TreeNode.loadTreeNodes(path);
         flag=1;
         System.out.println("====over==="+flag);
     }

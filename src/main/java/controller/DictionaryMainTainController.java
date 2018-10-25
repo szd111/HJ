@@ -397,8 +397,6 @@ public class DictionaryMainTainController {
 
 
                 w.jp3.removeAll();
-               // w.jp3.repaint();
-
 
                 w.jp3.add(jbt1);
                 w.jp3.add(jbt2);

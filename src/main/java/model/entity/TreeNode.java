@@ -6,6 +6,9 @@ import util.Io;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -97,33 +100,49 @@ public class TreeNode {
 
     /**
      * @描述 从本地对应的tree文件中加载树节点
-     * @参数 path 路劲,  top_first 除去根节点以外的第一层节点的长度
+     * @参数 path 路经
      * @返回值
      * @创建人 szd
      * @创建时间 2018/10/18
      * @修改人和其它信息
      */
-    public  static JTree  loadTreeNode(String path) {
+    public static JTree loadTreeNodes(String path) {
 
-        JTree jt=null;
+        JTree jt = null;
         CreateTree ct = new CreateTree();
-        String lines[] = Io.readFromTxt(path).split("\\$");
-        // ArrayList<TreeNode> als = TreeNode.createTree1();
         ArrayList<TreeNode> als = new ArrayList<TreeNode>();
-        for (int i = 1; i < lines.length; i++) {
+        int i = 0;
+        File file = new File(path);
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(file));
+            String text = null;
 
-            //    System.out.println(i + "===line===" + lines[i]);
-            String line = lines[i];
-            TreeNode tt = new TreeNode(line.split("\\#")[1].split(" ")[0], line.split("\\#")[1].split(" ")[1]);
-            if (!line.split("\\#")[0].split(" ")[0].equals("null")) {
-                tt.parent = new TreeNode(line.split("\\#")[0].split(" ")[0], line.split("\\#")[0].split(" ")[1]);
+            while ((text = reader.readLine()) != null) {
 
+                String line = text;
+                //System.out.println("====line=="+line);
+                if (line.contains("#")) {
+                    TreeNode tt = new TreeNode(line.split("\\#")[1].split(" ")[0], line.split("\\#")[1].split(" ")[1]);
+                    if (!line.split("\\#")[0].split(" ")[0].equals("null")) {
+                        tt.parent = new TreeNode(line.split("\\#")[0].split(" ")[0], line.split("\\#")[0].split(" ")[1]);
+
+                    }
+                    als.add(tt);
+                    i++;
+                }
             }
-            als.add(tt);
+
+            reader.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
         }
+
         jt = ct.getJTree(als);
 
-        return  jt;
+        return jt;
 
     }
 
@@ -135,7 +154,7 @@ public class TreeNode {
      * @创建时间 2018/10/12
      * @修改人和其它信息
      */
-    public static ArrayList<TreeNode> createTree1(String tablename, int top_first, String ids, String names,String path) {
+    public static ArrayList<TreeNode> createTree1(String tablename, int top_first, String ids, String names, String path) {
 
         // TreeNode tops = new TreeNode("HsJ");
 
@@ -145,7 +164,7 @@ public class TreeNode {
         dn.database = "oracle";
         Connection c = dn.getConnection();
         //System.out.println("===sql==="+"select * from "+tablename+"");
-        ResultSet rs = dn.executeQuery("select * from "+tablename+"", c);
+        ResultSet rs = dn.executeQuery("select * from " + tablename + "", c);
 
         try {
             while (rs.next()) {
@@ -244,22 +263,21 @@ public class TreeNode {
             }
         }
 
-       for(int i=0;i<als.size();i++){
+        for (int i = 0; i < als.size(); i++) {
 
-          //  System.out.println(als.get(i).parent.id + " " + als.get(i).parent.name + "#" + als.get(i).id + " " + als.get(i).name);
+            //  System.out.println(als.get(i).parent.id + " " + als.get(i).parent.name + "#" + als.get(i).id + " " + als.get(i).name);
 
-            if(als.get(i).parent!=null) {
+            if (als.get(i).parent != null) {
                 Io.writeToTxt(path, als.get(i).parent.id + " " + als.get(i).parent.name + "#" + als.get(i).id + " " + als.get(i).name);
 
-              //  if(als.get(i).parent.parent==null)
+                //  if(als.get(i).parent.parent==null)
+
+            } else if (als.get(i).parent == null) {
+
+                Io.writeToTxt(path, "null" + "#" + als.get(i).id + " " + als.get(i).name);
 
             }
-            else if(als.get(i).parent==null){
-
-                Io.writeToTxt(path, "null"+"#" + als.get(i).id + " " + als.get(i).name);
-
-           }
-       }
+        }
 
         return als;
 
@@ -270,19 +288,20 @@ public class TreeNode {
 
         //生成树状结构
 
-        long a=System.currentTimeMillis();
-        TreeNode.createTree1("NSDB.字典_通用_装备",2,"装备序号","装备名称","src/main/resources/tree/test" + "");
-      //  TreeNode.createTree1("NSDB.字典_通用_外军装备",3,"装备序号","装备名称","src/main/resources/tree/tree3" + "");
-       //  TreeNode.createTree1("NSDB.字典_通用_战备工程",2,"战备工程序号","战备工程名称","src/main/resources/tree/tree4" + "");
+        long a = System.currentTimeMillis();
+        TreeNode.loadTreeNodes("src/main/resources/tree/tree11");
+        TreeNode.loadTreeNodes("src/main/resources/tree/tree22");
+        TreeNode.loadTreeNodes("src/main/resources/tree/tree33");
+        TreeNode.loadTreeNodes("src/main/resources/tree/tree44");
+        //  TreeNode.createTree1("NSDB.字典_通用_装备",2,"装备序号","装备名称","src/main/resources/tree/test" + "");
 
-       // TreeNode.createTree1("NSDB.字典_通用_部队番号",8,"部队序号",
-              //  "部队番号","src/main/resources/tree/tree1" + "");
+        //  "部队番号","src/main/resources/tree/tree1" + "");
 
-        long b=System.currentTimeMillis();
+        long b = System.currentTimeMillis();
 
         //8326 9282 8108
         //
-        System.out.println("===时间==="+(b-a));
+        System.out.println("===时间===" + (b - a));
 
     }
 

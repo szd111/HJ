@@ -79,15 +79,16 @@ public class UserLogin extends JDialog implements ActionListener{
 	public UserLogin(){
 		Container ct=this.getContentPane();
 		this.setLayout(null);
-
+		int width=Toolkit.getDefaultToolkit().getScreenSize().width;
+		int height=Toolkit.getDefaultToolkit().getScreenSize().height;
 		jl1=new JLabel("请输入用户名:");
 		jl1.setFont(FontTools.f1);
-		jl1.setBounds(680, 250, 150, 30);
+		jl1.setBounds(width/2-500, height/2-270, 150, 30);
 		jl1.setFont(FontTools.f5);
 		ct.add(jl1);
 		jname=new JTextField(20);
 		jname.setFont(FontTools.f1);
-		jname.setBounds(830, 250, 150, 30);
+		jname.setBounds(width/2-350, height/2-270, 150, 30);
 		//jname.setBorder(BorderFactory.createLineBorder(new Color(255,255,255),3,true));
 		//jname.setBorder(new RoundBorder(Color.BLUE));
 		ct.add(jname);
@@ -95,45 +96,45 @@ public class UserLogin extends JDialog implements ActionListener{
 		jl2=new JLabel("(用户Id)");
 		jl2.setFont(FontTools.f2);
 		jl2.setForeground(Color.red);
-		jl2.setBounds(830, 250, 150, 30);
+		jl2.setBounds(width/2-500, height/2-300, 150, 30);
 		ct.add(jl2);
 
 		jl3=new JLabel("请 输入密 码 :");
 		jl3.setFont(FontTools.f5);
-		jl3.setBounds(680, 350, 150, 30);
+		jl3.setBounds(width/2-500, height/2-230, 150, 30);
 		ct.add(jl3);
 		jpass=new JPasswordField(20);
 		jpass.setFont(FontTools.f1);
-		jpass.setBounds(830, 350, 150, 30);
+		jpass.setBounds(width/2-350, height/2-230, 150, 30);
 		jpass.setBorder(BorderFactory.createLoweredBevelBorder());
 		ct.add(jpass);
 
 		checkBox1=new JCheckBox();
-		checkBox1.setBounds(752,400,18,18);
+		checkBox1.setBounds(width/2-400,height/2-190,18,18);
 		checkBox1.addActionListener(this);
 		ct.add(checkBox1);
 		jl4=new JLabel("审核");
-		jl4.setBounds(780,400,100,20);
+		jl4.setBounds(width/2-370,height/2-190,100,20);
 		ct.add(jl4);
 
 		checkBox2=new JCheckBox();
-		checkBox2.setBounds(840,400,18,18);
+		checkBox2.setBounds(width/2-300,height/2-190,18,18);
 		checkBox2.addActionListener(this);
 		ct.add(checkBox2);
 		jl5=new JLabel("不审核");
-		jl5.setBounds(870,400,100,20);
+		jl5.setBounds(width/2-270,height/2-190,100,20);
 		ct.add(jl5);
 
 		jconfirm=new JButton("确定");
 		jconfirm.addActionListener(this);
 		jconfirm.setFont(FontTools.f1);
-		jconfirm.setBounds(730, 450, 70, 30);
+		jconfirm.setBounds(width/2-370, height/2-150, 70, 30);
 		ct.add(jconfirm);
 
 		jcancel=new JButton("取消");
 		jcancel.addActionListener(this);
 		jcancel.setFont(FontTools.f1);
-		jcancel.setBounds(850, 450, 70, 30);
+		jcancel.setBounds(width/2-270, height/2-150, 70, 30);
 		ct.add(jcancel);
 		BackImage bi=new BackImage();
 
@@ -150,12 +151,12 @@ public class UserLogin extends JDialog implements ActionListener{
 		ct.add(bi);
 		this.setUndecorated(true);
 		//this.setSize(1100, 800);
-		int width=Toolkit.getDefaultToolkit().getScreenSize().width;
-		int height=Toolkit.getDefaultToolkit().getScreenSize().height;
+
 		this.setSize(width - 850, height - 440);
 		bi.setBounds(0,0,this.getWidth(), this.getHeight());
 
 		this.setLocation(width/2-200, height/2-200);
+		this.setResizable(false);
 		this.setVisible(true);
 
 	}

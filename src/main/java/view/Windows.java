@@ -56,7 +56,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
 
     public JTable jTable;//表单
     public DefaultTableModel tableModel;//
-
+    public JScrollPane jp11scrollPane;
     CardLayout myCard; //卡片模式
     public static String flagObject = "";//指定数据库的操作对象
     Timer t;//可定时触发Action事件
@@ -114,21 +114,9 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         DatabaseDaoImp d = new DatabaseDaoImp();
         SelectTableImp sp = new SelectTableImp();
 
+        //第一次加载树节点tree1 从本地文件夹tree中
         this.jt=jt; this.jt2=jt2; this.jt3=jt3; this.jt4=jt4;
         this.jt11=jt11;
-        //第一次加载树节点tree1 从本地文件夹tree中
-        /*jt = TreeNode.loadTreeNode("src/main/resources/tree/tree1");*/
-    //    jt11 = TreeNode.loadTreeNode("src/main/resources/tree/tree1");
-
-        //第一次加载树节点tree2 从本地文件夹tree中
-   //     jt2 = TreeNode.loadTreeNode("src/main/resources/tree/test");
-      //  jt22 = TreeNode.loadTreeNode("src/main/resources/tree/tree2");
-        //第一次加载树节点tree3 从本地文件夹tree中
-   //     jt3 = TreeNode.loadTreeNode("src/main/resources/tree/tree3");
-      //  jt33 =TreeNode.loadTreeNode("src/main/resources/tree/tree3");
-        //第一次加载树节点tree4 从本地文件夹tree中
-    //    jt4 = TreeNode.loadTreeNode("src/main/resources/tree/tree4");
-      //  jt44 = TreeNode.loadTreeNode("src/main/resources/tree/tree4");
 
     }
 
@@ -287,20 +275,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         jp1scrollPane.add(p1_bgImage);
 
 
-        //jp4,jp2,jp3,jp6
-        myCard = new CardLayout();
-        jp4 = new JPanel(new BorderLayout());
-        jp2 = new JPanel(new CardLayout());
-        p2_jl1 = new JLabel(new ImageIcon("src/main/resources/image/center_image/jp2_left.jpg"));
-        p2_jl1.addMouseListener(this);
-        //图标切换
-        p2_jl1.addMouseListener(this);
-        p2_jl2 = new JLabel(new ImageIcon("src/main/resources/image/center_image/jp2_right.jpg"));
-        p2_jl2.addMouseListener(this);
-        jp2.add(p2_jl1, "0");
-        jp2.add(p2_jl2, "1");
-
-        jp3 = new JPanel(myCard);
+        jp3 = new JPanel(new BorderLayout());
 
         //先给jp3加入主界面卡片
         try {
@@ -311,15 +286,15 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         }
         jp3Image = new ImagePanel(p3Icon);
         jp3Image.setLayout(new BorderLayout());
+        jp3.setPreferredSize(new Dimension(3000,1000));
+        jp11scrollPane = new JScrollPane(jp3);
+        jp11scrollPane.setViewportView(jp3);
 
+        jp11scrollPane.add(jp3Image);
+        jp11scrollPane.setBounds(10, 10, 1750, 700);
+       // jp3.add(jp3Image);
 
-        jp3.add(jp3Image);
-
-
-        jp4.add(jp2, "West");
-        jp4.add(jp3, "Center");
-
-        jsp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true, jp1scrollPane, jp4);
+        jsp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true, jp1scrollPane, jp11scrollPane);
         jsp.setDividerLocation(300);
 
         jsp.setDividerSize(0);
