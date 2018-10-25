@@ -31,7 +31,7 @@ import java.util.HashMap;
 /**
  * @创建人 shizhendong
  * @创建时间 2018/9/26
- * @描述 针对windows界面中的数据维护中的部队情况的actionformed进行事件的控制
+ * @描述 针对windows界面中的数据维护中的bdqk 的actionformed进行事件的控制
  */
 public class DataMainTainFirstController {
 
@@ -94,11 +94,11 @@ public class DataMainTainFirstController {
             @Override
             public void valueChanged(TreeSelectionEvent e) {
 
-                System.out.println("=======数据维护===部队情况====");
+                System.out.println("=======数据维护===bdqk====");
 
                  d.database="oracle";
                  Connection c = d.getConnection();
-                 ResultSet r = d.executeQuery("select * from scott.字典_通用_部队番号", c);
+                 ResultSet r = d.executeQuery("select * from scott.字典_通用_bdfh", c);
                 DefaultMutableTreeNode node = (DefaultMutableTreeNode) jt.getLastSelectedPathComponent();
                 if (node == null)
                     return;
@@ -112,7 +112,7 @@ public class DataMainTainFirstController {
                 w.flagObject = object.toString();
 
                 //从数据库中根据表名动态获取字段及类型
-                ArrayList<Columns> columnsArrayList=sp.getColumnName("字典_通用_部队番号");
+                ArrayList<Columns> columnsArrayList=sp.getColumnName("字典_通用_bdfh");
                 String column[] =new String[columnsArrayList.size()];
                 for(int i=0;i<columnsArrayList.size();i++){
                     column[i]=columnsArrayList.get(i).getName();

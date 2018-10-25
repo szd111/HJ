@@ -42,6 +42,7 @@ public class MyProgressBar extends JProgressBar {
     }
 
     public static void main(String args[]){
+
         MyProgressBar bar = new MyProgressBar();
     }
 }

@@ -157,24 +157,24 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
 
         jm2 = new JMenu("数据维护");
         jm2.setFont(FontTools.f3);
-        jmi6 = new JMenu("作 战");
+        jmi6 = new JMenu("zz");
         jmi6.setFont(FontTools.f2);
-        jmii1 = new JMenuItem("部队情况", jmi6_icon6);
+        jmii1 = new JMenuItem("bdqk", jmi6_icon6);
         jmii1.setFont(FontTools.f2);
         jmii1.addActionListener(this);
-        jmii2 = new JMenuItem("战备工程", jmi6_icon6);
+        jmii2 = new JMenuItem("zbgc", jmi6_icon6);
         jmii2.setFont(FontTools.f2);
         jmii2.addActionListener(this);
         jmi6.add(jmii1);
         jmi6.add(jmii2);
 
-        jmi7 = new JMenu("装 备");
+        jmi7 = new JMenu("zb");
         jmi7.setFont(FontTools.f2);
-        jmii7 = new JMenuItem("外军装备", jmi6_icon6);
+        jmii7 = new JMenuItem("wjzb2", jmi6_icon6);
         jmii7.setFont(FontTools.f2);
 
         jmii7.addActionListener(this);
-        jmii8 = new JMenuItem("我军装备", jmi6_icon6);
+        jmii8 = new JMenuItem("wjzb", jmi6_icon6);
         jmii8.setFont(FontTools.f2);
         jmii8.addActionListener(this);
 
@@ -189,16 +189,16 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         jm3.setFont(FontTools.f3);
         jmi7 = new JMenu("树形字典维护");
         jmi7.setFont(FontTools.f2);
-        jmii3 = new JMenuItem("部队序型 ", jmi7_icon7);
+        jmii3 = new JMenuItem("bdxx ", jmi7_icon7);
         jmii3.addActionListener(this);
         jmii3.setFont(FontTools.f2);
-        jmii4 = new JMenuItem("我军装备 ", jmi7_icon7);
+        jmii4 = new JMenuItem("wjzb ", jmi7_icon7);
         jmii4.addActionListener(this);
         jmii4.setFont(FontTools.f2);
-        jmii5 = new JMenuItem("外军装备 ", jmi7_icon7);
+        jmii5 = new JMenuItem("wjzb2 ", jmi7_icon7);
         jmii5.addActionListener(this);
         jmii5.setFont(FontTools.f2);
-        jmii6 = new JMenuItem("战备工程 ", jmi7_icon7);
+        jmii6 = new JMenuItem("zbgc ", jmi7_icon7);
         jmii6.addActionListener(this);
         jmii6.setFont(FontTools.f2);
 
@@ -402,42 +402,42 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
 
         }
 
-        //部队情况 post get
-        if (e.getActionCommand() == "部队情况") {
+        //bdqk
+        if (e.getActionCommand() == "bdqk") {
 
             DataMainTainFirstController c = (DataMainTainFirstController) cft.getConTrollers("DataMainTain");
-            flagObject = "部队情况";
+
             c.armySituation(this);
 
         }
-        //战备工程
-        if (e.getActionCommand() == "战备工程") {
+        //zbgc
+        if (e.getActionCommand() == "zbgc") {
 
             DataMainTainSecondController c = (DataMainTainSecondController) cft.getConTrollers("DataMainTainSecond");
-            flagObject = "战备工程";
+
             c.armySituation(this);
 
         }
-        //外军装备
-        if (e.getActionCommand() == "外军装备") {
+        //wjzb2
+        if (e.getActionCommand() == "wjzb2") {
             DataMainTainThirdController c = (DataMainTainThirdController) cft.getConTrollers("DataMainTainThird");
-            flagObject = "外军装备";
+
             System.out.println("sdsdsd");
             c.armySituation(this);
 
 
         }
-        //我军装备
-        if (e.getActionCommand() == "我军装备") {
+        //wjzb
+        if (e.getActionCommand() == "wjzb") {
             DataMainTainFourthController c = (DataMainTainFourthController) cft.getConTrollers("DataMainTainFourth");
-            flagObject = "我军装备";
+
             c.armySituation(this);
 
         }
 
 
-        //部队情况维护
-        if (e.getActionCommand() == "部队序型 ") {
+        //bdqk维护
+        if (e.getActionCommand() == "bdxx ") {
 
             //java.awt.EventQueue.invokeLater(new Runnable() {
 
@@ -445,7 +445,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
 
             //此处设置皮肤和主题
             DictionaryMainTainController c = (DictionaryMainTainController) cft.getConTrollers("DictionaryMainTain");
-            flagObject = "部队情况 ";
+
             c.armySituation(this);
 
             //   }
@@ -453,27 +453,26 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
 
 
         }
-        //战备工程维护
-        if (e.getActionCommand() == "战备工程 ") {
+        //zbgc维护
+        if (e.getActionCommand() == "zbgc ") {
 
             DictionaryMainTainFourthController c = (DictionaryMainTainFourthController) cft.getConTrollers("DictionaryMainTainTFourth");
-            flagObject = "战备工程 ";
+
             c.armySituation(this);
 
         }
-        //我军装备维护
-        if (e.getActionCommand() == "我军装备 ") {
+        //wjzb维护
+        if (e.getActionCommand() == "wjzb ") {
 
             DictionaryMainTainSecondController c = (DictionaryMainTainSecondController) cft.getConTrollers("DictionaryMainTainSecond");
-            flagObject = "我军装备 ";
+
             c.armySituation(this);
 
         }
-        //外军装备维护
-        if (e.getActionCommand() == "外军装备 ") {
+        //wjzb2维护
+        if (e.getActionCommand() == "wjzb2 ") {
 
             DictionaryMainTainThirdController c = (DictionaryMainTainThirdController) cft.getConTrollers("DictionaryMainTainThird");
-            flagObject = "外军装备 ";
             c.armySituation(this);
 
         }

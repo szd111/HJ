@@ -32,7 +32,7 @@ import java.util.HashMap;
 /**
  * @创建人 rduan
  * @创建时间 2018/10/10
- * @描述 针对windows界面中的数据维护中的外军装备的actionformed进行事件的控制
+ * @描述 针对windows界面中的数据维护中的wjzb 的actionformed进行事件的控制
  */
 public class DataMainTainFourthController {
 
@@ -57,7 +57,7 @@ public class DataMainTainFourthController {
 
 
     /**
-     * @描述 对战备工程的actionformed作出监听
+     * @描述 对wjzb 的actionformed作出监听
      * @参数
      * @返回值
      * @创建人 rduan
@@ -88,10 +88,10 @@ public class DataMainTainFourthController {
             @Override
             public void valueChanged(TreeSelectionEvent e) {
 
-                System.out.println("=======数据维护===外军装备====");
+                System.out.println("=======数据维护===wjzb====");
                 d.database="oracle";
                 Connection c = d.getConnection();
-                ResultSet r = d.executeQuery("select * from scott.字典_通用_外军装备", c);
+                ResultSet r = d.executeQuery("select * from scott.字典_通用_wjzb", c);
                 DefaultMutableTreeNode node = (DefaultMutableTreeNode) jt.getLastSelectedPathComponent();
                 if (node == null)
                     return;
@@ -105,7 +105,7 @@ public class DataMainTainFourthController {
                 w.flagObject = object.toString();
 
                 //从数据库中根据表名动态获取字段及类型
-                ArrayList<Columns> columnsArrayList=sp.getColumnName("字典_通用_外军装备");
+                ArrayList<Columns> columnsArrayList=sp.getColumnName("字典_通用_wjzb");
                 String column[] =new String[columnsArrayList.size()];
                 for(int i=0;i<columnsArrayList.size();i++){
                     column[i]=columnsArrayList.get(i).getName();

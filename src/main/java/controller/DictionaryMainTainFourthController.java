@@ -28,7 +28,7 @@ import java.util.HashMap;
 /**
  * @创建人 rduan
  * @创建时间 2018/10/17
- * @描述 针对windows界面中的字典维护中的 战备工程的actionformed进行事件的控制
+ * @描述 针对windows界面中的字典维护中的 zbgc 的actionformed进行事件的控制
  */
 public class DictionaryMainTainFourthController {
     public JLabel jl1, jl2, jl3, jl4, jl5, jl6, jl7, jl8, jl9, jl10, jl11, jl12, jl13, jl14, jl15, jl16, jl17, jl18, jl19, jl20, jl21, jl22, jl23, jl24, jl25, jl26, jl27, jl28, jl29, jl30, jl31;
@@ -56,7 +56,7 @@ public class DictionaryMainTainFourthController {
 
 
     /**
-     * @描述 对战备工程的actionformed作出监听
+     * @描述 对zbgc 的actionformed作出监听
      * @参数
      * @返回值
      * @创建人 rduan
@@ -95,10 +95,10 @@ public class DictionaryMainTainFourthController {
                 System.out.println("You have chosen:" + object.toString());
                 d.database = "oracle";
                 Connection c = d.getConnection();
-                ResultSet r = d.executeQuery("select * from scott.字典_通用_战备工程 where 战备工程名称='" + object.toString() + "'", c);
+                ResultSet r = d.executeQuery("select * from scott.字典_通用_zbgc where zbgcjc='" + object.toString() + "'", c);
                 try {
                     r.next();
-                    // System.out.println("=ssss===" + r.getObject("部队番号"));
+
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
@@ -153,77 +153,77 @@ public class DictionaryMainTainFourthController {
                     }
                 });
                 try {
-                    jl1 = new JLabel("战备工程内码:");
+                    jl1 = new JLabel("zbgcnm:");
                     jl1.setFont(FontTools.f5);
                     jl1.setBounds(410, 100, 150, 30);
 
                     jname1 = new JTextField(20);
 
-                    jname1.setText(r.getObject("战备工程内码") + "");
+                    jname1.setText(r.getObject("zbgcnm") + "");
 
                     jname1.setBounds(550, 100, 200, 30);
 
-                    jl2 = new JLabel("战备工程序号:");
+                    jl2 = new JLabel("zbgcxh:");
                     jl2.setFont(FontTools.f5);
                     jl2.setBounds(810, 100, 150, 30);
 
                     jname2 = new JTextField(20);
-                    jname2.setText(r.getObject("战备工程序号") + "");
+                    jname2.setText(r.getObject("zbgcxh") + "");
                     jname2.setBounds(950, 100, 200, 30);
 
-                    jl3 = new JLabel("战备工程代号:");
+                    jl3 = new JLabel("zbgcdh:");
                     jl3.setFont(FontTools.f5);
                     jl3.setBounds(410, 150, 150, 30);
 
                     jname3 = new JTextField(20);
-                    jname3.setText(r.getObject("战备工程代号") + "");
+                    jname3.setText(r.getObject("zbgcdh") + "");
                     jname3.setBounds(550, 150, 200, 30);
 
-                    jl4 = new JLabel("战备工程简称:");
+                    jl4 = new JLabel("zbgcjc:");
                     jl4.setFont(FontTools.f5);
                     jl4.setBounds(810, 150, 200, 30);
 
                     jname4 = new JTextField(20);
-                    jname4.setText(r.getObject("战备工程简称") + "");
+                    jname4.setText(r.getObject("zbgcjc") + "");
                     jname4.setBounds(950, 150, 200, 30);
 
-                    jl5 = new JLabel("战备工程类别:");
+                    jl5 = new JLabel("zbgclb:");
                     jl5.setFont(FontTools.f5);
                     jl5.setBounds(410, 200, 150, 30);
 
                     jname5 = new JTextField(20);
-                    jname5.setText(r.getObject("战备工程类别") + "");
+                    jname5.setText(r.getObject("zbgclb") + "");
                     jname5.setBounds(550, 200, 200, 30);
 
-                    jl6 = new JLabel("战备工程名称:");
+                    jl6 = new JLabel("zbgcmc:");
                     jl6.setFont(FontTools.f5);
                     jl6.setBounds(810, 200, 150, 30);
 
                     jname6 = new JTextField(20);
-                    jname6.setText(r.getObject("战备工程名称") + "");
+                    jname6.setText(r.getObject("zbgcmc") + "");
                     jname6.setBounds(950, 200, 200, 30);
 
 
-                    jl7 = new JLabel("备用:");
+                    jl7 = new JLabel("by:");
                     jl7.setFont(FontTools.f5);
                     jl7.setBounds(410, 250, 70, 30);
 
                     are1 = new TextArea();
                     are1.setBounds(480, 250, 320, 200);
 
-                    jl8 = new JLabel("备注:");
+                    jl8 = new JLabel("bz:");
                     jl8.setFont(FontTools.f5);
                     jl8.setBounds(840, 250, 70, 30);
 
                     are2 = new TextArea();
                     are2.setBounds(910, 250, 320, 200);
 
-                    jl9 = new JLabel("备用标志1:");
+                    jl9 = new JLabel("bybz1:");
                     jl9.setFont(FontTools.f5);
                     jl9.setBounds(410, 470, 150, 30);
 
                     jname7 = new JTextField(20);
-                    jname7.setText(r.getObject("备用标志1") + "");
+                    jname7.setText(r.getObject("bybz1") + "");
                     jname7.setBounds(520, 470, 30, 30);
 
 

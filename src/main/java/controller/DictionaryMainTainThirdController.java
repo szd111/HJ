@@ -28,7 +28,7 @@ import java.util.HashMap;
 /**
  * @创建人 rduan
  * @创建时间 2018/10/17
- * @描述 针对windows界面中的字典维护中的 外军军装备的actionformed进行事件的控制
+ * @描述 针对windows界面中的字典维护的wjzb2 actionformed进行事件的控制
  */
 public class DictionaryMainTainThirdController {
     public JLabel jl1, jl2, jl3, jl4, jl5, jl6, jl7, jl8, jl9, jl10, jl11, jl12, jl13, jl14, jl15, jl16, jl17, jl18, jl19, jl20, jl21, jl22, jl23, jl24, jl25, jl26, jl27, jl28, jl29, jl30, jl31;
@@ -56,7 +56,7 @@ public class DictionaryMainTainThirdController {
 
 
     /**
-     * @描述 对外军装备的actionformed作出监听
+     * @描述 对wjzb2的actionformed作出监听
      * @参数
      * @返回值
      * @创建人 rduan
@@ -99,7 +99,7 @@ public class DictionaryMainTainThirdController {
                 System.out.println("You have chosen:" + object.toString());
                 d.database = "oracle";
                 Connection c = d.getConnection();
-                ResultSet r = d.executeQuery("select * from scott.字典_通用_外军装备 where 装备名称='" + object.toString() + "'", c);
+                ResultSet r = d.executeQuery("select * from scott.字典_通用_wjzb where zbgjdq='" + object.toString() + "'", c);
                 try {
                     r.next();
                     // System.out.println("=ssss===" + r.getObject("部队番号"));
@@ -157,182 +157,182 @@ public class DictionaryMainTainThirdController {
                     }
                 });
                 try {
-                    jl1 = new JLabel("装备内码:");
+                    jl1 = new JLabel("zbnm:");
                     jl1.setFont(FontTools.f5);
                     jl1.setBounds(450, 100, 150, 30);
 
                     jname1 = new JTextField(20);
 
-                    jname1.setText(r.getObject("装备内码") + "");
+                    jname1.setText(r.getObject("zbnm") + "");
 
                     jname1.setBounds(550, 100, 200, 30);
 
-                    jl2 = new JLabel("装备序号:");
+                    jl2 = new JLabel("zbxh:");
                     jl2.setFont(FontTools.f5);
                     jl2.setBounds(850, 100, 150, 30);
 
                     jname2 = new JTextField(20);
-                    jname2.setText(r.getObject("装备序号") + "");
+                    jname2.setText(r.getObject("zbxh") + "");
                     jname2.setBounds(950, 100, 200, 30);
 
-                    jl3 = new JLabel("装备名称:");
+                    jl3 = new JLabel("zbmc:");
                     jl3.setFont(FontTools.f5);
                     jl3.setBounds(450, 150, 150, 30);
 
                     jname3 = new JTextField(20);
-                    jname3.setText(r.getObject("装备名称") + "");
+                    jname3.setText(r.getObject("zbmc") + "");
                     jname3.setBounds(550, 150, 200, 30);
 
-                    jl4 = new JLabel("装备国家地区:");
+                    jl4 = new JLabel("zbgjdq:");
                     jl4.setFont(FontTools.f5);
                     jl4.setBounds(810, 150, 200, 30);
 
                     jname4 = new JTextField(20);
-                    jname4.setText(r.getObject("装备国家地区") + "");
+                    jname4.setText(r.getObject("zbgjdq") + "");
                     jname4.setBounds(950, 150, 200, 30);
 
-                    jl5 = new JLabel("计量单位:");
+                    jl5 = new JLabel("jldw:");
                     jl5.setFont(FontTools.f5);
                     jl5.setBounds(450, 200, 150, 30);
 
                     jname5 = new JTextField(20);
-                    jname5.setText(r.getObject("计量单位") + "");
+                    jname5.setText(r.getObject("jldw") + "");
                     jname5.setBounds(550, 200, 30, 30);
 
-                    jl6 = new JLabel("装备别称:");
+                    jl6 = new JLabel("zbbc:");
                     jl6.setFont(FontTools.f5);
                     jl6.setBounds(850, 200, 150, 30);
 
                     jname6 = new JTextField(20);
                     jname6.setBounds(950, 200, 200, 30);
 
-                    jl7 = new JLabel("装备简介:");
+                    jl7 = new JLabel("zbjj:");
                     jl7.setFont(FontTools.f5);
                     jl7.setBounds(450, 250, 150, 30);
 
                     jname7 = new JTextField(20);
                     jname7.setBounds(550, 250, 200, 30);
 
-                    jl8 = new JLabel("本国名称:");
+                    jl8 = new JLabel("bgmc:");
                     jl8.setFont(FontTools.f5);
                     jl8.setBounds(850, 250, 150, 30);
 
                     jname8 = new JTextField(20);
                     jname8.setBounds(950, 250, 30, 30);
 
-                    jl9 = new JLabel("英文名称:");
+                    jl9 = new JLabel("ywmc:");
                     jl9.setFont(FontTools.f5);
                     jl9.setBounds(450, 300, 150, 30);
 
                     jname9 = new JTextField(20);
                     jname9.setBounds(550, 300, 200, 30);
 
-                    jl10 = new JLabel("原产国家:");
+                    jl10 = new JLabel("ycgj:");
                     jl10.setFont(FontTools.f5);
                     jl10.setBounds(850, 300, 150, 30);
 
                     jname10 = new JTextField(20);
                     jname10.setBounds(950, 300, 200, 30);
 
-                    jl11 = new JLabel("保留内码:");
+                    jl11 = new JLabel("blnm:");
                     jl11.setFont(FontTools.f5);
                     jl11.setBounds(450, 350, 150, 30);
 
                     jname11 = new JTextField(20);
                     jname11.setBounds(550, 350, 200, 30);
 
-                    jl12 = new JLabel("保留序号:");
+                    jl12 = new JLabel("blxh:");
                     jl12.setFont(FontTools.f5);
                     jl12.setBounds(850, 350, 150, 30);
 
                     jname12 = new JTextField(20);
                     jname12.setBounds(950, 350, 200, 30);
 
-                    jl13 = new JLabel("保留名称:");
+                    jl13 = new JLabel("blmc:");
                     jl13.setFont(FontTools.f5);
                     jl13.setBounds(450, 400, 150, 30);
 
                     jname13 = new JTextField(20);
                     jname13.setBounds(550, 400, 200, 30);
 
-                    jl14 = new JLabel("军标代号:");
+                    jl14 = new JLabel("jbdh:");
                     jl14.setFont(FontTools.f5);
                     jl14.setBounds(850, 400, 150, 30);
 
                     jname14 = new JTextField(20);
                     jname14.setBounds(950, 400, 200, 30);
 
-                    jl15 = new JLabel("军标代字:");
+                    jl15 = new JLabel("jbdz:");
                     jl15.setFont(FontTools.f5);
                     jl15.setBounds(450, 450, 150, 30);
 
                     jname15 = new JTextField(20);
                     jname15.setBounds(550, 450, 200, 30);
 
-                    jl16 = new JLabel("军标中文带字:");
+                    jl16 = new JLabel("jbzwdz:");
                     jl16.setFont(FontTools.f5);
                     jl16.setBounds(810, 450, 150, 30);
 
                     jname16 = new JTextField(20);
                     jname16.setBounds(950, 450, 200, 30);
 
-                    jl17 = new JLabel("军标颜色:");
+                    jl17 = new JLabel("jbys:");
                     jl17.setFont(FontTools.f5);
                     jl17.setBounds(450, 500, 150, 30);
 
                     jname17 = new JTextField(20);
                     jname17.setBounds(550, 500, 200, 30);
 
-                    jl18 = new JLabel("军标颜色内码:");
+                    jl18 = new JLabel("jbysnm:");
                     jl18.setFont(FontTools.f5);
                     jl18.setBounds(810, 500, 150, 30);
 
                     jname18 = new JTextField(20);
                     jname18.setBounds(950, 500, 200, 30);
 
-                    jl19 = new JLabel("军标前景色:");
+                    jl19 = new JLabel("jbqjs:");
                     jl19.setFont(FontTools.f5);
                     jl19.setBounds(430, 550, 150, 30);
 
                     jname19 = new JTextField(20);
                     jname19.setBounds(550, 550, 200, 30);
 
-                    jl20 = new JLabel("军标前景色内码:");
+                    jl20 = new JLabel("jbqjsnm:");
                     jl20.setFont(FontTools.f5);
                     jl20.setBounds(795, 550, 150, 30);
 
                     jname20 = new JTextField(20);
                     jname20.setBounds(950, 550, 200, 30);
 
-                    jl21 = new JLabel("军标线宽:");
+                    jl21 = new JLabel("jbxk:");
                     jl21.setFont(FontTools.f5);
                     jl21.setBounds(450, 600, 150, 30);
 
                     jname21 = new JTextField(20);
                     jname21.setBounds(550, 600, 200, 30);
 
-                    jl22 = new JLabel("军标库号:");
+                    jl22 = new JLabel("jbkh:");
                     jl22.setFont(FontTools.f5);
                     jl22.setBounds(850, 600, 150, 30);
 
                     jname22 = new JTextField(20);
                     jname22.setBounds(950, 600, 200, 30);
 
-                    jl23 = new JLabel("军标定位点数:");
+                    jl23 = new JLabel("jbdwds:");
                     jl23.setFont(FontTools.f5);
                     jl23.setBounds(410, 650, 150, 30);
 
                     jname23 = new JTextField(20);
                     jname23.setBounds(550, 650, 200, 30);
 
-                    jl24 = new JLabel("军标方向:");
+                    jl24 = new JLabel("jbfx:");
                     jl24.setFont(FontTools.f5);
                     jl24.setBounds(850, 650, 150, 30);
 
                     jname24 = new JTextField(20);
                     jname24.setBounds(950, 650, 200, 30);
 
-                    jl27 = new JLabel("节点标志:");
+                    jl27 = new JLabel("jdbz:");
                     jl27.setFont(FontTools.f5);
                     jl27.setBounds(450, 700, 150, 30);
 
@@ -340,14 +340,14 @@ public class DictionaryMainTainThirdController {
                     jname27.setBounds(550, 700, 30, 30);
 
 
-                    jl25 = new JLabel("备用:");
+                    jl25 = new JLabel("by:");
                     jl25.setFont(FontTools.f5);
                     jl25.setBounds(450, 750, 70, 30);
 
                     are1 = new TextArea();
                     are1.setBounds(520, 750, 320, 200);
 
-                    jl26 = new JLabel("备注:");
+                    jl26 = new JLabel("bz:");
                     jl26.setFont(FontTools.f5);
                     jl26.setBounds(850, 750, 70, 30);
 

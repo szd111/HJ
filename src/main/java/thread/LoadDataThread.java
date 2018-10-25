@@ -21,6 +21,7 @@ public class LoadDataThread extends Thread{
 
     public void run(){
 
+
         JTree jTree = TreeNode.loadTreeNode("src/main/resources/tree/tree11");
         JTree jTree1 = TreeNode.loadTreeNode("src/main/resources/tree/tree22");
         JTree jTree2 = TreeNode.loadTreeNode("src/main/resources/tree/tree33");
@@ -30,6 +31,7 @@ public class LoadDataThread extends Thread{
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 if (result == 1) {
+                    progress.hide();
                     progress.setVisible(false);
                     new Windows(jTree,jTree1,jTree2,jTree3,jTree);
                 }else {

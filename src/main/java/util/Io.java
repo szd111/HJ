@@ -140,27 +140,28 @@ public class Io {
         // io.writeToTxt("C:\\Users\\admin\\Desktop\\github\\HJ-master\\src\\main\\resources\\szd","sssswwws");
 
 
-        String xx[]=io.readFromTxt("src/main/resources/tree/tree4").split("\\$");
+        String xx[]=io.readFromTxt("src/main/resources/tree/tree44").split("\\$");
         DatabaseDaoImp dd=new DatabaseDaoImp();
 
         try {
-            for (int i = 4; i < 5; i++) {
-                Connection c=dd.getConnection();
+            Connection c=dd.getConnection();
+            for (int i = 1; i < 4; i++) {
+
                 String id = xx[i].split("\\#")[1].split(" ")[1];
                 String name = xx[i].split("\\#")[1].split(" ")[0];
 
-                String sql = "insert into DR.字典_通用_战备工程(战备工程内码,战备工程序号,战备工程简称,战备工程名称)" +
-                        "values('" +i + "','" + id + "','" + id + "','" + name + "')";
+                String sql = "insert into scott.字典_通用_zbgc(zbgcnm,zbgcxh,zbgcdh,zbgcjc)values('"+id+"','"+id+"','"+id+"','"+name+"')";
 
 
                 System.out.println("==" + sql);
-                dd.executeQuery(sql.toString().trim(), c);
-
-                dd.destroy(c);
+               // dd.executeQuerys(sql.toString().trim(), c);
 
 
-                System.out.println("===xx==" + id + "  " + name);
+
+
+                System.out.println(i+"===xx==" + id + "  " + name);
             }
+            dd.destroy(c);
 
         }catch (Exception e){
             e.printStackTrace();

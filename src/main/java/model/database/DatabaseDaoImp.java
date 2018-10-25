@@ -11,7 +11,7 @@ import java.sql.*;
  */
 public class DatabaseDaoImp implements DatabaseDao {
 
-    public String database = "dm";
+    public String database = "oracle";
     Statement statement = null;
     PreparedStatement ps = null;
 
@@ -90,7 +90,28 @@ public class DatabaseDaoImp implements DatabaseDao {
 
 
     }
+    public ResultSet executeQuerys(String sql, Connection connection) {
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
 
+            statement.close();
+
+
+        } catch (SQLException e) {// TODO Auto-generated catch block
+
+            e.printStackTrace();
+
+        } finally {
+
+
+        }
+        return resultSet;
+
+
+    }
     @Override
     public ResultSet executeQuerys(String sql, String[] params, Connection connection) {
 

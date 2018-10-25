@@ -31,7 +31,7 @@ import java.util.HashMap;
 /**
  * @创建人 rduan
  * @创建时间 2018/10/10
- * @描述 针对windows界面中的数据维护中的战备工程的actionformed进行事件的控制
+ * @描述 针对windows界面中的数据维护中的zbgc的actionformed进行事件的控制
  */
 public class DataMainTainSecondController {
 
@@ -56,7 +56,7 @@ public class DataMainTainSecondController {
 
 
     /**
-     * @描述 对战备工程的actionformed作出监听
+     * @描述 对zbgc 的actionformed作出监听
      * @参数
      * @返回值
      * @创建人 rduan
@@ -88,11 +88,11 @@ public class DataMainTainSecondController {
             @Override
             public void valueChanged(TreeSelectionEvent e) {
 
-                System.out.println("=======数据维护===战备工程====");
+                System.out.println("=======数据维护===zbgc====");
 
                 d.database = "oracle";
                 Connection c = d.getConnection();
-                ResultSet r = d.executeQuery("select * from scott.字典_通用_战备工程", c);
+                ResultSet r = d.executeQuery("select * from scott.字典_通用_zbgc", c);
                 DefaultMutableTreeNode node = (DefaultMutableTreeNode) jt.getLastSelectedPathComponent();
                 if (node == null)
                     return;
@@ -106,7 +106,7 @@ public class DataMainTainSecondController {
                 w.flagObject = object.toString();
 
                 //从数据库中根据表名动态获取字段及类型
-                ArrayList<Columns> columnsArrayList = sp.getColumnName("字典_通用_战备工程");
+                ArrayList<Columns> columnsArrayList = sp.getColumnName("字典_通用_zbgc");
                 String column[] = new String[columnsArrayList.size()];
                 for (int i = 0; i < columnsArrayList.size(); i++) {
                     column[i] = columnsArrayList.get(i).getName();
