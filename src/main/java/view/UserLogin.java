@@ -219,8 +219,9 @@ public class UserLogin extends JDialog implements ActionListener{
 			{
 
 				/*new Windows();*/
-				new MyProgressBar();
-				this.hide();
+				MyProgressBar br=new MyProgressBar();
+				Thread th=new Thread(br);
+				th.start();
 				//String welcome="»¶Ó­Äú--"+zhiwei;
 				//JOptionPane.showMessageDialog(this, welcome);
 
