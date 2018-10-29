@@ -1,11 +1,7 @@
-package model;
-
-import thread.LoadDataThread;
+package thread;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class MyProgressBar extends JProgressBar implements Runnable{
 

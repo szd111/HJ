@@ -120,13 +120,11 @@ public class DatabaseDaoImp implements DatabaseDao {
             ps = connection.prepareStatement(sql);
 
             for (int i = 0; i < params.length; i++) {
-                ps.setString(i + 1, params[i]);
+                ps.setObject(i + 1, params[i]);
 
             }
-
             resultSet = ps.executeQuery();
 
-            ps.close();
         } catch (Exception e) {
             e.printStackTrace();
             // TODO: handle exception

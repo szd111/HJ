@@ -7,6 +7,7 @@ import controller.factory.ControllerFactory;
 
 import model.SelectTableImp;
 import model.database.DatabaseDaoImp;
+import thread.LoadDataThread;
 import util.CreateTable;
 import util.FontTools;
 import util.ImagePanel;
@@ -23,13 +24,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
  * @创建人 shizhendong
  * @创建时间 2018.9.25
- * @描述 主窗体界面包括数据维护和字典维护我军装备
+ * @描述 主窗体界面包括数据维护和字典维护
  */
 
 
@@ -107,7 +107,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
 
 
     //加载属性结构从本地文件tree
-    public void initTree(JTree jt,JTree jt2,JTree jt3,JTree jt4,JTree jt11) {
+    public void initTree(JTree jt, JTree jt2, JTree jt3, JTree jt4, JTree jt11, JTree jt22, JTree jt33, JTree jt44) {
 
         //加载表格及相关类
         final CreateTable cb = new CreateTable();
@@ -115,8 +115,14 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         SelectTableImp sp = new SelectTableImp();
 
         //第一次加载树节点tree1 从本地文件夹tree中
-        this.jt=jt; this.jt2=jt2; this.jt3=jt3; this.jt4=jt4;
-        this.jt11=jt11;
+        this.jt = jt;
+        this.jt2 = jt2;
+        this.jt3 = jt3;
+        this.jt4 = jt4;
+        this.jt11 = jt11;
+        this.jt22 = jt22;
+        this.jt33 = jt33;
+        this.jt44 = jt44;
 
     }
 
@@ -286,13 +292,13 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         }
         jp3Image = new ImagePanel(p3Icon);
         jp3Image.setLayout(new BorderLayout());
-        jp3.setPreferredSize(new Dimension(3000,1000));
+        jp3.setPreferredSize(new Dimension(1500, 1000));
         jp11scrollPane = new JScrollPane(jp3);
         jp11scrollPane.setViewportView(jp3);
 
         jp11scrollPane.add(jp3Image);
-        jp11scrollPane.setBounds(10, 10, 1750, 700);
-       // jp3.add(jp3Image);
+        jp11scrollPane.setBounds(10, 10, 1000, 700);
+        // jp3.add(jp3Image);
 
         jsp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true, jp1scrollPane, jp11scrollPane);
         jsp.setDividerLocation(300);
@@ -322,7 +328,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         jp5.add(ip1);
     }
 
-    public Windows(JTree jt,JTree jt2,JTree jt3,JTree jt4,JTree jt11) {
+    public Windows() {
 
         try {
             titleIcon = ImageIO.read(new File("src/main/resources/image/title.gif"));
@@ -333,7 +339,8 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         cft = new ControllerFactory();
 
         //树形结构
-       this.initTree(jt,jt2,jt3,jt4,jt11);
+        this.initTree(LoadDataThread.jt, LoadDataThread.jt2, LoadDataThread.jt3, LoadDataThread.jt4,
+                LoadDataThread.jt11, LoadDataThread.jt22, LoadDataThread.jt33, LoadDataThread.jt44);
 
         //菜单
         this.initMenu();
@@ -361,16 +368,14 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         this.setIconImage(titleIcon);
         this.setTitle("HJ系统");
         this.setVisible(true);
+        this.setBounds(150, 150, width - 400, height - 240);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO 自动生成的方法存根
         this.showTime.setText("当前时间：" + Calendar.getInstance().getTime().toLocaleString() + "   ");
-
-
         if (e.getActionCommand() == "退出") {
-
 
             DataMainTainFirstController c = (DataMainTainFirstController) cft.getConTrollers("DataMainTain");
             c.exit(this);
@@ -393,7 +398,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
             c.armySituation(this);
 
         }
-        //wjzb2
+        //wjzb
         if (e.getActionCommand() == "wjzb2") {
             DataMainTainThirdController c = (DataMainTainThirdController) cft.getConTrollers("DataMainTainThird");
 
@@ -402,10 +407,9 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
 
 
         }
-        //wjzb
+        //zb
         if (e.getActionCommand() == "wjzb") {
             DataMainTainFourthController c = (DataMainTainFourthController) cft.getConTrollers("DataMainTainFourth");
-
             c.armySituation(this);
 
         }

@@ -109,7 +109,7 @@ public class DictionaryMainTainController {
 
 
                 jbt1 = new JButton("修改提交");
-                jbt1.setBounds(700, 30, 70, 30);
+                jbt1.setBounds(670, 30, 70, 30);
                 //提交按钮事件
                 jbt1.addActionListener(new ActionListener() {
 
@@ -128,7 +128,7 @@ public class DictionaryMainTainController {
                     }
                 });
                 jbt2 = new JButton("刷新树结构");
-                jbt2.setBounds(770, 30, 70, 30);
+                jbt2.setBounds(770, 30, 100, 30);
                 //撤销按钮事件
                 jbt2.addActionListener(new ActionListener() {
 
@@ -147,7 +147,7 @@ public class DictionaryMainTainController {
                 });
 
                 jbt3 = new JButton("撤销");
-                jbt3.setBounds(840, 30, 70, 30);
+                jbt3.setBounds(900, 30, 70, 30);
                 //修改按钮事件
                 jbt3.addActionListener(new ActionListener() {
 

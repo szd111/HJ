@@ -106,9 +106,9 @@ public class TreeNode {
      * @创建时间 2018/10/18
      * @修改人和其它信息
      */
-    public static JTree loadTreeNodes(String path) {
-
-        JTree jt = null;
+    public static ArrayList<JTree> loadTreeNodes(String path) {
+        ArrayList<JTree> at=new ArrayList<JTree>();
+        JTree jt = null; JTree jt2 = null;
         CreateTree ct = new CreateTree();
         ArrayList<TreeNode> als = new ArrayList<TreeNode>();
         int i = 0;
@@ -140,9 +140,9 @@ public class TreeNode {
 
         }
 
-        jt = ct.getJTree(als);
+        at = ct.getJTree(als);
 
-        return jt;
+        return at;
 
     }
 

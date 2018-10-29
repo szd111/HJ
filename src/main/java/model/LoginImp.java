@@ -24,12 +24,11 @@ public class LoginImp implements Login {
 
         Connection c = d.getConnection();
 
-        ResultSet r = d.executeQuery("select * from DR.TABLE_1 where DATABASE_USER='" + user + "'", c);
-        System.out.println(r);
+        ResultSet r = d.executeQuery("select * from scott.HJ_USER where NAME='" + user + "'", c);
         try {
             while (r.next()) {
 
-                if (r.getString(2).equals(pass)) {
+                if (r.getString("PASSWORD").equals(pass)) {
                     flag = 1;
                 }
             }
@@ -38,17 +37,15 @@ public class LoginImp implements Login {
         }
 
         d.destroy(c);
-        try {
-            r.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         return flag;
     }
 
 
     public void checkAut(String check){
         System.out.println("aaa"+check);
+
+
+
     }
 
 

@@ -15,7 +15,6 @@ import java.util.Properties;
 public class Io {
 
     static Properties pps;
-
     /**
      * @描述 根据配置文件的路径 和配置参数 读取相应的配置值
      * @参数 path 文件路径，name 参数值
@@ -28,7 +27,6 @@ public class Io {
 
         String names = "";
         pps = new Properties();
-
         try {
             pps.load(new FileInputStream(path));
         } catch (IOException e) {
@@ -41,23 +39,11 @@ public class Io {
             String strValue = pps.getProperty(strKey);
 
             if (strKey.equals(name)) {
-
-
                 names = strValue;
-
-                System.out.println(names);
-
             }
-
-
         }
-
-
         return names;
-
-
     }
-
 
     /**
      * @描述 向文件路径path中写入txt内容
@@ -75,17 +61,12 @@ public class Io {
         try {
 
             FileWriter fw = new FileWriter(f2, true);
-
-
             BufferedWriter bw = new BufferedWriter(fw);
 
             String temp;
-
             bw.newLine();
             bw.write(txt);
-
             bw.flush();//把缓冲区内容写到文件
-
             bw.close();
 
         } catch (Exception e) {
@@ -113,7 +94,6 @@ public class Io {
         try {
             reader = new BufferedReader(new FileReader(file));
             String text = null;
-
             while ((text = reader.readLine()) != null) {
                 contents += text + "$";
                // System.out.println(i+"　　　"+text);
@@ -138,8 +118,6 @@ public class Io {
         // io.writeToTxt("C:\\Users\\admin\\Desktop\\github\\HJ-master\\src\\main\\resources\\szd","sssss");
         // io.writeToTxt("C:\\Users\\admin\\Desktop\\github\\HJ-master\\src\\main\\resources\\szd","sssswws");
         // io.writeToTxt("C:\\Users\\admin\\Desktop\\github\\HJ-master\\src\\main\\resources\\szd","sssswwws");
-
-
         String xx[]=io.readFromTxt("src/main/resources/tree/tree44").split("\\$");
         DatabaseDaoImp dd=new DatabaseDaoImp();
 
@@ -155,10 +133,6 @@ public class Io {
 
                 System.out.println("==" + sql);
                // dd.executeQuerys(sql.toString().trim(), c);
-
-
-
-
                 System.out.println(i+"===xx==" + id + "  " + name);
             }
             dd.destroy(c);
@@ -167,10 +141,6 @@ public class Io {
             e.printStackTrace();
         }
        // dd.destroy(c);
-
-
-
-
     }
 
 }

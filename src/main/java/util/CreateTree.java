@@ -166,11 +166,10 @@ public class CreateTree {
      * @创建时间 2018/9/26
      * @修改人和其它信息
      */
-    public JTree getJTree(ArrayList<TreeNode> als) {
+    public ArrayList<JTree> getJTree(ArrayList<TreeNode> als) {
+        ArrayList<JTree> al=new ArrayList<JTree>();
+        JTree jTree = null;JTree jTree2 = null;
 
-        JTree jTree = null;
-
-        if (jTree == null) {
 
             DefaultMutableTreeNode top = new DefaultMutableTreeNode("HJ");
             System.out.println("======load=======");
@@ -178,11 +177,14 @@ public class CreateTree {
             createDynamicNode(top, als);
 
             jTree = new JTree(top);
+            jTree2=new JTree(top);
+
             jTree.getSelectionModel().setSelectionMode(
                     TreeSelectionModel.SINGLE_TREE_SELECTION);
-
-        }
-        return jTree;
+        jTree2.getSelectionModel().setSelectionMode(
+                TreeSelectionModel.SINGLE_TREE_SELECTION);
+        al.add(jTree);al.add(jTree2);
+        return al;
     }
 
     /**

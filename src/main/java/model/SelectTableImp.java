@@ -29,7 +29,7 @@ public class SelectTableImp implements SelectTable {
        // di.databacse="oracle";
         String sql = "select COLUMN_NAME, DATA_TYPE, DATA_LENGTH from ALL_tab_cols where TABLE_NAME='"+name+"'";
 
-
+        System.out.println("===sql=="+sql);
         Connection cn = di.getConnection();
         ResultSet rs = di.executeQuery(sql, cn);
 
@@ -71,8 +71,13 @@ public class SelectTableImp implements SelectTable {
 
         SelectTableImp ss=new SelectTableImp();
 
-        ArrayList<Columns> cc=ss.getColumnName("NSDB.航保_海军常用基点分类");
+        ArrayList<Columns> cc=ss.getColumnName("数据_通用_ZB");
 
+        for(Columns c:cc){
+
+            System.out.println("===="+c.getName());
+
+        }
         System.out.println("===="+cc.size());
 
     }

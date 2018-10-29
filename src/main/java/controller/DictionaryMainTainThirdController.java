@@ -1,8 +1,6 @@
 package controller;
 
-import model.OperateLine;
-import model.OperateLineImp;
-import model.SelectTableImp;
+import model.*;
 import model.database.DatabaseDaoImp;
 import util.*;
 import view.UserLogin;
@@ -35,7 +33,7 @@ public class DictionaryMainTainThirdController {
     public JTextField jname1, jname2, jname3, jname4, jname5, jname6, jname7, jname8, jname9, jname10, jname11, jname12, jname13, jname14, jname15, jname16, jname17, jname18, jname19, jname20, jname21, jname22, jname23, jname24, jname25, jname26, jname27, jname28, jname29, jname30, jname31;
     public JButton jbt1, jbt2, jbt3, jbt4;
     public TextArea are1, are2;
-
+    final DictionaryMainTainOperate[] dictionaryMainTainOperate = {null};
     OperateLine oc = null;
 
     /**
@@ -108,51 +106,53 @@ public class DictionaryMainTainThirdController {
                 }
 
 
-                jbt1 = new JButton("提交");
-                jbt1.setBounds(700, 30, 70, 30);
+                jbt1 = new JButton("修改提交");
+                jbt1.setBounds(670, 30, 70, 30);
                 //提交按钮事件
                 jbt1.addActionListener(new ActionListener() {
 
-
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        System.out.println("====提交--===");
+
+
+                        String id=jname1.getText();
+                        String tt=jname3.getText();
+                        System.out.println("====提交--==="+id);
+                        dictionaryMainTainOperate[0] =new DictionaryMainTainOperate1Imp();
+                        dictionaryMainTainOperate[0].updateTreeNode(id,tt);
+                        JOptionPane.showMessageDialog(w, "修改 "+id);
+
 
                     }
                 });
-                jbt2 = new JButton("撤销");
-                jbt2.setBounds(770, 30, 70, 30);
+                jbt2 = new JButton("刷新树结构");
+                jbt2.setBounds(770, 30, 100, 30);
                 //撤销按钮事件
                 jbt2.addActionListener(new ActionListener() {
 
 
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        System.out.println("====撤销--===");
+
+                        //进行刷新
+
+                        JOptionPane.showMessageDialog(w, "正在刷新树结构 稍等");
+                        dictionaryMainTainOperate[0] =new DictionaryMainTainOperate1Imp();
+                        //dictionaryMainTainOperate[0].updateTreeStructure(w);
+                        JOptionPane.showMessageDialog(w, "刷新完毕");
 
                     }
                 });
-                jbt3 = new JButton("更新");
-                jbt3.setBounds(840, 30, 70, 30);
+
+                jbt3 = new JButton("撤销");
+                jbt3.setBounds(900, 30, 70, 30);
                 //修改按钮事件
                 jbt3.addActionListener(new ActionListener() {
 
 
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        System.out.println("====更新--===");
-
-                    }
-                });
-                jbt4 = new JButton("删除");
-                jbt4.setBounds(910, 30, 70, 30);
-                //刷新按钮事件
-                jbt4.addActionListener(new ActionListener() {
-
-
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        System.out.println("====删除--===");
+                        System.out.println("====修改--===");
 
                     }
                 });
@@ -371,8 +371,6 @@ public class DictionaryMainTainThirdController {
                 w.jp3.add(jbt1);
                 w.jp3.add(jbt2);
                 w.jp3.add(jbt3);
-                w.jp3.add(jbt4);
-
                 w.jp3.add(jl1);
                 w.jp3.add(jname1);
                 w.jp3.add(jl2);

@@ -101,14 +101,9 @@ public class CreateTable {
      * @修改人和其它信息
      */
 
-    public void updateTable(int flag, Windows w) {
+    public void updateTable( String[] rowValues, Windows w) {
 
-
-        String[] rowValues = {"", ""};
         w.tableModel.addRow(rowValues);
-
-
     }
-
 
 }

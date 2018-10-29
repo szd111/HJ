@@ -28,6 +28,7 @@ public class LoginController {
 
         String username = user.getName();
         String password = user.getPassword();
+        System.out.println("==user=="+username+"  "+password);
         flag = loginImp.loginAccessDb(username, password);
 
         return flag;
@@ -47,6 +48,7 @@ public class LoginController {
     public void checkAut(String check){
         LoginImp instance=new LoginImp();
         instance.checkAut(check);
+
     }
 
 
